@@ -1,0 +1,104 @@
+
+Actor.png
+size: 327,269
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+knight/basic_shield
+  rotate: false
+  xy: 104, 3
+  size: 117, 118
+  orig: 132, 132
+  offset: 8, 8
+  index: -1
+knight/basic_sword
+  rotate: false
+  xy: 3, 58
+  size: 98, 208
+  orig: 151, 250
+  offset: 16, 25
+  index: -1
+main/body
+  rotate: false
+  xy: 104, 124
+  size: 143, 142
+  orig: 161, 161
+  offset: 9, 8
+  index: -1
+main/expression_attack
+  rotate: true
+  xy: 92, 42
+  size: 13, 9
+  orig: 56, 31
+  offset: 25, 8
+  index: -1
+main/expression_round
+  rotate: false
+  xy: 260, 45
+  size: 11, 12
+  orig: 56, 31
+  offset: 27, 7
+  index: -1
+main/expression_sad
+  rotate: false
+  xy: 260, 60
+  size: 40, 12
+  orig: 56, 31
+  offset: 9, 6
+  index: -1
+main/expression_smile
+  rotate: false
+  xy: 3, 5
+  size: 43, 16
+  orig: 56, 31
+  offset: 7, 7
+  index: -1
+main/eyes_attack
+  rotate: true
+  xy: 224, 45
+  size: 76, 33
+  orig: 98, 57
+  offset: 9, 14
+  index: -1
+main/eyes_damage
+  rotate: false
+  xy: 3, 24
+  size: 86, 31
+  orig: 98, 57
+  offset: 6, 13
+  index: -1
+main/eyes_die
+  rotate: true
+  xy: 285, 181
+  size: 85, 32
+  orig: 98, 57
+  offset: 5, 13
+  index: -1
+main/eyes_normal
+  rotate: false
+  xy: 224, 10
+  size: 75, 32
+  orig: 98, 57
+  offset: 10, 14
+  index: -1
+main/eyes_sad
+  rotate: true
+  xy: 250, 177
+  size: 89, 32
+  orig: 98, 57
+  offset: 3, 14
+  index: -1
+main/foot
+  rotate: false
+  xy: 250, 133
+  size: 74, 41
+  orig: 91, 58
+  offset: 8, 8
+  index: -1
+main/hand
+  rotate: false
+  xy: 260, 75
+  size: 53, 55
+  orig: 68, 68
+  offset: 8, 9
+  index: -1
