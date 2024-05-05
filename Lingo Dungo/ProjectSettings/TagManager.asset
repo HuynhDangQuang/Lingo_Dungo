@@ -3,7 +3,17 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Actor1
+  - Actor2
+  - Actor3
+  - Actor4
+  - Enemy1
+  - Enemy2
+  - Enemy3
+  - Enemy4
+  - PlayerSheetPanel
+  - AnswerSheetPanel
   layers:
   - Default
   - TransparentFX
