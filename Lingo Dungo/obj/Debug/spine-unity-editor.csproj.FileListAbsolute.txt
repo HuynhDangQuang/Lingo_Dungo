@@ -1,0 +1,2 @@
+C:\Users\ACER\source\repos\Lingo_Dungo\Lingo Dungo\obj\Debug\spine-unity-editor.csproj.AssemblyReference.cache
+C:\Users\ACER\source\repos\Lingo_Dungo\Lingo Dungo\obj\Debug\spine-unity-editor.csproj.CoreCompileInputs.cache
