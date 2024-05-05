@@ -1,236 +1,127 @@
 Using pre-set license
 Built from '2020.3/staging' branch; Version is '2020.3.48f1 (b805b124c6b7) revision 12060081'; Using compiler version '192528614'; Build Type 'Release'
-OS: 'Windows 11  (10.0.22631) 64bit CoreSingleLanguage' Language: 'en' Physical Memory: 16088 MB
+OS: 'Windows 11  (10.0.22631) 64bit CoreSingleLanguage' Language: 'en' Physical Memory: 7955 MB
 BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
 
 COMMAND LINE ARGUMENTS:
-E:\GAMEMAKER\_UNITY\Unity\Unity 2020.3.48f1\Editor\Unity.exe
+C:\Program Files\Unity\Hub\Editor\2020.3.48f1\Editor\Unity.exe
 -adb2
 -batchMode
 -noUpm
 -name
 AssetImportWorker0
 -projectPath
-E:/GAMEMAKER/_UNITY/Project/Lingo_Dungo/Lingo Dungo
+C:/Users/ACER/source/repos/Lingo_Dungo/Lingo Dungo
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-50275
-Successfully changed project path to: E:/GAMEMAKER/_UNITY/Project/Lingo_Dungo/Lingo Dungo
-E:/GAMEMAKER/_UNITY/Project/Lingo_Dungo/Lingo Dungo
+51787
+Successfully changed project path to: C:/Users/ACER/source/repos/Lingo_Dungo/Lingo Dungo
+C:/Users/ACER/source/repos/Lingo_Dungo/Lingo Dungo
 Using Asset Import Pipeline V2.
-Player connection [4412] Host "[IP] 192.168.1.35 [Port] 805523936 [Flags] 2 [Guid] 444584799 [EditorId] 444584799 [Version] 1048832 [Id] WindowsEditor(7,LAPTOP-63F2AFJ4) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+Player connection [15372] Host "[IP] 192.168.1.136 [Port] 2953007648 [Flags] 2 [Guid] 2293298188 [EditorId] 2293298188 [Version] 1048832 [Id] WindowsEditor(7,LAPTOP-5NORLG2S) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
 
-Player connection [4412] Host "[IP] 192.168.1.35 [Port] 805523936 [Flags] 2 [Guid] 444584799 [EditorId] 444584799 [Version] 1048832 [Id] WindowsEditor(7,LAPTOP-63F2AFJ4) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+Player connection [15372] Host "[IP] 192.168.1.136 [Port] 2953007648 [Flags] 2 [Guid] 2293298188 [EditorId] 2293298188 [Version] 1048832 [Id] WindowsEditor(7,LAPTOP-5NORLG2S) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
 
-Refreshing native plugins compatible for Editor in 46.24 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 64.66 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.3.48f1 (b805b124c6b7)
-[Subsystems] Discovering subsystems at path E:/GAMEMAKER/_UNITY/Unity/Unity 2020.3.48f1/Editor/Data/Resources/UnitySubsystems
-[Subsystems] Discovering subsystems at path E:/GAMEMAKER/_UNITY/Project/Lingo_Dungo/Lingo Dungo/Assets
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.3.48f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/ACER/source/repos/Lingo_Dungo/Lingo Dungo/Assets
 GfxDevice: creating device client; threaded=0
 Direct3D:
     Version:  Direct3D 11.0 [level 11.1]
-    Renderer: NVIDIA GeForce RTX 3050 Laptop GPU (ID=0x25a2)
+    Renderer: NVIDIA GeForce GTX 1650 (ID=0x1f9d)
     Vendor:   
-    VRAM:     3964 MB
-    Driver:   31.0.15.5186
+    VRAM:     3950 MB
+    Driver:   31.0.15.3168
 Initialize mono
-Mono path[0] = 'E:/GAMEMAKER/_UNITY/Unity/Unity 2020.3.48f1/Editor/Data/Managed'
-Mono path[1] = 'E:/GAMEMAKER/_UNITY/Unity/Unity 2020.3.48f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
-Mono config path = 'E:/GAMEMAKER/_UNITY/Unity/Unity 2020.3.48f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56196
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.3.48f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.3.48f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.3.48f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56412
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
-Register platform support module: E:/GAMEMAKER/_UNITY/Unity/Unity 2020.3.48f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.000704 seconds.
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.48f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.002716 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 47.23 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 53.98 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.428 seconds
+- Completed reload, in  0.489 seconds
 Domain Reload Profiling:
-	ReloadAssembly (428ms)
-		BeginReloadAssembly (54ms)
+	ReloadAssembly (489ms)
+		BeginReloadAssembly (75ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (1ms)
-		EndReloadAssembly (322ms)
-			LoadAssemblies (54ms)
+		EndReloadAssembly (361ms)
+			LoadAssemblies (73ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (91ms)
+			SetupTypeCache (107ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (19ms)
-			SetupLoadedEditorAssemblies (148ms)
+			RebuildScriptCaches (22ms)
+			SetupLoadedEditorAssemblies (149ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (3ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (47ms)
-				BeforeProcessingInitializeOnLoad (10ms)
-				ProcessInitializeOnLoadAttributes (62ms)
-				ProcessInitializeOnLoadMethodAttributes (25ms)
+				RefreshPlugins (54ms)
+				BeforeProcessingInitializeOnLoad (6ms)
+				ProcessInitializeOnLoadAttributes (64ms)
+				ProcessInitializeOnLoadMethodAttributes (20ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.002257 seconds.
+Registered in 0.008084 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 46.07 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 54.71 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.233 seconds
+- Completed reload, in  0.983 seconds
 Domain Reload Profiling:
-	ReloadAssembly (1234ms)
-		BeginReloadAssembly (154ms)
+	ReloadAssembly (984ms)
+		BeginReloadAssembly (120ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (3ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (17ms)
-		EndReloadAssembly (1028ms)
-			LoadAssemblies (159ms)
+			CreateAndSetChildDomain (16ms)
+		EndReloadAssembly (817ms)
+			LoadAssemblies (126ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (388ms)
+			SetupTypeCache (246ms)
 			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (42ms)
-			SetupLoadedEditorAssemblies (372ms)
+			RebuildScriptCaches (47ms)
+			SetupLoadedEditorAssemblies (316ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (3ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (46ms)
-				BeforeProcessingInitializeOnLoad (65ms)
-				ProcessInitializeOnLoadAttributes (246ms)
-				ProcessInitializeOnLoadMethodAttributes (10ms)
-				AfterProcessingInitializeOnLoad (1ms)
-				EditorAssembliesLoaded (0ms)
-			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (1ms)
-Platform modules already initialized, skipping
-========================================================================
-Worker process is ready to serve import requests
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.06 seconds
-Refreshing native plugins compatible for Editor in 0.50 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 3489 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 156.7 MB.
-System memory in use after: 155.4 MB.
-
-Unloading 54 unused Assets to reduce memory usage. Loaded Objects now: 3900.
-Total: 3.512200 ms (FindLiveObjects: 0.163500 ms CreateObjectMapping: 0.078300 ms MarkObjects: 2.557300 ms  DeleteObjects: 0.712100 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Import Request.
-  path: Assets/Spine
-  artifactKey: Guid(30918bcaadaaecc42bc215ff52f75b21) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Spine using Guid(30918bcaadaaecc42bc215ff52f75b21) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0f5114d02897e84bf3c88b263f66ec09') in 0.004999 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000530 seconds.
-  path: Assets/Spine Examples/spine-unity-examples.asmdef
-  artifactKey: Guid(8f5163e4753269348a069fd2fedcba29) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Spine Examples/spine-unity-examples.asmdef using Guid(8f5163e4753269348a069fd2fedcba29) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd0869ce31b88f9f6e70799cfc7f3d10d') in 0.015656 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 3.566321 seconds.
-  path: Assets/Spine Examples/Other Examples
-  artifactKey: Guid(d6add8776a2fe514e84cf5b4f2c0b548) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Spine Examples/Other Examples using Guid(d6add8776a2fe514e84cf5b4f2c0b548) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cc8e30ed35136b6fc7de37b57319b2b2') in 0.001818 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 5.134137 seconds.
-  path: Assets/Spine/Runtime/spine-unity.asmdef
-  artifactKey: Guid(68765d262e2128e4ab49c983f3411946) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Spine/Runtime/spine-unity.asmdef using Guid(68765d262e2128e4ab49c983f3411946) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a1ba4b2dcd02bcf9253ab71750c4016c') in 0.002737 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.792079 seconds.
-  path: Assets/Spine/Editor/spine-unity-editor.asmdef
-  artifactKey: Guid(173464ddf4cdb6640a4dfa8a9281ad69) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Spine/Editor/spine-unity-editor.asmdef using Guid(173464ddf4cdb6640a4dfa8a9281ad69) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '39fac2257098fb8121a9ef1e5a7f6434') in 0.001620 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 1.131427 seconds.
-  path: Assets/Spine/Runtime/spine-csharp
-  artifactKey: Guid(a60dd41ef13d98647b9f963089feb7b0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Spine/Runtime/spine-csharp using Guid(a60dd41ef13d98647b9f963089feb7b0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4492d03df25fd0c66b5f23244b91ceaf') in 0.002297 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 5.098669 seconds.
-  path: Assets/Spine Examples/Getting Started
-  artifactKey: Guid(fb68fe44ae68d834b8be5d854b2b402e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Spine Examples/Getting Started using Guid(fb68fe44ae68d834b8be5d854b2b402e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '955f13ff979a144a2be040e49faa66e8') in 0.002484 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.688832 seconds.
-  path: Assets/Spine Examples/Getting Started/1 The Spine GameObject.unity
-  artifactKey: Guid(fff6e9ad77d93024a9a87f6f2c0a6b3e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Spine Examples/Getting Started/1 The Spine GameObject.unity using Guid(fff6e9ad77d93024a9a87f6f2c0a6b3e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '20fa888de377011debe612626e05fbaf') in 0.002473 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 65.360289 seconds.
-  path: Assets/Core
-  artifactKey: Guid(508d4b34f30922a43b391e3f4fb9309d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Core using Guid(508d4b34f30922a43b391e3f4fb9309d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9175022ef07aefc1dd3f2b9cf7bfc19f') in 0.001618 seconds 
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.012958 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.55 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  1.744 seconds
-Domain Reload Profiling:
-	ReloadAssembly (1745ms)
-		BeginReloadAssembly (228ms)
-			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (13ms)
-			BackupInstance (0ms)
-			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (62ms)
-		EndReloadAssembly (1419ms)
-			LoadAssemblies (221ms)
-			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (696ms)
-			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (98ms)
-			SetupLoadedEditorAssemblies (326ms)
-				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (3ms)
-				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (62ms)
-				ProcessInitializeOnLoadAttributes (250ms)
-				ProcessInitializeOnLoadMethodAttributes (8ms)
-				AfterProcessingInitializeOnLoad (1ms)
+				RefreshPlugins (55ms)
+				BeforeProcessingInitializeOnLoad (76ms)
+				ProcessInitializeOnLoadAttributes (166ms)
+				ProcessInitializeOnLoadMethodAttributes (13ms)
+				AfterProcessingInitializeOnLoad (4ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (2ms)
 Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.89 ms, found 3 plugins.
+========================================================================
+Worker process is ready to serve import requests
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
+Refreshing native plugins compatible for Editor in 1.04 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 3401 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 147.9 MB.
-System memory in use after: 146.7 MB.
+Unloading 3490 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 155.4 MB.
+System memory in use after: 154.4 MB.
 
-Unloading 43 unused Assets to reduce memory usage. Loaded Objects now: 3909.
-Total: 4.069900 ms (FindLiveObjects: 0.191500 ms CreateObjectMapping: 0.077500 ms MarkObjects: 2.723600 ms  DeleteObjects: 1.075000 ms)
+Unloading 50 unused Assets to reduce memory usage. Loaded Objects now: 3905.
+Total: 3.800200 ms (FindLiveObjects: 0.221000 ms CreateObjectMapping: 0.077500 ms MarkObjects: 2.731800 ms  DeleteObjects: 0.768600 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
@@ -244,116 +135,69 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  Time since last request: 51.409586 seconds.
-  path: Assets/Core/Puppets
-  artifactKey: Guid(0720cf35473a10b439f650d76e6c47ad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Core/Puppets using Guid(0720cf35473a10b439f650d76e6c47ad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '95426e85f38f7c35e3a6d90bb6378eb8') in 0.007188 seconds 
+  path: Assets/Core/Dictionary
+  artifactKey: Guid(bd4f154f17ffd2a4b8acbdbe196cc0cd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Core/Dictionary using Guid(bd4f154f17ffd2a4b8acbdbe196cc0cd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9660de1e819d58cb0ac6fe9e4f8c2f94') in 0.017589 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 3.037472 seconds.
-  path: Assets/Scenes/SampleScene.unity
-  artifactKey: Guid(2cda990e2423bbf4892e6590ba056729) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/SampleScene.unity using Guid(2cda990e2423bbf4892e6590ba056729) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '249c2c8f9a338d5f27176d7fc79770a2') in 0.002246 seconds 
+  Time since last request: 0.000247 seconds.
+  path: Assets/Core/Dictionary/Class1.cs
+  artifactKey: Guid(e3daae890dc0dba4db055d1fd1df14da) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Core/Dictionary/Class1.cs using Guid(e3daae890dc0dba4db055d1fd1df14da) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '51e5fbc72473f3f3ca706f61406e019b') in 0.060871 seconds 
 ========================================================================
-Received Import Request.
-  Time since last request: 3.387329 seconds.
-  path: Assets/Core/Puppets/DemoActor
-  artifactKey: Guid(3d7a28723e1f28041a86b0981397be72) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Core/Puppets/DemoActor using Guid(3d7a28723e1f28041a86b0981397be72) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6773c4665c17dd53c3a12a86b6ad10f5') in 0.003670 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.065401 seconds.
-  path: Assets/Core/Puppets/DemoActor/Actor.png
-  artifactKey: Guid(5c330155162f67c42949a19d6eaffdfb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Core/Puppets/DemoActor/Actor.png using Guid(5c330155162f67c42949a19d6eaffdfb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '47f7719fd729d578f82bec25fe172dcb') in 0.075767 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000298 seconds.
-  path: Assets/Core/Puppets/DemoActor/Actor_SkeletonData.asset
-  artifactKey: Guid(79bcd2d89bb7da54590c2f690846c784) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Core/Puppets/DemoActor/Actor_SkeletonData.asset using Guid(79bcd2d89bb7da54590c2f690846c784) Importer(815301076,1909f56bfc062723c751e8b465ee728b) Error reading skeleton JSON file for SkeletonData asset: Actor_SkeletonData
-Unsupported skeleton data, please export with a newer version of Spine.
-  at Spine.SkeletonJson.ReadSkeletonData (System.IO.TextReader reader) [0x0122f] in E:\GAMEMAKER\_UNITY\Project\Lingo_Dungo\Lingo Dungo\Assets\Spine\Runtime\spine-csharp\SkeletonJson.cs:372 
-  at Spine.Unity.SkeletonDataAsset.ReadSkeletonData (System.String text, Spine.AttachmentLoader attachmentLoader, System.Single scale) [0x00014] in E:\GAMEMAKER\_UNITY\Project\Lingo_Dungo\Lingo Dungo\Assets\Spine\Runtime\spine-unity\Asset Types\SkeletonDataAsset.cs:258 
-  at Spine.Unity.SkeletonDataAsset.GetSkeletonData (System.Boolean quiet) [0x0009d] in E:\GAMEMAKER\_UNITY\Project\Lingo_Dungo\Lingo Dungo\Assets\Spine\Runtime\spine-unity\Asset Types\SkeletonDataAsset.cs:173 
-0x00007ff6c77ccfdc (Unity) StackWalker::GetCurrentCallstack
-0x00007ff6c77d44c9 (Unity) StackWalker::ShowCallstack
-0x00007ff6c856fa1c (Unity) GetStacktrace
-0x00007ff6c8ff3dd7 (Unity) DebugStringToFile
-0x00007ff6c7873c7a (Unity) DebugLogHandler_CUSTOM_Internal_Log
-0x00000185bd6c741b (Mono JIT Code) (wrapper managed-to-native) UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
-0x00000185bd6c724b (Mono JIT Code) UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
-0x00000185bd6c6fd1 (Mono JIT Code) UnityEngine.Logger:Log (UnityEngine.LogType,object,UnityEngine.Object)
-0x00000185bd6c6ca0 (Mono JIT Code) UnityEngine.Debug:LogError (object,UnityEngine.Object)
-0x000001859b6bb6c3 (Mono JIT Code) [SkeletonDataAsset.cs:177] Spine.Unity.SkeletonDataAsset:GetSkeletonData (bool) 
-0x0000018577c43e13 (Mono JIT Code) [SkeletonDataAssetInspector.cs:147] Spine.Unity.Editor.SkeletonDataAssetInspector:InitializeEditor () 
-0x0000018577c433bb (Mono JIT Code) [SkeletonDataAssetInspector.cs:85] Spine.Unity.Editor.SkeletonDataAssetInspector:OnEnable () 
-0x0000018576c04d60 (Mono JIT Code) (wrapper runtime-invoke) object:runtime_invoke_void__this__ (object,intptr,intptr,intptr)
-0x00007ffeec7c00e0 (mono-2.0-bdwgc) [mini-runtime.c:2849] mono_jit_runtime_invoke 
-0x00007ffeec742ac2 (mono-2.0-bdwgc) [object.c:2921] do_runtime_invoke 
-0x00007ffeec74bb1f (mono-2.0-bdwgc) [object.c:2968] mono_runtime_invoke 
-0x00007ff6c7710a44 (Unity) scripting_method_invoke
-0x00007ff6c770bb41 (Unity) ScriptingInvocation::Invoke
-0x00007ff6c770bc9e (Unity) ScriptingInvocation::InvokeChecked
-0x00007ff6c7764e86 (Unity) SerializableManagedRef::CallMethod
-0x00007ff6c76d82e0 (Unity) MonoBehaviour::AwakeFromLoad
-0x00007ff6c76e28ec (Unity) ResetAndApplyDefaultReferencesOnNewMonoBehaviour
-0x00007ff6c84a4092 (Unity) CreateInspectorMonoBehaviour
-0x00007ff6c8a53f08 (Unity) Editor_CUSTOM_CreateEditorWithContextInternal
-0x0000018577be46c3 (Mono JIT Code) (wrapper managed-to-native) UnityEditor.Editor:CreateEditorWithContextInternal (UnityEngine.Object[],UnityEngine.Object,System.Type)
-0x0000018577be4583 (Mono JIT Code) UnityEditor.Editor:CreateEditorWithContext (UnityEngine.Object[],UnityEngine.Object,System.Type)
-0x0000018577be44e3 (Mono JIT Code) UnityEditor.Editor:CreateEditor (UnityEngine.Object,System.Type)
-0x0000018577be435b (Mono JIT Code) UnityEditor.Editor:CreateEditor (UnityEngine.Object)
-0x0000018577be207b (Mono JIT Code) UnityEditor.AssetPreviewUpdater:CreatePreviewForAsset (UnityEngine.Object,UnityEngine.Object[],string)
-0x0000018577be21c8 (Mono JIT Code) (wrapper runtime-invoke) <Module>:runtime_invoke_object_object_object_object (object,intptr,intptr,intptr)
-0x00007ffeec7c00e0 (mono-2.0-bdwgc) [mini-runtime.c:2849] mono_jit_runtime_invoke 
-0x00007ffeec742ac2 (mono-2.0-bdwgc) [object.c:2921] do_runtime_invoke 
-0x00007ffeec74bb1f (mono-2.0-bdwgc) [object.c:2968] mono_runtime_invoke 
-0x00007ff6c7710a44 (Unity) scripting_method_invoke
-0x00007ff6c770bb41 (Unity) ScriptingInvocation::Invoke
-0x00007ff6c85fafc6 (Unity) MonoCreateAssetPreview
-0x00007ff6c85fce20 (Unity) WriteAssetPreviewToFile
-0x00007ff6c85fd582 (Unity) WritePreviews
-0x00007ff6c85f9141 (Unity) PreviewImporter::GenerateAssetData
-0x00007ff6c869f133 (Unity) ImportToObjects
-0x00007ff6c869e108 (Unity) ImportAsset
-0x00007ff6c8634c68 (Unity) AssetImportWorker::Import
-0x00007ff6c865aaac (Unity) <lambda_6c894734dbee50c93f7912c8ad287316>::operator()
-0x00007ff6c86ee8b2 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)>,asio::io_context::basic_executor_type<std::allocator<void>,0> >::do_complete
-0x00007ff6c86da7a2 (Unity) asio::detail::win_iocp_io_context::do_one
-0x00007ff6c86dc624 (Unity) asio::detail::win_iocp_io_context::run
-0x00007ff6c86ecbef (Unity) IOService::Run
-0x00007ff6c868498b (Unity) RunAssetImportWorkerClientV2
-0x00007ff6c86849e0 (Unity) RunAssetImporterV2
-0x00007ff6c80f4f38 (Unity) Application::InitializeProject
-0x00007ff6c8579db2 (Unity) WinMain
-0x00007ff6c9cb78de (Unity) __scrt_common_main_seh
-0x00007ffffddc257d (KERNEL32) BaseThreadInitThunk
-0x00007ffffe60aa48 (ntdll) RtlUserThreadStart
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002727 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.93 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.084 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1086ms)
+		BeginReloadAssembly (176ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (15ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (61ms)
+		EndReloadAssembly (860ms)
+			LoadAssemblies (120ms)
+			RebuildTransferFunctionScriptingTraits (3ms)
+			SetupTypeCache (345ms)
+			ReleaseScriptCaches (2ms)
+			RebuildScriptCaches (42ms)
+			SetupLoadedEditorAssemblies (302ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (8ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (76ms)
+				ProcessInitializeOnLoadAttributes (203ms)
+				ProcessInitializeOnLoadMethodAttributes (8ms)
+				AfterProcessingInitializeOnLoad (3ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (2ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.70 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3398 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 146.7 MB.
+System memory in use after: 145.7 MB.
 
- -> (artifact id: '5617547dc60d44f97a9da857a40473fa') in 0.430339 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.003865 seconds.
-  path: Assets/Core/Puppets/DemoActor/Actor_Material.mat
-  artifactKey: Guid(d16f89c02ebb9734e89f3d8c8706d3f5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Core/Puppets/DemoActor/Actor_Material.mat using Guid(d16f89c02ebb9734e89f3d8c8706d3f5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f8c9f1a443c4140067064390c1d472d7') in 0.043748 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000267 seconds.
-  path: Assets/Core/Puppets/DemoActor/Actor_Atlas.asset
-  artifactKey: Guid(a7bb5bcf27fd62446a71d11aa119a7c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Core/Puppets/DemoActor/Actor_Atlas.asset using Guid(a7bb5bcf27fd62446a71d11aa119a7c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a87b32faf8573cc8e7b697367d743b41') in 0.002910 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 36.317009 seconds.
-  path: Assets/Core/Puppets/DemoActor/Actor.png
-  artifactKey: Guid(5c330155162f67c42949a19d6eaffdfb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Core/Puppets/DemoActor/Actor.png using Guid(5c330155162f67c42949a19d6eaffdfb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c9552271020d9e58a9c6a66924da5de2') in 0.011380 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000457 seconds.
-  path: Assets/Core/Puppets/DemoActor/Actor_Material.mat
-  artifactKey: Guid(d16f89c02ebb9734e89f3d8c8706d3f5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Core/Puppets/DemoActor/Actor_Material.mat using Guid(d16f89c02ebb9734e89f3d8c8706d3f5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e0f4ff4b52dce078158c9b3b51b573ea') in 0.018344 seconds 
+Unloading 40 unused Assets to reduce memory usage. Loaded Objects now: 3908.
+Total: 7.554000 ms (FindLiveObjects: 0.826300 ms CreateObjectMapping: 0.332700 ms MarkObjects: 5.240000 ms  DeleteObjects: 1.151200 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 AssetImportWorkerClient::OnTransportError - code=2 error=End of file
