@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
-using System.Text.Json;
+using Unity.Plastic.Newtonsoft.Json;
 
 
 public class DictionaryAPI
@@ -21,7 +21,7 @@ public class DictionaryAPI
         try
         {
 			var response = await client.GetStringAsync(url);
-			List<Word>? word = JsonSerializer.Deserialize<List<Word>>(response);
+			List<Word>? word = JsonConvert.DeserializeObject<List<Word>>(response);
 			Console.WriteLine("Definition: {0}", word[0].meanings[0].definitions[0].definition);
         }
         catch (HttpRequestException e)

@@ -8,8 +8,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <ProjectGuid>{FDA9F8CB-37FE-6D00-0F02-7CD6A7C86405}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -59,9 +58,9 @@
   <ItemGroup>
     <Compile Include="Assets\Core\Manager\WordPanel.cs" />
     <Compile Include="Assets\Core\Resource\Token.cs" />
+    <Compile Include="Assets\Core\Manager\AnswerPanel.cs" />
     <Compile Include="Assets\Core\Resource\Skill.cs" />
     <Compile Include="Assets\Core\Resource\Enemy.cs" />
-    <Compile Include="Assets\Core\Dictionary\DictionaryAPI.cs" />
     <Compile Include="Assets\Core\Resource\Combatant.cs" />
     <Compile Include="Assets\Core\Resource\Class.cs" />
     <Compile Include="Assets\Core\Manager\CombatManager.cs" />
@@ -69,7 +68,6 @@
     <Compile Include="Assets\Core\Resource\Player.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="Assets\Spine\version.txt" />
     <None Include="Assets\Core\Puppets\DemoActor\Actor.atlas.txt" />
   </ItemGroup>
@@ -789,6 +787,10 @@
     <ProjectReference Include="spine-unity-examples.csproj">
       <Project>{BEF5FB4C-136E-594C-8C88-70742BD83DC2}</Project>
       <Name>spine-unity-examples</Name>
+    </ProjectReference>
+    <ProjectReference Include="Assembly.csproj">
+      <Project>{5CF27DD7-027C-F07A-76CC-9D641292E40F}</Project>
+      <Name>Assembly</Name>
     </ProjectReference>
     <ProjectReference Include="spine-unity-editor.csproj">
       <Project>{BC00EC32-E6F3-9C43-43F4-E264FA8B037C}</Project>
