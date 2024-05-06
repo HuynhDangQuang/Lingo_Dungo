@@ -8,7 +8,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <ProjectGuid>{FDA9F8CB-37FE-6D00-0F02-7CD6A7C86405}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -56,17 +57,19 @@
     <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Core\Manager\WordPanel.cs" />
     <Compile Include="Assets\Core\Resource\Token.cs" />
     <Compile Include="Assets\Core\Resource\Skill.cs" />
     <Compile Include="Assets\Core\Resource\Enemy.cs" />
+    <Compile Include="Assets\Core\Dictionary\DictionaryAPI.cs" />
     <Compile Include="Assets\Core\Resource\Combatant.cs" />
     <Compile Include="Assets\Core\Resource\Class.cs" />
     <Compile Include="Assets\Core\Manager\CombatManager.cs" />
-    <Compile Include="Assets\Core\Resource\Player.cs" />
     <Compile Include="Assets\Core\Resource\Model.cs" />
-    <Compile Include="Assets\Core\Manager\WordPanel.cs" />
+    <Compile Include="Assets\Core\Resource\Player.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="Assets\Spine\version.txt" />
     <None Include="Assets\Core\Puppets\DemoActor\Actor.atlas.txt" />
   </ItemGroup>

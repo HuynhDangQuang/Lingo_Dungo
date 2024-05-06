@@ -8,7 +8,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <ProjectGuid>{A95F66C9-8297-9563-003E-0BEC87D1646A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -60,6 +61,7 @@
     <Compile Include="Assets\Spine Examples\Scripts\Sample Components\SkeletonUtility Modules\Editor\SkeletonRagdollInspector.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="Assets\Spine Examples\Scripts\Sample Components\SkeletonUtility Modules\Editor\spine-unity-examples-editor.asmdef" />
   </ItemGroup>
   <ItemGroup>
