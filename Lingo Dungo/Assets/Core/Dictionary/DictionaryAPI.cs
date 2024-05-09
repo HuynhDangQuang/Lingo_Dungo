@@ -21,8 +21,8 @@ public class DictionaryAPI
         try
         {
 			var response = await client.GetStringAsync(url);
-			List<Word>? word = JsonConvert.DeserializeObject<List<Word>>(response);
-			Console.WriteLine("Definition: {0}", word[0].meanings[0].definitions[0].definition);
+			List<Word> word = JsonConvert.DeserializeObject<List<Word>>(response);
+			Console.WriteLine("Definition: {0}", word?[0].meanings?[0].definitions?[0].definition);
         }
         catch (HttpRequestException e)
         {
@@ -35,13 +35,13 @@ public class DictionaryAPI
 
 public class Word
 {
-	public List<Meaning>? meanings { get; set; }
+	public List<Meaning> meanings { get; set; }
 }
 public class Meaning
 {
-	public List<Definition>? definitions { get; set; }
+	public List<Definition> definitions { get; set; }
 }
 public class Definition
 {
-	public string? definition { get; set; }
+	public string definition { get; set; }
 }

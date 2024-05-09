@@ -7,3 +7,4 @@ Lingo Dungo/Library/ArtifactDB
 Lingo Dungo/Library/SourceAssetDB
 /Lingo Dungo/Logs
 *.log
+/Lingo Dungo/obj
