@@ -61,14 +61,17 @@
     <Compile Include="Assets\Core\Manager\AnswerPanel.cs" />
     <Compile Include="Assets\Core\Resource\Skill.cs" />
     <Compile Include="Assets\Core\Resource\Enemy.cs" />
+    <Compile Include="Assets\Core\Resource\Action.cs" />
+    <Compile Include="Assets\Core\ReviewPage\Word.cs" />
     <Compile Include="Assets\Core\Resource\WordButton.cs" />
     <Compile Include="Assets\Core\Resource\Combatant.cs" />
     <Compile Include="Assets\Core\Resource\TimerGauge.cs" />
     <Compile Include="Assets\Core\Resource\Class.cs" />
     <Compile Include="Assets\Core\Manager\CombatManager.cs" />
+    <Compile Include="Assets\Core\Resource\Utility.cs" />
     <Compile Include="Assets\Core\Resource\Model.cs" />
     <Compile Include="Assets\Core\Resource\Player.cs" />
-    <Compile Include="Assets\Core\Resource\Utility.cs" />
+    <Compile Include="Assets\Core\Resource\StatGauge.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Spine\version.txt" />

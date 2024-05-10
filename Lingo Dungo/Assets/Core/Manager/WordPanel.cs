@@ -13,7 +13,7 @@ public class WordPanel : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        newWord("apple");
+        //NewWord("apple");
         //GameObject template = transform.GetChild(0).gameObject;
         //GameObject g;
 
@@ -33,7 +33,7 @@ public class WordPanel : MonoBehaviour
         
     }
 
-    public void newWord(string word)
+    public void NewWord(string word)
     {
         Word = word;
         if (transform.childCount > 0)

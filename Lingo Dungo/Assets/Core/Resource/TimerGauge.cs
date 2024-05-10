@@ -11,7 +11,7 @@ public class TimerGauge : MonoBehaviour
 
     public int maxValue;
 
-    private int CurrentValue
+    public int CurrentValue
     {
         get { return cValue; }
         set
@@ -24,22 +24,28 @@ public class TimerGauge : MonoBehaviour
             {
                 cValue = 0;
             }
+            else
+            {
+                cValue = value;
+            }
 
         }
     }
+
+    public float TimeRate { get { return cValue * 1f / maxValue; } }
 
     // Start is called before the first frame update
     void Start()
     {
         bar = transform.GetChild(0).gameObject.GetComponent<Image>();
-        startTimer();
+        stop = true;
         StartCoroutine(TimeTickRoutine());
     }
 
     // Update is called once per frame
     void Update()
     {
-        bar.fillAmount = CurrentValue * 1f / maxValue;
+        bar.fillAmount = TimeRate;
     }
 
     IEnumerator TimeTickRoutine()
@@ -59,7 +65,7 @@ public class TimerGauge : MonoBehaviour
                 }
                 else
                 {
-                    stopTimer();
+                    StopTimer();
                 }
             }
 
@@ -67,13 +73,13 @@ public class TimerGauge : MonoBehaviour
     }
 
     #region Control
-    public void startTimer()
+    public void StartTimer()
     {
         cValue = maxValue;
         stop = false;
     }
     
-    public void stopTimer()
+    public void StopTimer()
     {
         stop = true;
     }

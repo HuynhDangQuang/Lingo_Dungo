@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Model : MonoBehaviour
 {
+    public Combatant owner = null;
+
     #region Inspector
     // [SpineAnimation] attribute allows an Inspector dropdown of Spine animation names coming form SkeletonAnimation.
     [SpineAnimation]
