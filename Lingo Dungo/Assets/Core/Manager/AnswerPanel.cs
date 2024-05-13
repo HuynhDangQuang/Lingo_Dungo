@@ -28,6 +28,17 @@ public class AnswerPanel : MonoBehaviour
             GameObject.Destroy(child.gameObject);
         }
     }
+    
+    public string GetAnswerString()
+    {
+        string answer = "";
+        foreach (Transform child in transform)
+        {
+            answer = answer + child.GetChild(0).GetComponent<Text>().text;
+        }
+        answer = answer.ToLower();
+        return answer;
+    }
 
     public void SendCharToWordSheet(GameObject g)
     {

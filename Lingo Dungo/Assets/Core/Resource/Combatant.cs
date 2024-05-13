@@ -8,6 +8,8 @@ public class Combatant
     
     protected int position;
 
+    public GameObject Model;
+
     #region base Stat
 
     protected int maxHp;
@@ -17,10 +19,38 @@ public class Combatant
     protected int atk;
     protected int ap;
 
-    public int MaxHP { get { return maxHp; } }
-    public int MaxMP { get { return maxMp; } }
-    public int HP { get { return hp; } }
-    public int MP { get { return mp; } }
+    public int MaxHP
+    {
+        get { return maxHp; }
+        set
+        {
+            maxHp = Mathf.Max(value, 1);
+        }
+    }
+    public int MaxMP 
+    {
+        get { return maxMp; }
+        set
+        {
+            maxMp = Mathf.Max(value, 1);
+        }
+    }
+    public int HP
+    {
+        get { return hp; }
+        set
+        {
+            hp = Mathf.Clamp(value, 0, maxHp);
+        }
+    }
+    public int MP
+    {
+        get { return mp; }
+        set
+        {
+            mp = Mathf.Clamp(value, 0, maxMp);
+        }
+    }
     public int ATK { get { return atk; } }
     public int AP { get { return ap; } }
     #endregion
@@ -53,5 +83,10 @@ public class Combatant
         }
     }
 
+    public void AttachModel(GameObject model)
+    {
+        Model = model;
+        model.GetComponent<Model>().owner = this;
+    }
     #endregion
 }

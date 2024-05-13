@@ -10,7 +10,7 @@ public abstract class Skill
     protected Combatant owner;
     protected int cost;
 
-    protected int Cost { get { return cost; } }
+    public int Cost { get { return cost; } }
 
     #endregion
 
@@ -21,5 +21,4 @@ public abstract class Skill
     abstract public double GetDamage(Combatant target);
 
     abstract public void executeAction(Combatant target, double resultMultiplier);
-
 }
