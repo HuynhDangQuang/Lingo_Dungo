@@ -10,8 +10,10 @@ public class Action
     public List<Combatant> Targets;
     public Skill Skill;
     public SkillType type = SkillType.NormalAttack;
+    public string userAnimationId;
+    public string targetAnimationId;
 
-    public Action(float time, string answer, Combatant user, List<Combatant> targets, Skill skill, SkillType type)
+    public Action(float time, string answer, Combatant user, List<Combatant> targets, Skill skill, SkillType type, string userAnimationId, string targetAnimationId)
     {
         this.TimeRate = time;
         this.Answer = answer;
@@ -19,6 +21,8 @@ public class Action
         this.Targets = targets;
         this.Skill = skill;
         this.type = type;
+        this.userAnimationId = userAnimationId;
+        this.targetAnimationId = targetAnimationId;
     }
 
     public enum SkillType

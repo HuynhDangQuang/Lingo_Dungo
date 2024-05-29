@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Presets;
 using UnityEngine;
 
-public static class Utility
+public static class Utilities
 {
     public static string Shuffle(this string str)
     {

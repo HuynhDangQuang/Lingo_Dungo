@@ -5,10 +5,12 @@ using UnityEngine;
 public class Combatant
 {
     protected int playerID;
-    
+
     protected int position;
 
     public GameObject Model;
+
+    public Class ownerClass;
 
     #region base Stat
 
@@ -27,7 +29,7 @@ public class Combatant
             maxHp = Mathf.Max(value, 1);
         }
     }
-    public int MaxMP 
+    public int MaxMP
     {
         get { return maxMp; }
         set
@@ -57,20 +59,20 @@ public class Combatant
 
     #region Functions
 
-    public void gainHp(int value)
+    public void GainHp(int value)
     {
         hp += value;
         if (hp < 0)
         {
             hp = 0;
-        } 
+        }
         else if (hp > maxHp)
         {
             hp = maxHp;
         }
     }
 
-    public void gainMp(int value)
+    public void GainMp(int value)
     {
         mp += value;
         if (mp < 0)
@@ -81,6 +83,44 @@ public class Combatant
         {
             mp = maxMp;
         }
+    }
+
+    #region get set
+
+    public Skill NormalAttack
+    {
+        get { return ownerClass.normalAttack; }
+    }
+
+    public Skill PrimarySkill
+    {
+        get {  return ownerClass.primarySkill; }
+    }
+
+    public Skill SecondarySkill
+    {
+        get { return ownerClass.secondarySkill; }
+    }
+
+    #endregion
+
+    public void UpdateStat()
+    {
+        // Re-caculate the stat
+        maxHp = ownerClass.maxHp;
+        maxMp = ownerClass.maxMp;
+        atk = ownerClass.atk;
+        ap = ownerClass.ap;
+
+        // fix the HP, MP 
+        if (hp > maxHp)
+        {
+            hp = maxHp;
+        }
+        if (mp > maxMp)
+        {
+            mp = maxMp;
+        }    
     }
 
     public void AttachModel(GameObject model)

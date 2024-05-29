@@ -1,11 +1,12 @@
+using Spine;
 using Spine.Unity;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Model : MonoBehaviour
 {
-    public Combatant owner = null;
 
     #region Inspector
     // [SpineAnimation] attribute allows an Inspector dropdown of Spine animation names coming form SkeletonAnimation.
@@ -39,6 +40,10 @@ public class Model : MonoBehaviour
     public Spine.AnimationState spineAnimationState;
     public Spine.Skeleton skeleton;
 
+    public Combatant owner = null;
+
+    Spine.EventData eventData;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -47,6 +52,8 @@ public class Model : MonoBehaviour
         skeleton = skeletonAnimation.Skeleton;
 
         spineAnimationState.SetAnimation(0, idleAnimationName, true);
+        eventData = skeletonAnimation.Skeleton.Data.FindEvent("trigger");
+        skeletonAnimation.AnimationState.Event += HandleAnimationStateEvent;
     }
 
     // Update is called once per frame
@@ -88,4 +95,22 @@ public class Model : MonoBehaviour
     }
 
     #endregion
+
+    private void HandleAnimationStateEvent(TrackEntry trackEntry, Spine.Event e)
+    {
+        Debug.Log("Event fire! " + e.Data.Name);
+
+        bool eventMatch = (eventData == e.Data);
+    
+        if (eventMatch)
+        {
+            GameObject manager = GameObject.FindGameObjectsWithTag("GameController").First();
+            if (manager != null)
+            {
+                CombatManager combatManager = manager.GetComponent<CombatManager>();
+                combatManager.TriggerActionEvent("trigger");
+            }
+            // Perform animation or trigger something
+        }
+    }
 }
