@@ -1,7 +1,8 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,10 +19,19 @@ public class CombatManager : MonoBehaviour
     public GameObject ButtonSkill2;
     #endregion
 
+    #region Animations
+    [Header("Animations")]
+    public GameObject combatStartAnimation;
+    public GameObject combatEndAnimation;
+    public GameObject resultCorrect;
+    public GameObject resultIncorrect;
+    #endregion
+
     #region Prefabs
     [Header("Text Sprite")]
 
     public GameObject DamageSprite;
+    public GameObject HealSprite;
 
     #endregion
 
@@ -47,47 +57,42 @@ public class CombatManager : MonoBehaviour
     public string RoundCorrectAnswer;
 
     public CombatState state = CombatState.init;
-    public CombatState State { get { return state; } }
+    public CombatResult result = CombatResult.unfinished;
+
 
     // Start is called before the first frame update
-
     void Start()
     {
+        DisableSkillButtons();
         // This is demo. First puppet will be treat as current player
-        ThisPlayer = new Combatant
-        {
-            ownerClass = new Class(100, 100, 10, 10)
-        };
+        ThisPlayer = new Player(PlayerClasses.Knight);
 
         Allies[0] = ThisPlayer;
 
-        Enemies[0] = new Combatant
-        {
-            ownerClass = new Class(100, 100, 10, 10)
-        };
+        Enemies[0] = new Enemy(EnemyTypes.AlphaMonster);
 
         Allies[0].AttachModel(AlliesModel[0]);
         Enemies[0].AttachModel(EnemiesModel[0]);
 
-        foreach (Combatant combatant in Allies)
-        {
-            if (combatant == null)
-            {
-                continue;
-            }
-            combatant.UpdateStat();
-            combatant.HP = combatant.MaxHP;
-        }
+        //foreach (Combatant combatant in Allies)
+        //{
+        //    if (combatant == null)
+        //    {
+        //        continue;
+        //    }
+        //    combatant.UpdateStat();
+        //    combatant.HP = combatant.MaxHP;
+        //}
 
-        foreach(Combatant combatant in Enemies)
-        {
-            if (combatant == null)
-            {
-                continue;
-            }
-            combatant.UpdateStat();
-            combatant.HP = combatant.MaxHP;
-        }
+        //foreach(Combatant combatant in Enemies)
+        //{
+        //    if (combatant == null)
+        //    {
+        //        continue;
+        //    }
+        //    combatant.UpdateStat();
+        //    combatant.HP = combatant.MaxHP;
+        //}
 
         // Hide puppets that don't have owner
         foreach (GameObject ally in AlliesModel)
@@ -116,28 +121,27 @@ public class CombatManager : MonoBehaviour
     {
         if (state == CombatState.answering && WordSheet.transform.childCount == 0)
         {
-            ButtonATK.GetComponent<Button>().interactable = true;
-            ButtonSkill1.GetComponent<Button>().interactable = true;
-            ButtonSkill2.GetComponent<Button>().interactable = true;
+            EnableAvailableSkillButtons();
         }
         else
         {
-            ButtonATK.GetComponent<Button>().interactable = false;
-            ButtonSkill1.GetComponent<Button>().interactable = false;
-            ButtonSkill2.GetComponent<Button>().interactable = false;
+            DisableSkillButtons();
         }
     }
 
     IEnumerator DoCombatRoutine()
     {
-        //Model actor1 = AlliesModel[0].GetComponent<Model>();
+        GameObject answerResult = null;
         while (true)
         {
             switch (state)
             {
                 case CombatState.init:
                     {
+                        yield return new WaitForSeconds(0.5f);
                         // play combat start animation
+                        Instantiate(combatStartAnimation, null);
+
                         yield return new WaitForSeconds(2f);
                         state = CombatState.getNewQuestion;
                         break;
@@ -167,8 +171,6 @@ public class CombatManager : MonoBehaviour
                     {
                         CombatTimer.GetComponent<TimerGauge>().StopTimer();
                         // Await other player answer the question
-                        
-
 
                         yield return new WaitForSeconds(0.2f);
                         state = CombatState.processAnswer;
@@ -178,15 +180,23 @@ public class CombatManager : MonoBehaviour
                 case CombatState.processAnswer:
                     {
                         ThisPlayerAnswered = false;
+                        bool isThisPlayerCorrect = false;
                         // Validate action
                         foreach (Action action in registeredActions)
                         {
                             if (action.Answer == RoundCorrectAnswer)
                             {
                                 confirmedActions.Add(action);
+                                if (action.User == ThisPlayer)
+                                {
+                                    isThisPlayerCorrect = true;
+                                }
                             }
                         }
+
                         registeredActions.Clear();
+
+                        answerResult = Instantiate(isThisPlayerCorrect ? resultCorrect : resultIncorrect, null);
 
                         yield return new WaitForSeconds(0.2f);
                         state = CombatState.performingAction;
@@ -202,7 +212,7 @@ public class CombatManager : MonoBehaviour
                             ActionPerformer = action.User;
                             ActionTargets = action.Targets;
                             // Play animation attack
-                            switch (action.type)
+                            switch (action.Type)
                             {
                                 case Action.SkillType.NormalAttack:
                                     {
@@ -238,14 +248,52 @@ public class CombatManager : MonoBehaviour
                     }
                 case CombatState.waitForExplaination:
                     {
+                        // Kill the correct/incorrect result animation
+                        answerResult.GetComponent<AnimationAnswerResult>().AnimationEnd();
+
                         // Clear the answer sheet
                         WordSheet.GetComponent<WordPanel>().ClearWord();
                         AnswerSheet.GetComponent<AnswerPanel>().ClearWord();
                         CombatTimer.GetComponent<TimerGauge>().CurrentValue = 0;
                         // Show what is the correct answer
-                        
-                        yield return new WaitForSeconds(3f);
-                        state = CombatState.getNewQuestion;
+                        yield return new WaitForSeconds(1f);
+                        // Check if combat end
+                        result = CheckCombatResult();
+                        switch (result)
+                        {
+                            case CombatResult.win:
+                                {
+                                    // Play victory animation
+
+                                    // Handle other thing
+                                    state = CombatState.end;
+
+                                    break;
+                                }
+                            case CombatResult.lose:
+                                {
+                                    // Play gameover animation
+
+                                    // Handle other thing
+                                    state = CombatState.end;
+                                    break;
+                                }
+                            case CombatResult.unfinished:
+                                {
+                                    // Handle end turn effect
+                                    ReduceBarrier();
+
+                                    state = CombatState.getNewQuestion;
+                                    break;
+                                }
+                        }
+
+                        break;
+                    }
+                case CombatState.end:
+                    {
+                        StopCoroutine(DoCombatRoutine());
+                        yield return new WaitForSeconds(0f);
                         break;
                     }
                 default:
@@ -285,8 +333,8 @@ public class CombatManager : MonoBehaviour
             new List<Combatant>(){ Enemies[0] },
             ThisPlayer.NormalAttack,
             Action.SkillType.NormalAttack,
-            "",
-            "Hit"
+            ThisPlayer.NormalAttack.CastAnimation,
+            ThisPlayer.NormalAttack.TargetsAnimation
         ));
     }
 
@@ -297,6 +345,7 @@ public class CombatManager : MonoBehaviour
             return;
         }
         ThisPlayerAnswered = true;
+        ThisPlayer.GainMp(-ThisPlayer.PrimarySkill.Cost);
         registeredActions.Add(new Action(
             CombatTimer.GetComponent<TimerGauge>().TimeRate,
             AnswerSheet.GetComponent<AnswerPanel>().GetAnswerString(),
@@ -304,8 +353,8 @@ public class CombatManager : MonoBehaviour
             new List<Combatant>() { ThisPlayer },
             ThisPlayer.PrimarySkill,
             Action.SkillType.PrimarySkill,
-            "",
-            "Hit"
+            ThisPlayer.PrimarySkill.CastAnimation,
+            ThisPlayer.PrimarySkill.TargetsAnimation
         ));
     }
 
@@ -316,6 +365,7 @@ public class CombatManager : MonoBehaviour
             return;
         }
         ThisPlayerAnswered = true;
+        ThisPlayer.GainMp(-ThisPlayer.SecondarySkill.Cost);
         registeredActions.Add(new Action(
             CombatTimer.GetComponent<TimerGauge>().TimeRate,
             AnswerSheet.GetComponent<AnswerPanel>().GetAnswerString(),
@@ -323,8 +373,8 @@ public class CombatManager : MonoBehaviour
             new List<Combatant>() { Enemies[0] },
             ThisPlayer.SecondarySkill,
             Action.SkillType.SecondarySkill,
-            "",
-            "Hit"
+            ThisPlayer.SecondarySkill.CastAnimation,
+            ThisPlayer.SecondarySkill.TargetsAnimation
         ));
     }
 
@@ -339,35 +389,178 @@ public class CombatManager : MonoBehaviour
     public void TriggerActionEvent(string flag)
     {
         AnimationManager animationManager = GetComponent<AnimationManager>();
+        Combatant user = CurrentAction.User;
         // target dmg animation
         switch (flag)
         {
             case "cast":
                 break;
             case "trigger":
+                if (CurrentAction.Type == Action.SkillType.NormalAttack)
+                {
+                    user.MP += Mathf.RoundToInt(CurrentAction.TimeRate * 20f);
+                }
+                CurrentAction.Skill.ApplySelfEffect(user, CurrentAction.TimeRate);
+
                 if (ActionTargets.Count > 0 && CurrentAction != null)
                 {
                     foreach (Combatant target in ActionTargets)
                     {
-                        animationManager.AttachAnimation(target.Model, CurrentAction.targetAnimationId);
-                        // Temporary use
-                        if (Enemies.Contains(target))
+                        // Append Damage
+                        int damage = CaculateDamage(user, target, CurrentAction.TimeRate);
+
+                        // Barrier Block
+                        int blockAmount = 0;
+                        if (damage > 0 && Utilities.IsOpponent(user, target) && target.Barrier > 0) 
                         {
-                            target.Model.GetComponent<Model>().PlayDamage();
+                            blockAmount = Mathf.Min(damage, target.Barrier);
+                            target.Barrier -= blockAmount;
+                            damage -= blockAmount; 
                         }
 
-                        // Append Damage
-                        GameObject damageSprite = Instantiate(DamageSprite, target.Model.transform);
-                        damageSprite.GetComponent<DamageSprite>().Setup(
-                            Mathf.RoundToInt(40 * CurrentAction.TimeRate),
-                            CurrentAction.TimeRate >= 0.5f
-                        );
+                        target.GainHp(-damage);
+
+                        // Append Effect
+                        CurrentAction.Skill.ApplyTargetEffect(user, target, CurrentAction.TimeRate);
+
+
+                        // Popup
+                        if (blockAmount > 0)
+                        {
+                            // Will be implemented later
+                        }
+
+                        if (damage > 0)
+                        {
+                            GameObject damageSprite = Instantiate(DamageSprite, target.Model.transform);
+                            damageSprite.GetComponent<DamageSprite>().Setup(
+                                Mathf.RoundToInt(damage),
+                                CurrentAction.TimeRate >= user.MinCriticalTimeRate
+                            );
+                        }
+                        else if (damage < 0)
+                        {
+                            GameObject healSprite = Instantiate(HealSprite, target.Model.transform);
+                            healSprite.GetComponent<DamageSprite>().Setup(
+                                Mathf.RoundToInt(damage),
+                                CurrentAction.TimeRate >= user.MinCriticalTimeRate
+                            );
+                        }
+                        else if (CurrentAction.Skill.DamageType != DamageType.None)
+                        {
+                            // Will be implemented later
+                        }
+
+                        // Handle Animation
+                        animationManager.AttachAnimation(target.Model, CurrentAction.targetAnimationId);
+                        // Temporary use
+                        if (Utilities.IsOpponent(user, target))
+                        {
+                            if (target.HP == 0)
+                                target.Model.GetComponent<Model>().PlayDie();
+                            else
+                                target.Model.GetComponent<Model>().PlayDamage();
+                        }
+                        else if (target.HP == 0)
+                        {
+                            target.Model.GetComponent<Model>().PlayDie();
+                        }
                     }
                 }
                 break;
         }
 
     }
+
+    public int CaculateDamage(Combatant user, Combatant target, float TimeRate)
+    {
+        float critBonus = CurrentAction.TimeRate > user.MinCriticalTimeRate ? 1.5f * user.CriticalDamageBonus : 1.5f;
+        float value = CurrentAction.Skill.GetDamage(user, target, Mathf.Max(TimeRate, 0.3f) * critBonus);
+        value *= target.DamageTakenRate;
+        return Mathf.RoundToInt(value);
+    }
+
+    public void ReduceBarrier()
+    {
+        foreach (Combatant combatant in Allies)
+        {
+            if (combatant == null)
+                continue;
+            if (!combatant.JustGainBarrier)
+                combatant.Barrier -= Mathf.RoundToInt(Mathf.Max(5, combatant.Barrier * 0.1f));
+            else
+                combatant.JustGainBarrier = false;
+        }
+
+        foreach (Combatant combatant in Enemies)
+        {
+            if (combatant == null)
+                continue;
+            if (!combatant.JustGainBarrier)
+                combatant.Barrier -= Mathf.RoundToInt(Mathf.Max(5, combatant.Barrier * 0.1f));
+            else 
+                combatant.JustGainBarrier = false;
+        }
+    }
+
+    CombatResult CheckCombatResult()
+    {
+        bool aliveAllies = false;
+        foreach (Combatant combatant in Allies)
+        {
+            if (combatant != null && !combatant.IsDied)
+            {
+                aliveAllies = true;
+                break;
+            }
+        }
+
+        bool aliveEnemies = false;
+        foreach (Combatant combatant in Enemies)
+        {
+            if (combatant != null && !combatant.IsDied)
+            {
+                aliveEnemies = true;
+                break;
+            }
+        }
+
+        if (!aliveAllies && aliveEnemies)
+        {
+            return CombatResult.lose;
+        }
+
+        if (aliveAllies && !aliveEnemies)
+        {
+            return CombatResult.win;
+        }
+
+        return CombatResult.unfinished;
+    }
+    #endregion
+
+    #region UI Control
+
+    private void DisableSkillButtons()
+    {
+        ButtonATK.GetComponent<Button>().interactable = false;
+        ButtonSkill1.GetComponent<Button>().interactable = false;
+        ButtonSkill2.GetComponent<Button>().interactable = false;
+    }
+
+    private void EnableAvailableSkillButtons()
+    {
+        ButtonATK.GetComponent<Button>().interactable = true;
+        if (ThisPlayer.MP >= ThisPlayer.PrimarySkill.Cost)
+        {
+            ButtonSkill1.GetComponent<Button>().interactable = true;
+        }
+        if (ThisPlayer.MP >= ThisPlayer.SecondarySkill.Cost)
+        {
+            ButtonSkill2.GetComponent<Button>().interactable = true;
+        }
+    }
+
     #endregion
 
     public enum CombatState
@@ -379,5 +572,13 @@ public class CombatManager : MonoBehaviour
         performingAction,
         waitForExplaination,
         getNewQuestion,
+        end
+    }
+
+    public enum CombatResult
+    {
+        win,
+        lose,
+        unfinished
     }
 }

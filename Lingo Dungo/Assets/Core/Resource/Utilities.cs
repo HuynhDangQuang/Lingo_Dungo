@@ -19,4 +19,9 @@ public static class Utilities
         }
         return new string(array);
     }
+
+    public static bool IsOpponent(Combatant obj1, Combatant obj2)
+    {
+        return (obj1 is Player && obj2 is Enemy) || (obj1 is Enemy && obj2 is Player);
+    }
 }

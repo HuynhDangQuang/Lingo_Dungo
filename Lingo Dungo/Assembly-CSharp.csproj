@@ -56,31 +56,36 @@
     <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Core\Resource\GameObjectScript\DamageSprite.cs" />
     <Compile Include="Assets\Core\Manager\WordPanel.cs" />
     <Compile Include="Assets\Core\Resource\Token.cs" />
     <Compile Include="Assets\Scripts\RuntimePresets\Preset.cs" />
+    <Compile Include="Assets\Core\Resource\Skills\Player\Knight_SkillSet.cs" />
     <Compile Include="Assets\Core\ReviewPage\VocabularyManager.cs" />
     <Compile Include="Assets\Core\Manager\AnswerPanel.cs" />
     <Compile Include="Assets\Core\Resource\Skill.cs" />
-    <Compile Include="Assets\Core\Resource\StatGauge.cs" />
+    <Compile Include="Assets\Core\Resource\GameObjectScript\StatGauge.cs" />
     <Compile Include="Assets\Core\Manager\PresetModelManager.cs" />
     <Compile Include="Assets\Core\Resource\Enemy.cs" />
     <Compile Include="Assets\Core\Resource\Action.cs" />
     <Compile Include="Assets\Scripts\RuntimePresets\GameObjectExtensions.cs" />
+    <Compile Include="Assets\Core\Resource\GameObjectScript\HealSprite.cs" />
     <Compile Include="Assets\Scripts\RuntimePresets\ComponentExtensions.cs" />
-    <Compile Include="Assets\Core\Resource\WordButton.cs" />
+    <Compile Include="Assets\Core\Resource\GameObjectScript\WordButton.cs" />
     <Compile Include="Assets\Core\Resource\Combatant.cs" />
-    <Compile Include="Assets\Core\Resource\TimerGauge.cs" />
+    <Compile Include="Assets\Core\Resource\GameObjectScript\TimerGauge.cs" />
     <Compile Include="Assets\Core\Resource\Class.cs" />
     <Compile Include="Assets\Core\Manager\CombatManager.cs" />
     <Compile Include="Assets\Scripts\RuntimePresets\IPreset.cs" />
-    <Compile Include="Assets\Core\Resource\LookAtCamera.cs" />
+    <Compile Include="Assets\Core\Resource\GameObjectScript\LookAtCamera.cs" />
+    <Compile Include="Assets\Core\Resource\Skills\Enemy\EnemyDefault_SkillSet.cs" />
     <Compile Include="Assets\Core\Resource\Utilities.cs" />
-    <Compile Include="Assets\Core\Resource\Model.cs" />
+    <Compile Include="Assets\Core\Resource\GameObjectScript\Model.cs" />
     <Compile Include="Assets\Core\Resource\Player.cs" />
-    <Compile Include="Assets\Core\Resource\AnimationManager.cs" />
-    <Compile Include="Assets\Core\Resource\ModelStatGauge.cs" />
-    <Compile Include="Assets\Core\Resource\DamageSprite.cs" />
+    <Compile Include="Assets\Core\Manager\AnimationManager.cs" />
+    <Compile Include="Assets\Core\Resource\GameObjectScript\ModelStatGauge.cs" />
+    <Compile Include="Assets\Core\Resource\GameObjectScript\AnimationCombatStart.cs" />
+    <Compile Include="Assets\Core\Resource\GameObjectScript\AnimationAnswerResult.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -91,6 +96,7 @@
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
+    <None Include="Assets\Core\Puppets\Animations\AnimationCombatStart.atlas.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
     <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
@@ -98,8 +104,10 @@
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
+    <None Include="Assets\Core\Puppets\Animations\AnimationCorrect.atlas.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
+    <None Include="Assets\Core\Puppets\Animations\AnimationIncorrect.atlas.txt" />
     <None Include="Assets\Core\Data\Word\Fruits.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />

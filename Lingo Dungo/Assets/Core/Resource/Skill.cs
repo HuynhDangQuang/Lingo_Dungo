@@ -7,27 +7,43 @@ public abstract class Skill
 {
     #region param
 
-    protected Combatant owner;
     protected int cost;
     protected DamageType type = DamageType.Damage;
-    public readonly string CastAnimation;
-    public readonly string TargetsAnimation;
+    public string CastAnimation;
+    public string TargetsAnimation;
 
     public int Cost { get { return cost; } }
+    public DamageType DamageType { get { return type; } }
 
     #endregion
 
-    public Skill(Combatant owner)
+    public Skill()
     {
-        this.owner = owner;
     }
-    abstract public double GetDamage(Combatant target);
+    virtual public int GetDamage(Combatant user, Combatant target, float resultMultiplier)
+    {
+        return 0;
+    }
 
-    abstract public void executeAction(Combatant target, double resultMultiplier);
+    virtual public void ApplySelfEffect(Combatant user, float resultMultiplier)
+    {
+
+    }
+
+    virtual public void ApplyTargetEffect(Combatant user, Combatant target, float resultMultiplier)
+    {
+        
+    }
+
+    virtual public string GetDescription()
+    {
+        return "";
+    }
 }
 
 public enum DamageType
 {
     Damage,
-    Heal
+    Heal,
+    None,
 }

@@ -1,0 +1,13 @@
+
+AnimationIncorrect.png
+size: 918,182
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+text_incorrect
+  rotate: false
+  xy: 3, 3
+  size: 912, 176
+  orig: 1000, 250
+  offset: 43, 35
+  index: -1

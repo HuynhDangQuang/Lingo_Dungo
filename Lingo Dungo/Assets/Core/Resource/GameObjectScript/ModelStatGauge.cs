@@ -37,7 +37,11 @@ public class ModelStatGauge : MonoBehaviour
         {
             case GaugeType.HP:
                 {
-                    float hpRate = owner.HP * 1f / owner.MaxHP;
+                    int shield = owner.HP + owner.Barrier;
+                    int realMaxAmount = Mathf.Max(owner.MaxHP, shield);
+                    float hpRate = owner.HP * 1f / realMaxAmount;
+                    float shieldRate = shield * 1f / realMaxAmount;
+                    transform.GetChild(0).GetComponent<Image>().fillAmount = shieldRate;
                     transform.GetChild(1).GetComponent<Image>().fillAmount = hpRate;
                     transform.GetChild(2).GetComponent<Text>().text = owner.HP.ToString() + " / " + owner.MaxHP.ToString();
                     break;
@@ -45,8 +49,8 @@ public class ModelStatGauge : MonoBehaviour
             case GaugeType.MP:
                 {
                     float mpRate = owner.MP * 1f / owner.MaxMP;
-                    transform.GetChild(1).GetComponent<Image>().fillAmount = mpRate;
-                    transform.GetChild(2).GetComponent<Text>().text = owner.MP.ToString() + owner.MaxMP.ToString();
+                    transform.GetChild(0).GetComponent<Image>().fillAmount = mpRate;
+                    transform.GetChild(1).GetComponent<Text>().text = owner.MP.ToString() + owner.MaxMP.ToString();
                     break;
                 }
         }

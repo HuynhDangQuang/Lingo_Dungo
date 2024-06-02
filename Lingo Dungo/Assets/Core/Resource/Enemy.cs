@@ -1,18 +1,32 @@
+using Assets.Core.Resource.Skills.Enemy;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : Combatant
 {
-    // Start is called before the first frame update
-    void Start()
+    public Enemy(EnemyTypes enemyType)
     {
-        
+        SetupClass(enemyType);
+        UpdateStat();
+        hp = maxHp;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetupClass(EnemyTypes enemyType)
     {
-        
+        switch (enemyType)
+        {
+            case EnemyTypes.AlphaMonster:
+                ownerClass = new Class(100, 100, 10, 10)
+                {
+                    normalAttack = new EnemyDefault_NormalAttack()
+                };
+                break;
+        }
     }
+}
+
+public enum EnemyTypes
+{
+    AlphaMonster,
 }

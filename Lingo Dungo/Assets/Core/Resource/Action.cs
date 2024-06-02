@@ -9,7 +9,7 @@ public class Action
     public Combatant User;
     public List<Combatant> Targets;
     public Skill Skill;
-    public SkillType type = SkillType.NormalAttack;
+    public SkillType Type = SkillType.NormalAttack;
     public string userAnimationId;
     public string targetAnimationId;
 
@@ -20,7 +20,7 @@ public class Action
         this.User = user;
         this.Targets = targets;
         this.Skill = skill;
-        this.type = type;
+        this.Type = type;
         this.userAnimationId = userAnimationId;
         this.targetAnimationId = targetAnimationId;
     }

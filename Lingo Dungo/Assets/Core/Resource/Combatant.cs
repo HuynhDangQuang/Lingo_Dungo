@@ -20,6 +20,9 @@ public class Combatant
     protected int mp;
     protected int atk;
     protected int ap;
+    protected int barrier;
+
+    public bool JustGainBarrier = false;
 
     public int MaxHP
     {
@@ -57,36 +60,8 @@ public class Combatant
     public int AP { get { return ap; } }
     #endregion
 
-    #region Functions
-
-    public void GainHp(int value)
-    {
-        hp += value;
-        if (hp < 0)
-        {
-            hp = 0;
-        }
-        else if (hp > maxHp)
-        {
-            hp = maxHp;
-        }
-    }
-
-    public void GainMp(int value)
-    {
-        mp += value;
-        if (mp < 0)
-        {
-            mp = 0;
-        }
-        else if (mp > maxMp)
-        {
-            mp = maxMp;
-        }
-    }
 
     #region get set
-
     public Skill NormalAttack
     {
         get { return ownerClass.normalAttack; }
@@ -94,7 +69,7 @@ public class Combatant
 
     public Skill PrimarySkill
     {
-        get {  return ownerClass.primarySkill; }
+        get { return ownerClass.primarySkill; }
     }
 
     public Skill SecondarySkill
@@ -102,7 +77,69 @@ public class Combatant
         get { return ownerClass.secondarySkill; }
     }
 
+    public float DamageTakenRate
+    {
+        get
+        {
+            return 1;
+        }
+    }
+
+    public float MinCriticalTimeRate
+    {
+        get
+        {
+            return 0.5f;
+        }
+    }
+
+    public float CriticalDamageBonus
+    {
+        get
+        {
+            return 1.5f;
+        }
+    }
+
+    public int Barrier
+    {
+        get
+        {
+            return barrier;
+        }
+        set
+        {
+            barrier = Mathf.Max(value, 0);
+        }
+    }
+
+    public bool IsDied
+    {
+        get
+        {
+            return hp == 0;
+        }
+    }
     #endregion
+
+    #region Functions
+
+    public void GainHp(int value)
+    {
+        hp = Mathf.Clamp(hp + value, 0, maxMp);
+    }
+
+    public void GainMp(int value)
+    {
+        mp = Mathf.Clamp(mp + value, 0, maxMp);
+    }
+
+    public void GainBarrier(int value)
+    {
+        value = Mathf.Max(0, value);
+        JustGainBarrier = true;
+        Barrier += value;
+    }
 
     public void UpdateStat()
     {
