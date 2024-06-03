@@ -61,12 +61,14 @@
     <Compile Include="Assets\Core\Resource\Token.cs" />
     <Compile Include="Assets\Scripts\RuntimePresets\Preset.cs" />
     <Compile Include="Assets\Core\Resource\Skills\Player\Knight_SkillSet.cs" />
+    <Compile Include="Assets\Core\Resource\GameObjectScript\AnimationShort.cs" />
     <Compile Include="Assets\Core\ReviewPage\VocabularyManager.cs" />
     <Compile Include="Assets\Core\Manager\AnswerPanel.cs" />
     <Compile Include="Assets\Core\Resource\Skill.cs" />
     <Compile Include="Assets\Core\Resource\GameObjectScript\StatGauge.cs" />
     <Compile Include="Assets\Core\Manager\PresetModelManager.cs" />
     <Compile Include="Assets\Core\Resource\Enemy.cs" />
+    <Compile Include="Assets\Core\Resource\GameObjectScript\AnimationLong.cs" />
     <Compile Include="Assets\Core\Resource\Action.cs" />
     <Compile Include="Assets\Scripts\RuntimePresets\GameObjectExtensions.cs" />
     <Compile Include="Assets\Core\Resource\GameObjectScript\HealSprite.cs" />
@@ -84,8 +86,8 @@
     <Compile Include="Assets\Core\Resource\Player.cs" />
     <Compile Include="Assets\Core\Manager\AnimationManager.cs" />
     <Compile Include="Assets\Core\Resource\GameObjectScript\ModelStatGauge.cs" />
-    <Compile Include="Assets\Core\Resource\GameObjectScript\AnimationCombatStart.cs" />
-    <Compile Include="Assets\Core\Resource\GameObjectScript\AnimationAnswerResult.cs" />
+    <Compile Include="Assets\Core\Resource\EnemyLogic\EnemyLogicBase.cs" />
+    <Compile Include="Assets\Core\Resource\EnemyLogic\EnemyLogic_Default.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -105,10 +107,12 @@
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
     <None Include="Assets\Core\Puppets\Animations\AnimationCorrect.atlas.txt" />
+    <None Include="Assets\Core\Puppets\Animations\AnimationVictory.atlas.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
     <None Include="Assets\Core\Puppets\Animations\AnimationIncorrect.atlas.txt" />
     <None Include="Assets\Core\Data\Word\Fruits.txt" />
+    <None Include="Assets\Core\Puppets\Animations\AnimationDefeat.atlas.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />

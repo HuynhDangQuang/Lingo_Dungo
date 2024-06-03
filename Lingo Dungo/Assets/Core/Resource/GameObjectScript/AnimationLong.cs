@@ -2,13 +2,16 @@ using Spine;
 using Spine.Unity;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
-public class AnimationCombatStart : MonoBehaviour
+public class AnimationLong : MonoBehaviour
 {
     [SpineAnimation]
-    public string animationName;
+    public string introAnimationName;
+    [SpineAnimation]
+    public string idleAnimationName;
+    [SpineAnimation]
+    public string outtroAnimationName;
 
     SkeletonAnimation skeletonAnimation;
     public Spine.AnimationState spineAnimationState;
@@ -22,7 +25,8 @@ public class AnimationCombatStart : MonoBehaviour
         spineAnimationState = skeletonAnimation.AnimationState;
         skeleton = skeletonAnimation.Skeleton;
 
-        spineAnimationState.SetAnimation(0, animationName, false);
+        spineAnimationState.SetAnimation(0, introAnimationName, false);
+        spineAnimationState.AddAnimation(0, idleAnimationName, true, 0);
         eventData = skeletonAnimation.Skeleton.Data.FindEvent("end");
         skeletonAnimation.AnimationState.Event += HandleAnimationStateEvent;
     }
@@ -44,5 +48,9 @@ public class AnimationCombatStart : MonoBehaviour
             // Perform animation or trigger something
             Destroy(gameObject);
         }
+    }
+    public void AnimationEnd()
+    {
+        spineAnimationState.SetAnimation(0, outtroAnimationName, false);
     }
 }

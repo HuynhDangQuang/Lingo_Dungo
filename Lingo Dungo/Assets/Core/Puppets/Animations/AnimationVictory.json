@@ -1,0 +1,61 @@
+{
+"skeleton": {
+	"hash": "8a9y3V3orHwJNaLqw3dmEbpDEx0",
+	"spine": "3.8",
+	"x": -425,
+	"y": -125,
+	"width": 850,
+	"height": 250,
+	"images": "",
+	"audio": ""
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "bone", "parent": "root", "length": 167, "rotation": 90 }
+],
+"slots": [
+	{ "name": "text_victory", "bone": "bone", "attachment": "text_victory" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"text_victory": {
+				"text_victory": { "rotation": -90, "width": 850, "height": 250 }
+			}
+		}
+	}
+],
+"events": {
+	"end": {}
+},
+"animations": {
+	"animation": {
+		"slots": {
+			"text_victory": {
+				"color": [
+					{ "color": "ffffff00" },
+					{ "time": 1, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.5, "color": "ffffffff" },
+					{ "time": 3, "color": "ffffff00" }
+				]
+			}
+		},
+		"bones": {
+			"bone": {
+				"translate": [
+					{ "y": -129.07 },
+					{ "time": 1 }
+				],
+				"scale": [
+					{ "time": 2.5 },
+					{ "time": 3, "x": 0.244, "y": 3.397 }
+				]
+			}
+		},
+		"events": [
+			{ "time": 3, "name": "end" }
+		]
+	}
+}
+}

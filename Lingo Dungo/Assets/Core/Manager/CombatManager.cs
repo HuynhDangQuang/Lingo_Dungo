@@ -23,8 +23,10 @@ public class CombatManager : MonoBehaviour
     [Header("Animations")]
     public GameObject combatStartAnimation;
     public GameObject combatEndAnimation;
-    public GameObject resultCorrect;
-    public GameObject resultIncorrect;
+    public GameObject resultCorrectAnimation;
+    public GameObject resultIncorrectAnimation;
+    public GameObject combatWonAnimation;
+    public GameObject combatLoseAnimation;
     #endregion
 
     #region Prefabs
@@ -75,24 +77,6 @@ public class CombatManager : MonoBehaviour
         Enemies[0].AttachModel(EnemiesModel[0]);
 
         //foreach (Combatant combatant in Allies)
-        //{
-        //    if (combatant == null)
-        //    {
-        //        continue;
-        //    }
-        //    combatant.UpdateStat();
-        //    combatant.HP = combatant.MaxHP;
-        //}
-
-        //foreach(Combatant combatant in Enemies)
-        //{
-        //    if (combatant == null)
-        //    {
-        //        continue;
-        //    }
-        //    combatant.UpdateStat();
-        //    combatant.HP = combatant.MaxHP;
-        //}
 
         // Hide puppets that don't have owner
         foreach (GameObject ally in AlliesModel)
@@ -126,6 +110,18 @@ public class CombatManager : MonoBehaviour
         else
         {
             DisableSkillButtons();
+        }
+
+        // Update skill cost
+        Text primarySkillCost = GameObject.FindGameObjectWithTag("PrimarySkillCost").GetComponent<Text>();
+        Text secondarySkillCost = GameObject.FindGameObjectWithTag("SecondarySkillCost").GetComponent<Text>();
+        if (primarySkillCost != null)
+        {
+            primarySkillCost.text = ThisPlayer.PrimarySkill.Cost.ToString();
+        }
+        if (secondarySkillCost != null)
+        {
+            secondarySkillCost.text = ThisPlayer.SecondarySkill.Cost.ToString();
         }
     }
 
@@ -172,6 +168,9 @@ public class CombatManager : MonoBehaviour
                         CombatTimer.GetComponent<TimerGauge>().StopTimer();
                         // Await other player answer the question
 
+                        // Enemies answer
+                        RegisterEnemiesAction();
+
                         yield return new WaitForSeconds(0.2f);
                         state = CombatState.processAnswer;
 
@@ -196,7 +195,7 @@ public class CombatManager : MonoBehaviour
 
                         registeredActions.Clear();
 
-                        answerResult = Instantiate(isThisPlayerCorrect ? resultCorrect : resultIncorrect, null);
+                        answerResult = Instantiate(isThisPlayerCorrect ? resultCorrectAnimation : resultIncorrectAnimation, null);
 
                         yield return new WaitForSeconds(0.2f);
                         state = CombatState.performingAction;
@@ -249,7 +248,7 @@ public class CombatManager : MonoBehaviour
                 case CombatState.waitForExplaination:
                     {
                         // Kill the correct/incorrect result animation
-                        answerResult.GetComponent<AnimationAnswerResult>().AnimationEnd();
+                        answerResult.GetComponent<AnimationLong>().AnimationEnd();
 
                         // Clear the answer sheet
                         WordSheet.GetComponent<WordPanel>().ClearWord();
@@ -264,6 +263,8 @@ public class CombatManager : MonoBehaviour
                             case CombatResult.win:
                                 {
                                     // Play victory animation
+                                    Instantiate(combatWonAnimation, null);
+                                    yield return new WaitForSeconds(2f);
 
                                     // Handle other thing
                                     state = CombatState.end;
@@ -273,6 +274,8 @@ public class CombatManager : MonoBehaviour
                             case CombatResult.lose:
                                 {
                                     // Play gameover animation
+                                    Instantiate(combatLoseAnimation, null);
+                                    yield return new WaitForSeconds(2f);
 
                                     // Handle other thing
                                     state = CombatState.end;
@@ -500,6 +503,24 @@ public class CombatManager : MonoBehaviour
                 combatant.Barrier -= Mathf.RoundToInt(Mathf.Max(5, combatant.Barrier * 0.1f));
             else 
                 combatant.JustGainBarrier = false;
+        }
+    }
+
+    void RegisterEnemiesAction()
+    {
+        foreach (Enemy enemy in Enemies)
+        {
+            if (enemy == null) continue;
+            Action action = enemy.RegisterAction();
+            if (action != null)
+            {
+                registeredActions.Add(action);
+                enemy.MP = 0;
+            }
+            else
+            {
+                enemy.GainMp(Mathf.RoundToInt(enemy.mpRegen * enemy.GetFinalAnswerTimeRate()));
+            }
         }
     }
 

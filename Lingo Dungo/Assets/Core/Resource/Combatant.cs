@@ -124,9 +124,9 @@ public class Combatant
 
     #region Functions
 
-    public void GainHp(int value)
+    virtual public void GainHp(int value)
     {
-        hp = Mathf.Clamp(hp + value, 0, maxMp);
+        hp = Mathf.Clamp(hp + value, 0, maxHp);
     }
 
     public void GainMp(int value)

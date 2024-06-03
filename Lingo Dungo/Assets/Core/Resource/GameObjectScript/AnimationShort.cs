@@ -2,16 +2,13 @@ using Spine;
 using Spine.Unity;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
-public class AnimationAnswerResult : MonoBehaviour
+public class AnimationShort : MonoBehaviour
 {
     [SpineAnimation]
-    public string introAnimationName;
-    [SpineAnimation]
-    public string idleAnimationName;
-    [SpineAnimation]
-    public string outtroAnimationName;
+    public string animationName;
 
     SkeletonAnimation skeletonAnimation;
     public Spine.AnimationState spineAnimationState;
@@ -25,8 +22,7 @@ public class AnimationAnswerResult : MonoBehaviour
         spineAnimationState = skeletonAnimation.AnimationState;
         skeleton = skeletonAnimation.Skeleton;
 
-        spineAnimationState.SetAnimation(0, introAnimationName, false);
-        spineAnimationState.AddAnimation(0, idleAnimationName, true, 0);
+        spineAnimationState.SetAnimation(0, animationName, false);
         eventData = skeletonAnimation.Skeleton.Data.FindEvent("end");
         skeletonAnimation.AnimationState.Event += HandleAnimationStateEvent;
     }
@@ -48,9 +44,5 @@ public class AnimationAnswerResult : MonoBehaviour
             // Perform animation or trigger something
             Destroy(gameObject);
         }
-    }
-    public void AnimationEnd()
-    {
-        spineAnimationState.SetAnimation(0, outtroAnimationName, false);
     }
 }

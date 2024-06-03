@@ -1,0 +1,13 @@
+
+AnimationVictory.png
+size: 737,184
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+text_victory
+  rotate: false
+  xy: 3, 3
+  size: 731, 178
+  orig: 850, 250
+  offset: 49, 36
+  index: -1
