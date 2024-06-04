@@ -59,14 +59,11 @@
     <Compile Include="Assets\Core\Resource\GameObjectScript\DamageSprite.cs" />
     <Compile Include="Assets\Core\Manager\WordPanel.cs" />
     <Compile Include="Assets\Core\Resource\Token.cs" />
-<<<<<<< Updated upstream
     <Compile Include="Assets\Scripts\RuntimePresets\Preset.cs" />
     <Compile Include="Assets\Core\Resource\Skills\Player\Knight_SkillSet.cs" />
     <Compile Include="Assets\Core\Resource\GameObjectScript\AnimationShort.cs" />
-    <Compile Include="Assets\Core\ReviewPage\VocabularyManager.cs" />
-=======
     <Compile Include="Assets\Core\MainMenu\MainMenu.cs" />
->>>>>>> Stashed changes
+    <Compile Include="Assets\Core\ReviewPage\VocabularyManager.cs" />
     <Compile Include="Assets\Core\Manager\AnswerPanel.cs" />
     <Compile Include="Assets\Core\Resource\EnemyLogic\EnemyLogicBase.cs" />
     <Compile Include="Assets\Core\Resource\Skill.cs" />
@@ -84,24 +81,20 @@
     <Compile Include="Assets\Core\Resource\GameObjectScript\TimerGauge.cs" />
     <Compile Include="Assets\Core\Resource\Class.cs" />
     <Compile Include="Assets\Core\Manager\CombatManager.cs" />
-<<<<<<< Updated upstream
     <Compile Include="Assets\Scripts\RuntimePresets\IPreset.cs" />
     <Compile Include="Assets\Core\Resource\GameObjectScript\LookAtCamera.cs" />
     <Compile Include="Assets\Core\Resource\Skills\Enemy\EnemyDefault_SkillSet.cs" />
     <Compile Include="Assets\Core\Resource\Utilities.cs" />
+    <Compile Include="Assets\worddefinition.cs" />
+    <Compile Include="Assets\Core\Resource\Sound.cs" />
     <Compile Include="Assets\Core\Resource\GameObjectScript\Model.cs" />
+    <Compile Include="Assets\Core\ReviewPage\WordLoader.cs" />
+    <Compile Include="Assets\Core\ReviewPage\TopicManager.cs" />
     <Compile Include="Assets\Core\Resource\Player.cs" />
     <Compile Include="Assets\Core\Manager\AnimationManager.cs" />
     <Compile Include="Assets\Core\Resource\GameObjectScript\ModelStatGauge.cs" />
     <Compile Include="Assets\Core\Resource\GameObjectScript\CorrectAnswerBoard.cs" />
-=======
-    <Compile Include="Assets\Core\Resource\Utility.cs" />
-    <Compile Include="Assets\worddefinition.cs" />
-    <Compile Include="Assets\Core\Resource\Model.cs" />
-    <Compile Include="Assets\Core\ReviewPage\WordLoader.cs" />
-    <Compile Include="Assets\Core\ReviewPage\TopicManager.cs" />
-    <Compile Include="Assets\Core\Resource\Player.cs" />
->>>>>>> Stashed changes
+    <Compile Include="Assets\Core\Manager\AudioManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

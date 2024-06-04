@@ -11,6 +11,8 @@ public abstract class Skill
     protected DamageType type = DamageType.Damage;
     public string CastAnimation;
     public string TargetsAnimation;
+    public string CastSFX;
+    public string TargetsHitSFX;
 
     public int Cost { get { return cost; } }
     public DamageType DamageType { get { return type; } }
