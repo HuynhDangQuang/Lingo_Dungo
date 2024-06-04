@@ -724,7 +724,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Definition
+  m_Text: 
 --- !u!222 &1255035306
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1330,6 +1330,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6840750396061105287, guid: b64689fc56bd3154681a19a611d86e1f, type: 3}
       propertyPath: definitionText
+      value: 
+      objectReference: {fileID: 1255035305}
+    - target: {fileID: 6840750396061105287, guid: b64689fc56bd3154681a19a611d86e1f, type: 3}
+      propertyPath: wordDefinition
       value: 
       objectReference: {fileID: 1255035305}
     m_RemovedComponents: []
