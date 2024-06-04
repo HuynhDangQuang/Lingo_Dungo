@@ -24,35 +24,40 @@ public class DictionaryAPI : MonoBehaviour
             {
                 foreach (var word in words)
                 {
-                    string phonetic = word.phonetic; // Assume phonetic is same for all meanings
 
-                    // Store the phonetic pronunciation locally
-                    PlayerPrefs.SetString("WordPhonetic_" + query, phonetic);
+                    PlayerPrefs.SetString("WordPhonetic_" + query, word.phonetic);
 
-                    // Iterate over each meaning
+
+                    int meaningIndex = 0;
                     foreach (var meaning in word.meanings)
                     {
                         string partOfSpeech = meaning.partOfSpeech;
 
-                        // Iterate over each definition and example
+
+                        string partOfSpeechKey = "WordPartOfSpeech_" + query + "_" + meaningIndex;
+                        PlayerPrefs.SetString(partOfSpeechKey, partOfSpeech);
+
+
+                        int definitionIndex = 0;
                         foreach (var definition in meaning.definitions)
                         {
-                            string def = definition.definition;
+ 
+                            string definitionKey = "WordDefinition_" + query + "_" + meaningIndex + "_" + definitionIndex;
+                            PlayerPrefs.SetString(definitionKey, definition.definition);
 
-                            // Store the definition and part of speech locally
-                            string key = "WordDefinition_" + query + "_" + partOfSpeech + "_" + meaning.definitions.IndexOf(definition);
-                            PlayerPrefs.SetString(key, def);
-
-                            // Check if examples exist for the definition
                             if (definition.examples != null && definition.examples.Count > 0)
                             {
                                 for (int i = 0; i < definition.examples.Count; i++)
                                 {
-                                    string exampleKey = "WordExample_" + query + "_" + partOfSpeech + "_" + meaning.definitions.IndexOf(definition) + "_" + i;
+                                    string exampleKey = "WordExample_" + query + "_" + meaningIndex + "_" + definitionIndex + "_" + i;
                                     PlayerPrefs.SetString(exampleKey, definition.examples[i]);
                                 }
                             }
+
+                            definitionIndex++;
                         }
+
+                        meaningIndex++;
                     }
                 }
                 PlayerPrefs.Save();
@@ -65,15 +70,12 @@ public class DictionaryAPI : MonoBehaviour
         }
         catch (HttpRequestException e)
         {
-            Debug.LogError("Error: " + e.Message);
+            Debug.LogError("Error fetching data: " + e.Message);
         }
-    }
-
-    // Example usage: Call this method from another script to fetch and store data
-    async void Start()
-    {
-        string query = "hello"; // Replace with the word you want to fetch
-        await FetchAndStoreData(query);
+        catch (JsonSerializationException e)
+        {
+            Debug.LogError("Error deserializing data: " + e.Message);
+        }
     }
 }
 
