@@ -1,0 +1,13 @@
+
+AnimationCorrect.png
+size: 865,197
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+text_correct
+  rotate: false
+  xy: 3, 3
+  size: 859, 191
+  orig: 950, 250
+  offset: 38, 32
+  index: -1

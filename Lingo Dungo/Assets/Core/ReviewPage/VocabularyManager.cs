@@ -56,7 +56,7 @@ public class VocabularyManager : MonoBehaviour
         }
     }
 
-    void LoadVocabulary()
+    async void LoadVocabulary()
     {
         // 1. Get all vocabulary text files
         string[] topicFiles = Directory.GetFiles(vocabularyFolderPath, "*.txt");
@@ -75,7 +75,7 @@ public class VocabularyManager : MonoBehaviour
                 if (!IsWordDataStored(word))
                 {
                     // 4. If not, fetch data from the API
-                    DictionaryAPI.FetchAndStoreData(word);
+                    await DictionaryAPI.FetchAndStoreData(word);
                 }
 
                 // 5. Load word data from local storage into Word object

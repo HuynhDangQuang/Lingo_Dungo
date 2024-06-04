@@ -1,6 +1,6 @@
 {
 "skeleton": {
-	"hash": "pd835NXY/rqyIdu6ycjLiE/B+WM",
+	"hash": "FnQjVPeYSaooxEfBAXIwOSpiNNg",
 	"spine": "3.8",
 	"x": -165.48,
 	"y": -3.81,
@@ -75,6 +75,10 @@
 		}
 	}
 ],
+"events": {
+	"cast": {},
+	"trigger": {}
+},
 "animations": {
 	"damage": {
 		"slots": {
@@ -191,6 +195,11 @@
 				"translate": [
 					{ "x": -110.1, "y": -15.44 }
 				]
+			},
+			"body_control": {
+				"translate": [
+					{ "x": -0.71, "y": -32.31 }
+				]
 			}
 		},
 		"drawOrder": [
@@ -272,6 +281,12 @@
 					{ "time": 0.1667, "x": -17.09, "y": 53.42, "curve": 0.25, "c3": 0.75 },
 					{ "time": 0.6667, "x": -110.1, "y": -15.44 }
 				]
+			},
+			"body_control": {
+				"translate": [
+					{},
+					{ "time": 0.6667, "x": -0.71, "y": -32.31 }
+				]
 			}
 		},
 		"drawOrder": [
@@ -334,7 +349,10 @@
 					{ "time": 1 }
 				]
 			}
-		}
+		},
+		"events": [
+			{ "time": 0.2, "name": "trigger", "string": "trigger" }
+		]
 	},
 	"knight_idle": {
 		"bones": {
@@ -441,7 +459,10 @@
 					{ "time": 1.5 }
 				]
 			}
-		}
+		},
+		"events": [
+			{ "time": 0.5, "name": "trigger", "string": "trigger" }
+		]
 	},
 	"knight_skill2": {
 		"slots": {
@@ -538,7 +559,10 @@
 					{ "time": 1 }
 				]
 			}
-		}
+		},
+		"events": [
+			{ "time": 0.2667, "name": "trigger", "string": "trigger" }
+		]
 	}
 }
 }

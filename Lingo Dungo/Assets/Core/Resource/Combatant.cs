@@ -5,10 +5,12 @@ using UnityEngine;
 public class Combatant
 {
     protected int playerID;
-    
+
     protected int position;
 
     public GameObject Model;
+
+    public Class ownerClass;
 
     #region base Stat
 
@@ -18,6 +20,9 @@ public class Combatant
     protected int mp;
     protected int atk;
     protected int ap;
+    protected int barrier;
+
+    public bool JustGainBarrier = false;
 
     public int MaxHP
     {
@@ -27,7 +32,7 @@ public class Combatant
             maxHp = Mathf.Max(value, 1);
         }
     }
-    public int MaxMP 
+    public int MaxMP
     {
         get { return maxMp; }
         set
@@ -55,32 +60,104 @@ public class Combatant
     public int AP { get { return ap; } }
     #endregion
 
-    #region Functions
 
-    public void gainHp(int value)
+    #region get set
+    public Skill NormalAttack
     {
-        hp += value;
-        if (hp < 0)
+        get { return ownerClass.normalAttack; }
+    }
+
+    public Skill PrimarySkill
+    {
+        get { return ownerClass.primarySkill; }
+    }
+
+    public Skill SecondarySkill
+    {
+        get { return ownerClass.secondarySkill; }
+    }
+
+    public float DamageTakenRate
+    {
+        get
         {
-            hp = 0;
-        } 
-        else if (hp > maxHp)
-        {
-            hp = maxHp;
+            return 1;
         }
     }
 
-    public void gainMp(int value)
+    public float MinCriticalTimeRate
     {
-        mp += value;
-        if (mp < 0)
+        get
         {
-            mp = 0;
+            return 0.5f;
         }
-        else if (mp > maxMp)
+    }
+
+    public float CriticalDamageBonus
+    {
+        get
+        {
+            return 1.5f;
+        }
+    }
+
+    public int Barrier
+    {
+        get
+        {
+            return barrier;
+        }
+        set
+        {
+            barrier = Mathf.Max(value, 0);
+        }
+    }
+
+    public bool IsDied
+    {
+        get
+        {
+            return hp == 0;
+        }
+    }
+    #endregion
+
+    #region Functions
+
+    virtual public void GainHp(int value)
+    {
+        hp = Mathf.Clamp(hp + value, 0, maxHp);
+    }
+
+    public void GainMp(int value)
+    {
+        mp = Mathf.Clamp(mp + value, 0, maxMp);
+    }
+
+    public void GainBarrier(int value)
+    {
+        value = Mathf.Max(0, value);
+        JustGainBarrier = true;
+        Barrier += value;
+    }
+
+    public void UpdateStat()
+    {
+        // Re-caculate the stat
+        maxHp = ownerClass.maxHp;
+        maxMp = ownerClass.maxMp;
+        atk = ownerClass.atk;
+        ap = ownerClass.ap;
+
+        // fix the HP, MP 
+        if (hp > maxHp)
+        {
+            hp = maxHp;
+        }
+        if (mp > maxMp)
         {
             mp = maxMp;
-        }
+        }    
     }
 
     public void AttachModel(GameObject model)

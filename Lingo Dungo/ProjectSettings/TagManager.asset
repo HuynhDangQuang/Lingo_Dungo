@@ -15,11 +15,13 @@ TagManager:
   - PlayerSheetPanel
   - AnswerSheetPanel
   - Timer
+  - PrimarySkillCost
+  - SecondarySkillCost
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Animation
   - Water
   - UI
   - 
@@ -51,4 +53,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Map
+    uniqueID: 3347282963
+    locked: 0
+  - name: UI
+    uniqueID: 2142027175
     locked: 0

@@ -1,0 +1,27 @@
+
+AnimationCombatStart.png
+size: 1103,574
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Sword
+  rotate: false
+  xy: 931, 215
+  size: 169, 356
+  orig: 480, 480
+  offset: 144, 56
+  index: -1
+flame
+  rotate: true
+  xy: 3, 21
+  size: 550, 731
+  orig: 550, 731
+  offset: 0, 0
+  index: -1
+text_fight
+  rotate: true
+  xy: 737, 3
+  size: 568, 191
+  orig: 650, 250
+  offset: 32, 30
+  index: -1

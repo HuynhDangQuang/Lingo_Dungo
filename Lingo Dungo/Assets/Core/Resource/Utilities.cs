@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Presets;
 using UnityEngine;
 
-public static class Utility
+public static class Utilities
 {
     public static string Shuffle(this string str)
     {
@@ -17,5 +18,10 @@ public static class Utility
             array[n] = value;
         }
         return new string(array);
+    }
+
+    public static bool IsOpponent(Combatant obj1, Combatant obj2)
+    {
+        return (obj1 is Player && obj2 is Enemy) || (obj1 is Enemy && obj2 is Player);
     }
 }

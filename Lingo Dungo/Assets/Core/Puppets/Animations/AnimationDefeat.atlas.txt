@@ -1,0 +1,13 @@
+
+AnimationDefeat.png
+size: 652,181
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+text_defeat
+  rotate: false
+  xy: 3, 3
+  size: 646, 175
+  orig: 850, 250
+  offset: 104, 34
+  index: -1

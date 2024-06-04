@@ -22,7 +22,11 @@ public class StatGauge : MonoBehaviour
         {
             case GaugeType.HP:
                 {
-                    float hpRate = manager.ThisPlayer.HP * 1f / manager.ThisPlayer.MaxHP;
+                    int shield = manager.ThisPlayer.HP + manager.ThisPlayer.Barrier;
+                    int realMaxAmount = Mathf.Max(manager.ThisPlayer.MaxHP, shield);
+                    float hpRate = manager.ThisPlayer.HP * 1f / realMaxAmount;
+                    float shieldRate = shield * 1f / realMaxAmount;
+                    transform.GetChild(0).GetComponent<Image>().fillAmount = shieldRate;
                     transform.GetChild(1).GetComponent<Image>().fillAmount = hpRate;
                     transform.GetChild(2).GetComponent<Text>().text = manager.ThisPlayer.HP.ToString();
                     transform.GetChild(3).GetComponent<Text>().text = manager.ThisPlayer.MaxHP.ToString();
@@ -31,9 +35,9 @@ public class StatGauge : MonoBehaviour
             case GaugeType.MP:
                 {
                     float mpRate = manager.ThisPlayer.MP * 1f / manager.ThisPlayer.MaxMP;
-                    transform.GetChild(1).GetComponent<Image>().fillAmount = mpRate;
-                    transform.GetChild(2).GetComponent<Text>().text = manager.ThisPlayer.MP.ToString();
-                    transform.GetChild(3).GetComponent<Text>().text = manager.ThisPlayer.MaxMP.ToString();
+                    transform.GetChild(0).GetComponent<Image>().fillAmount = mpRate;
+                    transform.GetChild(1).GetComponent<Text>().text = manager.ThisPlayer.MP.ToString();
+                    transform.GetChild(2).GetComponent<Text>().text = manager.ThisPlayer.MaxMP.ToString();
                     break;
                 }
         }   
