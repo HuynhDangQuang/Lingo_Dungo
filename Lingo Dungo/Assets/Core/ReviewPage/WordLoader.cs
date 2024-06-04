@@ -16,6 +16,7 @@ public class WordLoader : MonoBehaviour
 
     void Start()
     {
+        PlayerPrefs.DeleteAll();
         TopicManager.instance.LoadTopics();
     }
 
@@ -80,21 +81,24 @@ public class WordLoader : MonoBehaviour
     {
         Debug.Log("Word clicked: " + word);
 
+        if (!PlayerPrefs.HasKey("WordDefinition_" + word))
+        {
+            Debug.Log("WordDefinition not found in PlayerPrefs: " + word);
+
+            await DictionaryAPI.FetchAndStoreData(word);
+        }
 
         if (PlayerPrefs.HasKey("WordDefinition_" + word))
         {
             Debug.Log("WordDefinition found in PlayerPrefs: " + word);
 
+            string phonetic = PlayerPrefs.GetString("WordPhonetic_" + word, "");
+            string definition = "";
 
-            string phonetic = PlayerPrefs.GetString("WordPhonetic_" + word, ""); 
-            string definition = ""; 
-
-
-            string[] partsOfSpeech = { "noun", "verb", "adjective", "adverb" }; 
+            string[] partsOfSpeech = { "noun", "verb", "adjective", "adverb" };
             foreach (string partOfSpeech in partsOfSpeech)
             {
                 Debug.Log("Part of speech: " + partOfSpeech);
-
 
                 int index = 0;
                 string definitionKey = "WordDefinition_" + word + "_" + partOfSpeech + "_" + index;
@@ -102,16 +106,13 @@ public class WordLoader : MonoBehaviour
                 {
                     string storedDefinition = PlayerPrefs.GetString(definitionKey);
 
-
                     definition += $"Part of Speech: {partOfSpeech}\nDefinition: {storedDefinition}\n\n";
-
 
                     int exampleIndex = 0;
                     string exampleKey = "WordExample_" + word + "_" + partOfSpeech + "_" + index + "_" + exampleIndex;
                     while (PlayerPrefs.HasKey(exampleKey))
                     {
                         string storedExample = PlayerPrefs.GetString(exampleKey);
-
 
                         definition += $"Example: {storedExample}\n\n";
 
@@ -124,28 +125,13 @@ public class WordLoader : MonoBehaviour
                 }
             }
 
-
             definition = $"Phonetic: {phonetic}\n\n{definition}";
-
 
             wordDefinition.text = definition;
         }
         else
         {
-            Debug.Log("WordDefinition not found in PlayerPrefs: " + word);
-
-
-            await DictionaryAPI.FetchAndStoreData(word);
-
-
-            if (PlayerPrefs.HasKey("WordDefinition_" + word))
-            {
-
-            }
-            else
-            {
-                wordDefinition.text = "Definition not found yee";
-            }
+            wordDefinition.text = "Definition not found yee";
         }
     }
 }

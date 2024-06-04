@@ -10,3 +10,11 @@ pineapple
 plum
 strawberry
 watermelon
+melon
+dragon fruit
+guava
+lime
+tomato
+avocado
+strawberry
+blueberry

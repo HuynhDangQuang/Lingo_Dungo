@@ -22,29 +22,31 @@ public class DictionaryAPI : MonoBehaviour
             // Check if any words were found
             if (words != null && words.Count > 0)
             {
+                PlayerPrefs.SetString("WordDefinition_" + query, "");
                 foreach (var word in words)
                 {
-
+                    // Store the phonetic pronunciation locally
                     PlayerPrefs.SetString("WordPhonetic_" + query, word.phonetic);
 
-
+                    // Iterate over each meaning
                     int meaningIndex = 0;
                     foreach (var meaning in word.meanings)
                     {
                         string partOfSpeech = meaning.partOfSpeech;
 
-
-                        string partOfSpeechKey = "WordPartOfSpeech_" + query + "_" + meaningIndex;
+                        // Store the part of speech
+                        string partOfSpeechKey = "WordPartOfSpeech_" + query + "_" + partOfSpeech;
                         PlayerPrefs.SetString(partOfSpeechKey, partOfSpeech);
 
-
+                        // Iterate over each definition
                         int definitionIndex = 0;
                         foreach (var definition in meaning.definitions)
                         {
- 
-                            string definitionKey = "WordDefinition_" + query + "_" + meaningIndex + "_" + definitionIndex;
+                            // Store the definition
+                            string definitionKey = "WordDefinition_" + query + "_" + partOfSpeech + "_" + definitionIndex;
                             PlayerPrefs.SetString(definitionKey, definition.definition);
 
+                            // Check if examples exist for the definition
                             if (definition.examples != null && definition.examples.Count > 0)
                             {
                                 for (int i = 0; i < definition.examples.Count; i++)
