@@ -15,6 +15,7 @@ namespace Assets.Core.Resource.Skills.Player
             type = DamageType.Damage;
             cost = 0;
             TargetsAnimation = "Hit";
+            TargetsHitSFX = "Slash1";
         }
 
         public override int GetDamage(Combatant user, Combatant target, float resultMultiplier)
@@ -34,6 +35,7 @@ namespace Assets.Core.Resource.Skills.Player
             type = DamageType.None;
             cost = 40;
             TargetsAnimation = "Buff";
+            TargetsHitSFX = "Up1";
         }
 
         public override int GetDamage(Combatant user, Combatant target, float resultMultiplier)
@@ -58,6 +60,7 @@ namespace Assets.Core.Resource.Skills.Player
             type = DamageType.Damage;
             cost = 50;
             TargetsAnimation = "Hit";
+            TargetsHitSFX = "Slash1";
         }
 
         public override int GetDamage(Combatant user, Combatant target, float resultMultiplier)

@@ -67,6 +67,9 @@ public class CombatManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Play combat BGM
+        AudioManager.Instance.PlayMusic("Battle1");
+
         DisableSkillButtons();
         // This is demo. First puppet will be treat as current player
         ThisPlayer = new Player(PlayerClasses.Knight);
@@ -139,8 +142,9 @@ public class CombatManager : MonoBehaviour
                         yield return new WaitForSeconds(0.5f);
                         // play combat start animation
                         Instantiate(combatStartAnimation, null);
-
-                        yield return new WaitForSeconds(2f);
+                        yield return new WaitForSeconds(0.1f);
+                        AudioManager.Instance.PlaySFX("Sword4");
+                        yield return new WaitForSeconds(1.9f);
                         state = CombatState.getNewQuestion;
                         break;
                     }
@@ -200,7 +204,7 @@ public class CombatManager : MonoBehaviour
                         registeredActions.Clear();
 
                         answerResult = Instantiate(isThisPlayerCorrect ? resultCorrectAnimation : resultIncorrectAnimation, null);
-
+                        AudioManager.Instance.PlaySFX(isThisPlayerCorrect ? "AnswerCorrect" : "AnswerWrong");
                         yield return new WaitForSeconds(0.5f);
 
                         // Show what is the correct answer
@@ -361,6 +365,7 @@ public class CombatManager : MonoBehaviour
         {
             return;
         }
+        AudioManager.Instance.PlaySFX("SkillPressed");
         ThisPlayerAnswered = true;
         registeredActions.Add(new Action(
             CombatTimer.GetComponent<TimerGauge>().TimeRate,
@@ -380,6 +385,7 @@ public class CombatManager : MonoBehaviour
         {
             return;
         }
+        AudioManager.Instance.PlaySFX("SkillPressed");
         ThisPlayerAnswered = true;
         ThisPlayer.GainMp(-ThisPlayer.PrimarySkill.Cost);
         registeredActions.Add(new Action(
@@ -400,6 +406,7 @@ public class CombatManager : MonoBehaviour
         {
             return;
         }
+        AudioManager.Instance.PlaySFX("SkillPressed");
         ThisPlayerAnswered = true;
         ThisPlayer.GainMp(-ThisPlayer.SecondarySkill.Cost);
         registeredActions.Add(new Action(
@@ -429,7 +436,10 @@ public class CombatManager : MonoBehaviour
         switch (flag)
         {
             case "cast":
+                // Handle SFX
+                AudioManager.Instance.PlaySFX(CurrentAction.Skill.CastSFX);
                 break;
+
             case "trigger":
                 if (CurrentAction.Type == Action.SkillType.NormalAttack)
                 {
@@ -488,7 +498,8 @@ public class CombatManager : MonoBehaviour
 
                         // Handle Animation
                         animationManager.AttachAnimation(target.Model, CurrentAction.targetAnimationId);
-                        // Temporary use
+                        
+                        // Handle Targets motion
                         if (Utilities.IsOpponent(user, target))
                         {
                             if (target.HP == 0)
@@ -500,6 +511,9 @@ public class CombatManager : MonoBehaviour
                         {
                             target.Model.GetComponent<Model>().PlayDie();
                         }
+
+                        // Handle SFX
+                        AudioManager.Instance.PlaySFX(CurrentAction.Skill.TargetsHitSFX);
                     }
                 }
                 break;

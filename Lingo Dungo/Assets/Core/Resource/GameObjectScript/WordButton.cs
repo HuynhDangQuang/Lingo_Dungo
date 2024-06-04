@@ -27,6 +27,7 @@ public class WordButton : MonoBehaviour
         }
         WordPanel wordPanel = transform.parent.GetComponent<WordPanel>();
         AnswerPanel answerPanel = transform.parent.GetComponent<AnswerPanel>();
+        AudioManager.Instance.PlaySFX("ButtonPressed");
         if (wordPanel != null)
         {
             wordPanel.SendCharToAnswerSheet(this.gameObject);

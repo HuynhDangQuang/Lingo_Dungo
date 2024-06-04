@@ -15,6 +15,7 @@ namespace Assets.Core.Resource.Skills.Enemy
             type = DamageType.Damage;
             cost = 0;
             TargetsAnimation = "Hit";
+            TargetsHitSFX = "Blow1";
         }
 
         public override int GetDamage(Combatant user, Combatant target, float resultMultiplier)
