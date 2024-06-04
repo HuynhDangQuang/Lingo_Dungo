@@ -13,6 +13,7 @@ public class CombatManager : MonoBehaviour
     [Header("UI Objects")]
     public GameObject WordSheet;
     public GameObject AnswerSheet;
+    public GameObject CorrectAnswerSheet;
     public GameObject CombatTimer;
     public GameObject ButtonATK;
     public GameObject ButtonSkill1;
@@ -56,6 +57,7 @@ public class CombatManager : MonoBehaviour
     public List<Action> confirmedActions = new List<Action>();
 
     public bool ThisPlayerAnswered = false;
+    public bool HasActionPerformed = false;
     public string RoundCorrectAnswer;
 
     public CombatState state = CombatState.init;
@@ -193,11 +195,21 @@ public class CombatManager : MonoBehaviour
                             }
                         }
 
+                        confirmedActions = confirmedActions.OrderByDescending(action => action.TimeRate).ToList();
+
                         registeredActions.Clear();
 
                         answerResult = Instantiate(isThisPlayerCorrect ? resultCorrectAnimation : resultIncorrectAnimation, null);
 
-                        yield return new WaitForSeconds(0.2f);
+                        yield return new WaitForSeconds(0.5f);
+
+                        // Show what is the correct answer
+                        CorrectAnswerBoard correctBoard = CorrectAnswerSheet.GetComponent<CorrectAnswerBoard>();
+                        correctBoard.Show(RoundCorrectAnswer);
+                        correctBoard.transform.SetSiblingIndex(4);
+
+                        yield return new WaitForSeconds(0.5f);
+
                         state = CombatState.performingAction;
                         break;
                     }
@@ -210,6 +222,14 @@ public class CombatManager : MonoBehaviour
                             CurrentAction = action;
                             ActionPerformer = action.User;
                             ActionTargets = action.Targets;
+                            
+                            // Check if Performer can perform action
+                            if (ActionPerformer.IsDied)
+                            {
+                                continue;
+                            }
+                            HasActionPerformed = true;
+
                             // Play animation attack
                             switch (action.Type)
                             {
@@ -231,7 +251,7 @@ public class CombatManager : MonoBehaviour
                                         break;
                                     }
                             }
-                            yield return new WaitForSeconds(2f);
+                            yield return new WaitForSeconds(1.5f);
                             CurrentAction = null;
                             ActionPerformer = null;
                             ActionTargets = new List<Combatant>();
@@ -247,6 +267,15 @@ public class CombatManager : MonoBehaviour
                     }
                 case CombatState.waitForExplaination:
                     {
+                        if (!HasActionPerformed)
+                        {
+                            yield return new WaitForSeconds(2f);
+                        }
+                        else
+                        {
+                            yield return new WaitForSeconds(0.5f);
+                            HasActionPerformed = false;
+                        }
                         // Kill the correct/incorrect result animation
                         answerResult.GetComponent<AnimationLong>().AnimationEnd();
 
@@ -254,8 +283,12 @@ public class CombatManager : MonoBehaviour
                         WordSheet.GetComponent<WordPanel>().ClearWord();
                         AnswerSheet.GetComponent<AnswerPanel>().ClearWord();
                         CombatTimer.GetComponent<TimerGauge>().CurrentValue = 0;
-                        // Show what is the correct answer
+
+                        CorrectAnswerBoard correctBoard = CorrectAnswerSheet.GetComponent<CorrectAnswerBoard>();
+                        correctBoard.Hide();
                         yield return new WaitForSeconds(1f);
+                        correctBoard.transform.SetSiblingIndex(3);
+
                         // Check if combat end
                         result = CheckCombatResult();
                         switch (result)
@@ -380,7 +413,6 @@ public class CombatManager : MonoBehaviour
             ThisPlayer.SecondarySkill.TargetsAnimation
         ));
     }
-
     #endregion
 
     #region Utilities

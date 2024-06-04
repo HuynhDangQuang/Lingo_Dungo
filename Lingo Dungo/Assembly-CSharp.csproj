@@ -64,10 +64,12 @@
     <Compile Include="Assets\Core\Resource\GameObjectScript\AnimationShort.cs" />
     <Compile Include="Assets\Core\ReviewPage\VocabularyManager.cs" />
     <Compile Include="Assets\Core\Manager\AnswerPanel.cs" />
+    <Compile Include="Assets\Core\Resource\EnemyLogic\EnemyLogicBase.cs" />
     <Compile Include="Assets\Core\Resource\Skill.cs" />
     <Compile Include="Assets\Core\Resource\GameObjectScript\StatGauge.cs" />
     <Compile Include="Assets\Core\Manager\PresetModelManager.cs" />
     <Compile Include="Assets\Core\Resource\Enemy.cs" />
+    <Compile Include="Assets\Core\Resource\EnemyLogic\EnemyLogic_Default.cs" />
     <Compile Include="Assets\Core\Resource\GameObjectScript\AnimationLong.cs" />
     <Compile Include="Assets\Core\Resource\Action.cs" />
     <Compile Include="Assets\Scripts\RuntimePresets\GameObjectExtensions.cs" />
@@ -86,8 +88,7 @@
     <Compile Include="Assets\Core\Resource\Player.cs" />
     <Compile Include="Assets\Core\Manager\AnimationManager.cs" />
     <Compile Include="Assets\Core\Resource\GameObjectScript\ModelStatGauge.cs" />
-    <Compile Include="Assets\Core\Resource\EnemyLogic\EnemyLogicBase.cs" />
-    <Compile Include="Assets\Core\Resource\EnemyLogic\EnemyLogic_Default.cs" />
+    <Compile Include="Assets\Core\Resource\GameObjectScript\CorrectAnswerBoard.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
