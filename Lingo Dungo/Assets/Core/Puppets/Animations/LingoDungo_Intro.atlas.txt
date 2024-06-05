@@ -1,0 +1,82 @@
+
+LingoDungo_Intro.png
+size: 1926,1868
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+IntroScreen_ActorFace
+  rotate: false
+  xy: 659, 1282
+  size: 360, 360
+  orig: 394, 402
+  offset: 19, 17
+  index: -1
+IntroScreen_ActorHand
+  rotate: false
+  xy: 206, 1740
+  size: 125, 125
+  orig: 137, 140
+  offset: 5, 7
+  index: -1
+IntroScreen_ActorLeg
+  rotate: false
+  xy: 3, 1755
+  size: 200, 110
+  orig: 220, 143
+  offset: 6, 12
+  index: -1
+IntroScreen_ActorShield
+  rotate: true
+  xy: 1417, 1523
+  size: 342, 345
+  orig: 386, 368
+  offset: 20, 9
+  index: -1
+IntroScreen_ActorSword
+  rotate: true
+  xy: 3, 1339
+  size: 303, 653
+  orig: 370, 688
+  offset: 18, 17
+  index: -1
+IntroScreen_Gound
+  rotate: false
+  xy: 3, 857
+  size: 1920, 263
+  orig: 1920, 309
+  offset: 0, 0
+  index: -1
+IntroScreen_Monster
+  rotate: false
+  xy: 3, 3
+  size: 987, 851
+  orig: 989, 984
+  offset: 0, 49
+  index: -1
+IntroScreen_Pillar
+  rotate: true
+  xy: 334, 1645
+  size: 220, 1080
+  orig: 362, 1080
+  offset: 70, 0
+  index: -1
+text_title
+  rotate: false
+  xy: 1022, 1123
+  size: 842, 397
+  orig: 900, 500
+  offset: 27, 64
+  index: -1
+
+LingoDungo_Intro2.png
+size: 1926,1086
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+IntroScreen_Background
+  rotate: false
+  xy: 3, 3
+  size: 1920, 1080
+  orig: 1920, 1080
+  offset: 0, 0
+  index: -1

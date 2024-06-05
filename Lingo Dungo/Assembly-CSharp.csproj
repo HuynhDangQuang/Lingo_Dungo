@@ -74,6 +74,7 @@
     <Compile Include="Assets\Core\Resource\GameObjectScript\AnimationLong.cs" />
     <Compile Include="Assets\Core\Resource\Action.cs" />
     <Compile Include="Assets\Scripts\RuntimePresets\GameObjectExtensions.cs" />
+    <Compile Include="Assets\Core\Manager\AudioManager.cs" />
     <Compile Include="Assets\Core\Resource\GameObjectScript\HealSprite.cs" />
     <Compile Include="Assets\Scripts\RuntimePresets\ComponentExtensions.cs" />
     <Compile Include="Assets\Core\Resource\GameObjectScript\WordButton.cs" />
@@ -94,7 +95,6 @@
     <Compile Include="Assets\Core\Manager\AnimationManager.cs" />
     <Compile Include="Assets\Core\Resource\GameObjectScript\ModelStatGauge.cs" />
     <Compile Include="Assets\Core\Resource\GameObjectScript\CorrectAnswerBoard.cs" />
-    <Compile Include="Assets\Core\Manager\AudioManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -105,6 +105,7 @@
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
+    <None Include="Assets\Core\Puppets\Animations\LingoDungo_Intro.atlas.txt" />
     <None Include="Assets\Core\Puppets\Animations\AnimationCombatStart.atlas.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
     <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
