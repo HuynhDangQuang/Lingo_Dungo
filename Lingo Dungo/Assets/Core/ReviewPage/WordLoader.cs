@@ -4,6 +4,8 @@ using UnityEngine.EventSystems;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
+using Assets.Core.Manager;
+using UnityEngine.Rendering.UI;
 
 public class WordLoader : MonoBehaviour
 {
@@ -16,7 +18,7 @@ public class WordLoader : MonoBehaviour
 
     void Start()
     {
-        PlayerPrefs.DeleteAll();
+        //PlayerPrefs.DeleteAll();
         TopicManager.instance.LoadTopics();
     }
 
@@ -28,35 +30,24 @@ public class WordLoader : MonoBehaviour
         }
     }
 
-    public void LoadWords(string filePath)
+    public void LoadWords(string topicName)
     {
+        WordManager wordManager = WordManager.Instance;
         words = new List<string>();
 
-        if (File.Exists(filePath))
+        foreach (string word in wordManager.GetWordsInTopic(topicName))
         {
-            string[] wordLines = File.ReadAllLines(filePath);
-
-            foreach (string line in wordLines)
-            {
-                if (line.Trim() != "")
-                {
-                    words.Add(line.Trim());
-                }
-            }
-
-            words.Sort();
-
-            foreach (Transform child in wordButtonContainer)
-            {
-                Destroy(child.gameObject);
-            }
-
-            CreateWordButtons();
+            words.Add(word);
         }
-        else
+
+        words.Sort();
+
+        foreach (Transform child in wordButtonContainer)
         {
-            Debug.LogError("File " + filePath + " not founded!");
+            Destroy(child.gameObject);
         }
+
+        CreateWordButtons();
     }
 
     private void CreateWordButtons()
@@ -77,57 +68,50 @@ public class WordLoader : MonoBehaviour
         }
     }
 
-    public async void OnWordClick(string word)
+    public void OnWordClick(string word)
     {
-        Debug.Log("Word clicked: " + word);
+        WordManager wordManager = WordManager.Instance;
 
-        if (!PlayerPrefs.HasKey("WordDefinition_" + word))
+        if (wordManager.CheckWordIsLoaded(word))
         {
-            Debug.Log("WordDefinition not found in PlayerPrefs: " + word);
-
-            await DictionaryAPI.FetchAndStoreData(word);
-        }
-
-        if (PlayerPrefs.HasKey("WordDefinition_" + word))
-        {
-            Debug.Log("WordDefinition found in PlayerPrefs: " + word);
-
-            string phonetic = PlayerPrefs.GetString("WordPhonetic_" + word, "");
-            string definition = "";
+            Word wordData = wordManager.GetWordData(word);
+            string phonetic = wordData.phonetic;
+            string fullDefinition = "";
 
             string[] partsOfSpeech = { "noun", "verb", "adjective", "adverb" };
             foreach (string partOfSpeech in partsOfSpeech)
             {
-                Debug.Log("Part of speech: " + partOfSpeech);
+                //Debug.Log("Part of speech: " + partOfSpeech);
 
-                int index = 0;
-                string definitionKey = "WordDefinition_" + word + "_" + partOfSpeech + "_" + index;
-                while (PlayerPrefs.HasKey(definitionKey))
+                List<Meaning> meanings = wordData.meanings.FindAll(x => x.partOfSpeech == partOfSpeech);
+
+                if (meanings.Count > 0)
                 {
-                    string storedDefinition = PlayerPrefs.GetString(definitionKey);
+                    fullDefinition += $"<b>{partOfSpeech.ToUpper()}</b>\n\n";
+                }
+                else
+                {
+                    continue;
+                }
 
-                    definition += $"Part of Speech: {partOfSpeech}\nDefinition: {storedDefinition}\n\n";
-
-                    int exampleIndex = 0;
-                    string exampleKey = "WordExample_" + word + "_" + partOfSpeech + "_" + index + "_" + exampleIndex;
-                    while (PlayerPrefs.HasKey(exampleKey))
+                foreach (Meaning meaning in meanings)
+                {
+                    foreach (Definition definition in meaning.definitions)
                     {
-                        string storedExample = PlayerPrefs.GetString(exampleKey);
+                        fullDefinition += $"+ {definition.definition}\n";
 
-                        definition += $"Example: {storedExample}\n\n";
-
-                        exampleIndex++;
-                        exampleKey = "WordExample_" + word + "_" + partOfSpeech + "_" + index + "_" + exampleIndex;
+                        foreach (string example in definition.examples)
+                        {
+                            fullDefinition += $"<i>Ex: {example}</i>\n";
+                        }
+                        fullDefinition += "\n";
                     }
-
-                    index++;
-                    definitionKey = "WordDefinition_" + word + "_" + partOfSpeech + "_" + index;
                 }
             }
 
-            definition = $"Phonetic: {phonetic}\n\n{definition}";
+            fullDefinition = $"Phonetic: {phonetic}\n\n{fullDefinition}";
 
-            wordDefinition.text = definition;
+            wordDefinition.text = fullDefinition;
         }
         else
         {

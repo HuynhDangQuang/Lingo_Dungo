@@ -2,11 +2,12 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-public class VocabularyManager : MonoBehaviour
+public class VocabularyManager
 {
-    public string vocabularyFolderPath = "Assets/Data/Word";
-    public string localDataPath = "Assets/Data/WordData/"; // Path to save word data
+    public string vocabularyFolderPath = "Core/Data/Word";
+    public string localDataPath = "Core/Data/WordData/"; // Path to save word data
 
+    // <Topic name, Word, Data>
     private Dictionary<string, Dictionary<string, Word>> wordData =
         new Dictionary<string, Dictionary<string, Word>>();
 

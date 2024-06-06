@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
 using System.IO;
+using Assets.Core.Manager;
 
 public class TopicManager : MonoBehaviour
 {
@@ -22,19 +23,14 @@ public class TopicManager : MonoBehaviour
 
     public void LoadTopics()
     {
-        string dataPath = Path.Combine(Application.dataPath, "Core/Data/Word");
+        //string dataPath = Path.Combine(Application.dataPath, "Core/Data/Word");
+        WordManager wordManager = WordManager.Instance;
 
+        //string[] files = Directory.GetFiles(dataPath, "*.txt");
 
-        string[] files = Directory.GetFiles(dataPath, "*.txt");
-
-        foreach (string file in files)
+        foreach (string topicName in wordManager.GetAllTopics())
         {
-
             GameObject newTopicButton = Instantiate(topicButtonPrefab, topicButtonContainer);
-
-
-            string topicName = Path.GetFileNameWithoutExtension(file);
-
 
             newTopicButton.GetComponentInChildren<Text>().text = topicName;
 
@@ -42,13 +38,13 @@ public class TopicManager : MonoBehaviour
             EventTrigger trigger = newTopicButton.AddComponent<EventTrigger>();
             EventTrigger.Entry entry = new EventTrigger.Entry();
             entry.eventID = EventTriggerType.PointerClick;
-            entry.callback.AddListener((data) => { OnTopicClick(file); });
+            entry.callback.AddListener((data) => { OnTopicClick(topicName); });
             trigger.triggers.Add(entry);
         }
     }
 
-    public void OnTopicClick(string filePath)
+    public void OnTopicClick(string topicName)
     {
-        WordLoader.instance.LoadWords(filePath);
+        WordLoader.instance.LoadWords(topicName);
     }
 }
