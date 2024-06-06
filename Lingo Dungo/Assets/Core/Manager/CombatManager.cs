@@ -64,6 +64,11 @@ public class CombatManager : MonoBehaviour
     public CombatResult result = CombatResult.unfinished;
 
 
+    private void Awake()
+    {
+
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -71,17 +76,18 @@ public class CombatManager : MonoBehaviour
         AudioManager.Instance.PlayMusic("Battle1");
 
         DisableSkillButtons();
+
         // This is demo. First puppet will be treat as current player
         ThisPlayer = new Player(PlayerClasses.Knight);
 
         Allies[0] = ThisPlayer;
 
-        Enemies[0] = new Enemy(EnemyTypes.AlphaMonster);
+        Enemies[0] = new Enemy(EnemyTypes.MonsterA);
 
         Allies[0].AttachModel(AlliesModel[0]);
         Enemies[0].AttachModel(EnemiesModel[0]);
 
-        //foreach (Combatant combatant in Allies)
+        PresetModelManager presetModelManager = GetComponent<PresetModelManager>();
 
         // Hide puppets that don't have owner
         foreach (GameObject ally in AlliesModel)
@@ -91,6 +97,13 @@ public class CombatManager : MonoBehaviour
             {
                 ally.SetActive(false);
             }
+            else
+            {
+                Combatant tmp = model.owner;
+                presetModelManager.ImportPreset(ally, model.owner.modelId);
+                model.RefreshModel();
+                model.owner = tmp;
+            }
         }
 
         foreach (GameObject enemy in EnemiesModel)
@@ -99,6 +112,13 @@ public class CombatManager : MonoBehaviour
             if (model.owner == null)
             {
                 enemy.SetActive(false);
+            }
+            else
+            {
+                Combatant tmp = model.owner;
+                presetModelManager.ImportPreset(enemy, model.owner.modelId);
+                model.RefreshModel();
+                model.owner = tmp;
             }
         }
 

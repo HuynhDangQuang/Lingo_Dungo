@@ -91,8 +91,8 @@ public class Enemy : Combatant
     {
         switch (enemyType)
         {
-            case EnemyTypes.AlphaMonster:
-                ownerClass = new Class(100, 10, 50, 10)
+            case EnemyTypes.MonsterA:
+                ownerClass = new Class(250, 10, 50, 10)
                 {
                     normalAttack = new EnemyDefault_NormalAttack()
                 };
@@ -100,6 +100,55 @@ public class Enemy : Combatant
                 answerRate = 0.4f;
                 answerVariance = 0.2f;
                 logic = new EnemyLogic_Default(this);
+                modelId = "MonsterA";
+                break;
+
+            case EnemyTypes.MonsterB:
+                ownerClass = new Class(350, 100, 100, 10)
+                {
+                    normalAttack = new EnemyDefault_NormalAttack()
+                };
+                mpRegen = 150;
+                answerRate = 0.3f;
+                answerVariance = 0.2f;
+                logic = new EnemyLogic_Default(this);
+                modelId = "MonsterB";
+                break;
+
+            case EnemyTypes.MonsterC:
+                ownerClass = new Class(300, 50, 60, 10)
+                {
+                    normalAttack = new EnemyDefault_NormalAttack()
+                };
+                mpRegen = 100;
+                answerRate = 0.5f;
+                answerVariance = 0.2f;
+                logic = new EnemyLogic_Default(this);
+                modelId = "MonsterC";
+                break;
+
+            case EnemyTypes.MonsterI:
+                ownerClass = new Class(150, 50, 40, 10)
+                {
+                    normalAttack = new EnemyDefault_NormalAttack()
+                };
+                mpRegen = 120;
+                answerRate = 0.6f;
+                answerVariance = 0.2f;
+                logic = new EnemyLogic_Default(this);
+                modelId = "MonsterI";
+                break;
+
+            case EnemyTypes.MonsterO:
+                ownerClass = new Class(250, 20, 100, 10)
+                {
+                    normalAttack = new EnemyDefault_NormalAttack()
+                };
+                mpRegen = 50;
+                answerRate = 0.6f;
+                answerVariance = 0.2f;
+                logic = new EnemyLogic_Default(this);
+                modelId = "MonsterO";
                 break;
         }
     }
@@ -107,5 +156,9 @@ public class Enemy : Combatant
 
 public enum EnemyTypes
 {
-    AlphaMonster,
+    MonsterA,
+    MonsterB,
+    MonsterC,
+    MonsterI,
+    MonsterO
 }

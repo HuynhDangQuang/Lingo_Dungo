@@ -13,7 +13,8 @@ public class PresetModelManager : MonoBehaviour
     public struct NamedPreset
     {
         public string name;
-        public RuntimePresets.Preset preset;
+        public RuntimePresets.Preset modelPreset;
+        public RuntimePresets.Preset animationPreset;
     }
 
     public List<NamedPreset> ModelPresets = new List<NamedPreset>();
@@ -26,20 +27,20 @@ public class PresetModelManager : MonoBehaviour
         {
             SkeletonAnimation skeletonAnimation = target.GetComponent<SkeletonAnimation>();
             Model model = target.GetComponent<Model>();
-            if (src!.Value.preset.CanBeAppliedTo(skeletonAnimation))
+            if (src!.Value.modelPreset.CanBeAppliedTo(skeletonAnimation))
             {
                 //Transfers the values from the preset onto the skeletonAnimation component
-                src.Value.preset.ApplyTo(skeletonAnimation);
+                src.Value.modelPreset.ApplyTo(skeletonAnimation);
             }
             else
             {
                 Console.Error.WriteLine("Preset's SkeletonAnimation can't be applied to " + target.ToString());
             }
 
-            if (src!.Value.preset.CanBeAppliedTo(model))
+            if (src!.Value.animationPreset.CanBeAppliedTo(model))
             {
                 //Transfers the values from the preset onto the skeletonAnimation component
-                src.Value.preset.ApplyTo(model);
+                src.Value.animationPreset.ApplyTo(model);
             }
             else
             {

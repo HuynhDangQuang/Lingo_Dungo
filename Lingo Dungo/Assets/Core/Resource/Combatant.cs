@@ -9,6 +9,7 @@ public class Combatant
     protected int position;
 
     public GameObject Model;
+    public string modelId = "Actor";
 
     public Class ownerClass;
 

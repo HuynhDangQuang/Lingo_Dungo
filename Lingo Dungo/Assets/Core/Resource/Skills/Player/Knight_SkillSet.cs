@@ -65,7 +65,7 @@ namespace Assets.Core.Resource.Skills.Player
 
         public override int GetDamage(Combatant user, Combatant target, float resultMultiplier)
         {
-            float value = user.ATK * 1.5f * resultMultiplier;
+            float value = (user.ATK * 1.5f + user.AP) * resultMultiplier;
             return Mathf.RoundToInt(value);
         }
     }

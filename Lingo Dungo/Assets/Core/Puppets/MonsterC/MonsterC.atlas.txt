@@ -1,0 +1,41 @@
+
+MonsterC.png
+size: 371,405
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Monster_C_Body
+  rotate: true
+  xy: 3, 64
+  size: 338, 353
+  orig: 380, 390
+  offset: 21, 19
+  index: -1
+Monster_C_leg1
+  rotate: true
+  xy: 3, 6
+  size: 55, 113
+  orig: 75, 130
+  offset: 6, 8
+  index: -1
+Monster_C_leg2
+  rotate: false
+  xy: 119, 23
+  size: 149, 38
+  orig: 175, 54
+  offset: 7, 5
+  index: -1
+Monster_Damage
+  rotate: false
+  xy: 271, 3
+  size: 47, 58
+  orig: 58, 78
+  offset: 5, 11
+  index: -1
+Monster_Eye
+  rotate: false
+  xy: 321, 3
+  size: 47, 58
+  orig: 58, 78
+  offset: 5, 11
+  index: -1

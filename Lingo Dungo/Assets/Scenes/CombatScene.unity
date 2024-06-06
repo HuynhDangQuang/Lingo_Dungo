@@ -552,6 +552,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 5941353880639643341, guid: d0b5ae76bf7c57d46b968f96b6b12464, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d16f89c02ebb9734e89f3d8c8706d3f5, type: 2}
     - target: {fileID: 5941353880639643343, guid: d0b5ae76bf7c57d46b968f96b6b12464, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -2090,7 +2094,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.117318176, y: 0.031000001}
   m_AnchorMax: {x: 0.88051564, y: 0.5}
-  m_AnchoredPosition: {x: 2, y: -56.75}
+  m_AnchoredPosition: {x: 2, y: -56.750008}
   m_SizeDelta: {x: -82.119995, y: -128.58}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1093522343
@@ -2812,7 +2816,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ModelPresets:
   - name: Actor
-    preset: {fileID: 2186510016832076840, guid: f5007840fa3c19449bcd7dccad61a3c4, type: 3}
+    modelPreset: {fileID: 2186510016832076840, guid: f5007840fa3c19449bcd7dccad61a3c4, type: 3}
+    animationPreset: {fileID: 936616770893210889, guid: f86b601766322da4da1d288ee92efeab, type: 3}
+  - name: MonsterA
+    modelPreset: {fileID: 5758748467616370289, guid: 319db06e977fb0943935435d4fe569f7, type: 3}
+    animationPreset: {fileID: 936616770893210889, guid: 516f3f33440d20847b5e1f3c89988412, type: 3}
+  - name: MonsterB
+    modelPreset: {fileID: 5758748467616370289, guid: 2a1a72e457be5b54598faf45f6353858, type: 3}
+    animationPreset: {fileID: 936616770893210889, guid: 39a998981579f4342807bd95c85b4496, type: 3}
+  - name: MonsterC
+    modelPreset: {fileID: 5758748467616370289, guid: f79ad7eb107727740ad875d021ff2c66, type: 3}
+    animationPreset: {fileID: 936616770893210889, guid: 779a4f9c05dc12d41be473b73d460093, type: 3}
+  - name: MonsterI
+    modelPreset: {fileID: 5758748467616370289, guid: c8d97140363510f45bc0ed5882a98ec5, type: 3}
+    animationPreset: {fileID: 936616770893210889, guid: 479d9e73f952897448268cc4fbdb3b54, type: 3}
+  - name: MonsterO
+    modelPreset: {fileID: 5758748467616370289, guid: 10c9878dd1776c8419980f517d4a3b69, type: 3}
+    animationPreset: {fileID: 936616770893210889, guid: 4afc1fdf2dd13c249b8ec9fa82eff072, type: 3}
 --- !u!114 &1385096715
 MonoBehaviour:
   m_ObjectHideFlags: 0

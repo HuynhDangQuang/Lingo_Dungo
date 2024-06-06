@@ -1,0 +1,14 @@
+access
+accessibleW
+allocate
+compatible
+delete
+display
+duplicate
+duplication
+copy
+failure
+ignore
+search
+warn
+warning

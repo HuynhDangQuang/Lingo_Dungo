@@ -1,0 +1,9 @@
+ability
+apply
+background
+confidence
+constantly
+expert
+hesitant
+present
+weakly

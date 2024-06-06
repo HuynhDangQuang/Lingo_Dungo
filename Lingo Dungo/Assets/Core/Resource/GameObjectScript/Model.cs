@@ -47,6 +47,17 @@ public class Model : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+
+    public void RefreshModel()
+    {
         skeletonAnimation = GetComponent<SkeletonAnimation>();
         spineAnimationState = skeletonAnimation.AnimationState;
         skeleton = skeletonAnimation.Skeleton;
@@ -54,12 +65,6 @@ public class Model : MonoBehaviour
         spineAnimationState.SetAnimation(0, idleAnimationName, true);
         eventData = skeletonAnimation.Skeleton.Data.FindEvent("trigger");
         skeletonAnimation.AnimationState.Event += HandleAnimationStateEvent;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     #region Actions

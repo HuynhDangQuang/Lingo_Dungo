@@ -1,0 +1,27 @@
+
+MonsterO.png
+size: 356,302
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Monster_Damage
+  rotate: false
+  xy: 306, 180
+  size: 47, 58
+  orig: 58, 78
+  offset: 5, 11
+  index: -1
+Monster_Eye
+  rotate: false
+  xy: 306, 241
+  size: 47, 58
+  orig: 58, 78
+  offset: 5, 11
+  index: -1
+Monster_O_body
+  rotate: false
+  xy: 3, 3
+  size: 300, 296
+  orig: 320, 320
+  offset: 14, 10
+  index: -1

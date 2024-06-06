@@ -1,0 +1,27 @@
+
+MonsterI.png
+size: 555,156
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Monster_Damage
+  rotate: false
+  xy: 505, 34
+  size: 47, 58
+  orig: 58, 78
+  offset: 5, 11
+  index: -1
+Monster_Eye
+  rotate: false
+  xy: 505, 95
+  size: 47, 58
+  orig: 58, 78
+  offset: 5, 11
+  index: -1
+Monster_I_Body
+  rotate: true
+  xy: 3, 3
+  size: 150, 499
+  orig: 200, 512
+  offset: 25, 0
+  index: -1

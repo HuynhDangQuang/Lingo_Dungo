@@ -1,0 +1,55 @@
+
+MonsterB.png
+size: 399,301
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Monster_B_arm1
+  rotate: false
+  xy: 328, 50
+  size: 33, 107
+  orig: 41, 117
+  offset: 4, 5
+  index: -1
+Monster_B_arm2
+  rotate: false
+  xy: 364, 24
+  size: 32, 133
+  orig: 42, 138
+  offset: 6, 1
+  index: -1
+Monster_B_body
+  rotate: true
+  xy: 3, 3
+  size: 235, 322
+  orig: 247, 347
+  offset: 4, 10
+  index: -1
+Monster_B_hand
+  rotate: true
+  xy: 328, 160
+  size: 38, 51
+  orig: 55, 61
+  offset: 8, 6
+  index: -1
+Monster_B_weapon
+  rotate: true
+  xy: 3, 241
+  size: 57, 332
+  orig: 80, 354
+  offset: 14, 10
+  index: -1
+Monster_Damage
+  rotate: true
+  xy: 338, 251
+  size: 47, 58
+  orig: 58, 78
+  offset: 5, 11
+  index: -1
+Monster_Eye
+  rotate: true
+  xy: 338, 201
+  size: 47, 58
+  orig: 58, 78
+  offset: 5, 11
+  index: -1

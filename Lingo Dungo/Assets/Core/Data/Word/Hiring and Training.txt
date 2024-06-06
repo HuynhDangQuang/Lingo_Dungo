@@ -1,0 +1,8 @@
+conduct
+generate
+hire
+mentor
+reject
+success
+training
+update
