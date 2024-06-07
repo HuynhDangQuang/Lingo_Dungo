@@ -10,16 +10,16 @@ namespace Assets.Core.Manager
 {
     public class WordManager
     {
-        public struct MissingWord
-        {
-            public string Topic;
-            public string Word;
-            public MissingWord(string topic, string word)
-            {
-                Topic = topic;
-                Word = word;
-            }
-        }
+        //public struct MissingWord
+        //{
+        //    public string Topic;
+        //    public string Word;
+        //    public MissingWord(string topic, string word)
+        //    {
+        //        Topic = topic;
+        //        Word = word;
+        //    }
+        //}
 
         static private WordManager instance;
         static public WordManager Instance
@@ -45,7 +45,7 @@ namespace Assets.Core.Manager
         private SortedDictionary<string, Word> wordData =
             new SortedDictionary<string, Word>();
 
-        public List<MissingWord> missingWords = new List<MissingWord>();
+        //public List<MissingWord> missingWords = new List<MissingWord>();
 
         public void LoadWordFromPrefs()
         {
@@ -53,7 +53,7 @@ namespace Assets.Core.Manager
             string[] topicFiles = Directory.GetFiles(vocabularyFolderPath, "*.txt");
             topicData.Clear();
             wordData.Clear();
-            missingWords.Clear();
+            //missingWords.Clear();
 
             foreach (string topicFile in topicFiles)
             {
@@ -79,7 +79,7 @@ namespace Assets.Core.Manager
                     {
                         // 5. If not, push warning and add to missing words list
                         Debug.Log("Word in topic [" + topicName + "] is missing: <" + word + ">");
-                        missingWords.Add(new MissingWord(topicName, word));
+                        //missingWords.Add(new MissingWord(topicName, word));
                         //await DictionaryAPI.FetchAndStoreData(word);
                     }
                     else

@@ -14,7 +14,7 @@ public class MainMenu : MonoBehaviour
 
     public void Start()
     {
-
+        AudioManager.Instance.PlayMusic("MenuTheme");
     }
     void Update()
     {
@@ -28,10 +28,12 @@ public class MainMenu : MonoBehaviour
     public void ReviewWords()
     {
         SceneManager.LoadScene("ReviewScene");
+        AudioManager.Instance.PlayMusic("Gallery");
     }
     public void Achievement()
     {
         SceneManager.LoadScene("Achievement");
+        AudioManager.Instance.PlayMusic("Gallery");
     }
 
     public void QuitGame()

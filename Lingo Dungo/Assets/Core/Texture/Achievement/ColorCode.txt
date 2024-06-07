@@ -1,0 +1,3 @@
+frame			DCD603
+foreground		FF7000
+size			256

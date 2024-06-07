@@ -138,6 +138,11 @@ public class LoadingScreen : MonoBehaviour
             description.text = "Download resource done!";
             yield return new WaitForSeconds(0.5f);
         }
+        description.text = "Ready to start game...";
+        yield return new WaitForSeconds(0.5f);
+        AchievementManager.Instance.Initialize();
+        yield return new WaitForSeconds(0.5f);
+
         SceneManager.LoadScene("HomeScreen");
         StopCoroutine(LoadUnits());
     }
