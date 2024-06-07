@@ -33,6 +33,7 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene("Achievement");
     }
+
     public void QuitGame()
     {
         Application.Quit();

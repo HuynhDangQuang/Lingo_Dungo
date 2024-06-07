@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{FDA9F8CB-37FE-6D00-0F02-7CD6A7C86405}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "spine-unity-examples", "spine-unity-examples.csproj", "{BEF5FB4C-136E-594C-8C88-70742BD83DC2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "spine-unity", "spine-unity.csproj", "{4D84ED87-5468-3135-A2F5-5C50A206FBDC}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{FDA9F8CB-37FE-6D00-0F02-7CD6A7C86405}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly", "Assembly.csproj", "{5CF27DD7-027C-F07A-76CC-9D641292E40F}"
 EndProject
@@ -21,6 +21,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FDA9F8CB-37FE-6D00-0F02-7CD6A7C86405}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDA9F8CB-37FE-6D00-0F02-7CD6A7C86405}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDA9F8CB-37FE-6D00-0F02-7CD6A7C86405}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDA9F8CB-37FE-6D00-0F02-7CD6A7C86405}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BEF5FB4C-136E-594C-8C88-70742BD83DC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BEF5FB4C-136E-594C-8C88-70742BD83DC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BEF5FB4C-136E-594C-8C88-70742BD83DC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -29,10 +33,6 @@ Global
 		{4D84ED87-5468-3135-A2F5-5C50A206FBDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4D84ED87-5468-3135-A2F5-5C50A206FBDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4D84ED87-5468-3135-A2F5-5C50A206FBDC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FDA9F8CB-37FE-6D00-0F02-7CD6A7C86405}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FDA9F8CB-37FE-6D00-0F02-7CD6A7C86405}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FDA9F8CB-37FE-6D00-0F02-7CD6A7C86405}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FDA9F8CB-37FE-6D00-0F02-7CD6A7C86405}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5CF27DD7-027C-F07A-76CC-9D641292E40F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5CF27DD7-027C-F07A-76CC-9D641292E40F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5CF27DD7-027C-F07A-76CC-9D641292E40F}.Release|Any CPU.ActiveCfg = Release|Any CPU

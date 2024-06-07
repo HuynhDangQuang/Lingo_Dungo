@@ -10,6 +10,11 @@ public class TopicManager : MonoBehaviour
     public GameObject topicButtonPrefab;
     public Transform topicButtonContainer;
 
+    public Color selectedTopicColor;
+    public Color defaultTopicColor;
+
+    public string selectedTopic;
+
     public static TopicManager instance;
 
     private void Awake()
@@ -33,18 +38,16 @@ public class TopicManager : MonoBehaviour
             GameObject newTopicButton = Instantiate(topicButtonPrefab, topicButtonContainer);
 
             newTopicButton.GetComponentInChildren<Text>().text = topicName;
+            newTopicButton.GetComponent<ReviewTopicButton>().topicManager = this;
 
-
-            EventTrigger trigger = newTopicButton.AddComponent<EventTrigger>();
-            EventTrigger.Entry entry = new EventTrigger.Entry();
-            entry.eventID = EventTriggerType.PointerClick;
-            entry.callback.AddListener((data) => { OnTopicClick(topicName); });
-            trigger.triggers.Add(entry);
+            Button button = newTopicButton.GetComponent<Button>();
+            button.onClick.AddListener(() => OnTopicClick(topicName));
         }
     }
 
     public void OnTopicClick(string topicName)
     {
+        selectedTopic = topicName;
         WordLoader.instance.LoadWords(topicName);
     }
 }

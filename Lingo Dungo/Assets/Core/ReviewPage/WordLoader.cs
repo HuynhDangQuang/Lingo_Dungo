@@ -6,15 +6,20 @@ using System.IO;
 using System.Threading.Tasks;
 using Assets.Core.Manager;
 using UnityEngine.Rendering.UI;
+using TMPro;
 
 public class WordLoader : MonoBehaviour
 {
     public GameObject wordButtonPrefab;
     public Transform wordButtonContainer;
     public Text topicText;
-    public Text wordDefinition;
+    public GameObject wordDefinitionObject;
     public static WordLoader instance;
     private List<string> words;
+
+    public Color selectedWordColor;
+    public Color defaultWordColor;
+    public string selectedWord;
 
     void Start()
     {
@@ -60,16 +65,18 @@ public class WordLoader : MonoBehaviour
 
             textComponent.text = words[i];
 
-            EventTrigger trigger = newButton.AddComponent<EventTrigger>();
-            EventTrigger.Entry entry = new EventTrigger.Entry();
-            entry.eventID = EventTriggerType.PointerClick;
-            entry.callback.AddListener((data) => { OnWordClick(textComponent.text); });
-            trigger.triggers.Add(entry);
+            Button button = newButton.GetComponent<Button>();
+            button.onClick.AddListener(() => OnWordClick(textComponent.text));
+
+            newButton.GetComponent<ReviewWordButton>().loader = this;
         }
     }
 
     public void OnWordClick(string word)
     {
+        selectedWord = word;
+
+        Text wordDefinition = wordDefinitionObject.GetComponent<Text>();
         WordManager wordManager = WordManager.Instance;
 
         if (wordManager.CheckWordIsLoaded(word))
@@ -109,7 +116,7 @@ public class WordLoader : MonoBehaviour
                 }
             }
 
-            fullDefinition = $"Phonetic: {phonetic}\n\n{fullDefinition}";
+            fullDefinition = $"<b>{word}</b>\n<i>Phonetic:</i> {phonetic}\n\n{fullDefinition}";
 
             wordDefinition.text = fullDefinition;
         }

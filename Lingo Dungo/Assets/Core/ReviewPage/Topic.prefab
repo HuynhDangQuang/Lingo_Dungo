@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 98850298139019359}
   - component: {fileID: 98850298139019352}
   - component: {fileID: 4197539921732330066}
+  - component: {fileID: 6065117307430467003}
   m_Layer: 5
   m_Name: Topic
   m_TagString: Untagged
@@ -36,8 +37,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: -4.3338}
-  m_SizeDelta: {x: 95.56, y: 49.6113}
+  m_AnchoredPosition: {x: -2.9249268, y: -4.3338013}
+  m_SizeDelta: {x: 164.0865, y: 49.6113}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &98850298139019359
 CanvasRenderer:
@@ -121,6 +122,20 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &6065117307430467003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 98850298139019354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a069bf441029cac4eb2575143290604c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  topicManager: {fileID: 0}
+  textComponent: {fileID: 98850299789248077}
 --- !u!1 &98850299789248079
 GameObject:
   m_ObjectHideFlags: 0
@@ -153,10 +168,10 @@ RectTransform:
   m_Father: {fileID: 98850298139019353}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.1342, y: -0.00001359}
-  m_SizeDelta: {x: 160.2664, y: 34.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -0.13420105, y: 0}
+  m_SizeDelta: {x: -3.7336, y: -0.0000038147}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &98850299789248076
 CanvasRenderer:
@@ -187,11 +202,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: b8af58820f69b474e8f63dc40a702fbc, type: 3}
-    m_FontSize: 20
+    m_Font: {fileID: 12800000, guid: e3265ab4bf004d28a9537516768c1c75, type: 3}
+    m_FontSize: 16
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 2
+    m_MinSize: 0
     m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
