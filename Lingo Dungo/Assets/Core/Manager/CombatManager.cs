@@ -18,6 +18,7 @@ public class CombatManager : MonoBehaviour
     public GameObject ButtonATK;
     public GameObject ButtonSkill1;
     public GameObject ButtonSkill2;
+    public GameObject ButtonSettings;
     #endregion
 
     #region Animations
@@ -128,6 +129,15 @@ public class CombatManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (state == CombatState.waitForExplaination)
+        {
+            EnableSettingsButton();
+        }
+        else
+        {
+            DisableSettingsButton();
+        }
+
         if (state == CombatState.answering && WordSheet.transform.childCount == 0)
         {
             EnableAvailableSkillButtons();
@@ -293,11 +303,11 @@ public class CombatManager : MonoBehaviour
                     {
                         if (!HasActionPerformed)
                         {
-                            yield return new WaitForSeconds(2f);
+                            yield return new WaitForSeconds(2.5f);
                         }
                         else
                         {
-                            yield return new WaitForSeconds(0.5f);
+                            yield return new WaitForSeconds(1.5f);
                             HasActionPerformed = false;
                         }
                         // Kill the correct/incorrect result animation
@@ -648,6 +658,15 @@ public class CombatManager : MonoBehaviour
         }
     }
 
+    private void DisableSettingsButton()
+    {
+        ButtonSettings.GetComponent<Button>().interactable = false;
+    }
+
+    private void EnableSettingsButton()
+    {
+        ButtonSettings.GetComponent<Button>().interactable = true;
+    }
     #endregion
 
     public enum CombatState

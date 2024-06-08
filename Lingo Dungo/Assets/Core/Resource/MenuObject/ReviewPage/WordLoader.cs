@@ -14,17 +14,21 @@ public class WordLoader : MonoBehaviour
     public Transform wordButtonContainer;
     public Text topicText;
     public GameObject wordDefinitionObject;
+    public Text foundCount;
+
     public static WordLoader instance;
     private List<string> words;
 
     public Color selectedWordColor;
     public Color defaultWordColor;
+    public Color notSeenWordColor;
     public string selectedWord;
 
     void Start()
     {
         //PlayerPrefs.DeleteAll();
         TopicManager.instance.LoadTopics();
+        foundCount.text = $"Found: {AchievementManager.Instance.GetTotalSeenWords()}/{WordManager.Instance.GetWordCount()}";
     }
 
     private void Awake()
@@ -68,7 +72,9 @@ public class WordLoader : MonoBehaviour
             Button button = newButton.GetComponent<Button>();
             button.onClick.AddListener(() => OnWordClick(textComponent.text));
 
-            newButton.GetComponent<ReviewWordButton>().loader = this;
+            ReviewWordButton reviewWordButton = newButton.GetComponent<ReviewWordButton>();
+            reviewWordButton.loader = this;
+            reviewWordButton.seenWordCount = AchievementManager.Instance.GetSeenWordCount(words[i]);
         }
     }
 
