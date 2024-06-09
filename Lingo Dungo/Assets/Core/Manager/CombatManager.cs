@@ -19,6 +19,7 @@ public class CombatManager : MonoBehaviour
     public GameObject ButtonSkill1;
     public GameObject ButtonSkill2;
     public GameObject ButtonSettings;
+    public GameObject SettingsDialog;
     #endregion
 
     #region Animations
@@ -133,7 +134,7 @@ public class CombatManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (state == CombatState.waitForExplaination)
+        if (state == CombatState.waitForExplaination || state == CombatState.performingAction)
         {
             EnableSettingsButton();
         }
@@ -293,7 +294,7 @@ public class CombatManager : MonoBehaviour
                                         break;
                                     }
                             }
-                            yield return new WaitForSeconds(1.5f);
+                            yield return new WaitForSeconds(1.2f);
                             CurrentAction = null;
                             ActionPerformer = null;
                             ActionTargets = new List<Combatant>();
@@ -675,6 +676,16 @@ public class CombatManager : MonoBehaviour
     private void EnableSettingsButton()
     {
         ButtonSettings.GetComponent<Button>().interactable = true;
+    }
+
+    public void PauseGame()
+    {
+        Time.timeScale = 0;
+    }
+
+    public void StopPauseGame()
+    {
+        Time.timeScale = 1;
     }
     #endregion
 

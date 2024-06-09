@@ -12,7 +12,7 @@ public class MainMenu : MonoBehaviour
     public GameObject achieButton;
     public GameObject reviewButton;
     public GameObject quitButton;
-
+    public GameObject settingsWindow;
     public void Start()
     {
         AudioManager.Instance.PlayMusic("MenuTheme");
@@ -28,7 +28,7 @@ public class MainMenu : MonoBehaviour
         DungeonDataManager.Instance.SaveTopics(WordManager.Instance.GetAllTopics());
         //
 
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene("CombatScene");
     }
     public void ReviewWords()
     {

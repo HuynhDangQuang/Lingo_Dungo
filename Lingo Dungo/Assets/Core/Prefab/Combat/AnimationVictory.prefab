@@ -11,6 +11,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AnimationVictory
       objectReference: {fileID: 0}
+    - target: {fileID: 4150012110919724580, guid: e7b9a279498969840ac0044f43c99a53, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 88420ddf53b866b46a87d07a1952fdaa, type: 2}
     - target: {fileID: 4150012110919724581, guid: e7b9a279498969840ac0044f43c99a53, type: 3}
       propertyPath: skeletonDataAsset
       value: 
@@ -29,7 +33,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4150012110919724582, guid: e7b9a279498969840ac0044f43c99a53, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 4150012110919724582, guid: e7b9a279498969840ac0044f43c99a53, type: 3}
       propertyPath: m_LocalRotation.w

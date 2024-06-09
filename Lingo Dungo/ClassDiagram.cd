@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="Action" Collapsed="true">
-    <Position X="9.25" Y="1" Width="1.5" />
+  <Class Name="Action">
+    <Position X="8.75" Y="1" Width="2" />
     <NestedTypes>
       <Enum Name="Action.SkillType" Collapsed="true">
         <TypeIdentifier>
@@ -14,7 +14,7 @@
       <FileName>Assets\Core\Resource\Model\Action.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Class" Collapsed="true">
+  <Class Name="Class">
     <Position X="11.25" Y="1" Width="1.5" />
     <TypeIdentifier>
       <HashCode>EAIAAAAAAAAAQAQAAAAAAAAIAAAEAAAAgCAAAAAAAAA=</HashCode>
@@ -28,43 +28,43 @@
       <FileName>Assets\Core\Resource\Model\Combatant.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Enemy" Collapsed="true">
+  <Class Name="Enemy">
     <Position X="4.5" Y="2.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAACBAAAAAAAAAAAAQAAAAAAAAAIASAAAAAAgAAE=</HashCode>
       <FileName>Assets\Core\Resource\Model\Enemy.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Player" Collapsed="true">
+  <Class Name="Player">
     <Position X="6.75" Y="2.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Assets\Core\Resource\Model\Player.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Skill" Collapsed="true">
-    <Position X="9.25" Y="2" Width="1.5" />
+  <Class Name="Skill">
+    <Position X="1.5" Y="1" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAwAAAAAYAAAABAkAAAZAAAAAAAAgAAAIAA=</HashCode>
       <FileName>Assets\Core\Resource\Model\Skill.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Enum Name="EnemyTypes" Collapsed="true">
-    <Position X="11" Y="3.25" Width="1.5" />
+  <Enum Name="EnemyTypes">
+    <Position X="11.5" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAEAAIAAAQAAAAAAAABAQAAAA=</HashCode>
       <FileName>Assets\Core\Resource\Model\Enemy.cs</FileName>
     </TypeIdentifier>
   </Enum>
-  <Enum Name="PlayerClasses" Collapsed="true">
-    <Position X="9.25" Y="4" Width="1.5" />
+  <Enum Name="PlayerClasses">
+    <Position X="9.5" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Assets\Core\Resource\Model\Player.cs</FileName>
     </TypeIdentifier>
   </Enum>
-  <Enum Name="DamageType" Collapsed="true">
-    <Position X="9.25" Y="3.25" Width="1.5" />
+  <Enum Name="DamageType">
+    <Position X="7.75" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAACAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
       <FileName>Assets\Core\Resource\Model\Skill.cs</FileName>
