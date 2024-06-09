@@ -26,10 +26,7 @@ namespace Assets.Core.Manager
         {
             get
             {
-                if (instance == null)
-                {
-                    instance = new WordManager();
-                }
+                instance ??= new WordManager();
                 return instance;
             }
         }

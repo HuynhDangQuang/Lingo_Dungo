@@ -1,8 +1,8 @@
-﻿using System.Collections;
+﻿using Assets.Core.Manager;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -64,6 +64,10 @@ public class CombatManager : MonoBehaviour
     public CombatState state = CombatState.init;
     public CombatResult result = CombatResult.unfinished;
 
+    #region Static Manager
+    private AchievementManager achievementManager = AchievementManager.Instance;
+    private DungeonDataManager dataManager = DungeonDataManager.Instance;
+    #endregion
 
     private void Awake()
     {
@@ -180,8 +184,12 @@ public class CombatManager : MonoBehaviour
                     }
                 case CombatState.getNewQuestion:
                     {
-                        WordSheet.GetComponent<WordPanel>().NewWord(createQuestion());
-                        CombatTimer.GetComponent<TimerGauge>().StartTimer();
+                        WordSheet.GetComponent<WordPanel>().NewWord(CreateQuestion());
+
+                        TimerGauge timer = CombatTimer.GetComponent<TimerGauge>();
+                        timer.maxValue = 250 + RoundCorrectAnswer.Length * 80;
+                        timer.StartTimer();
+
                         yield return new WaitForSeconds(0.5f);
                         state = CombatState.answering;
                         break;
@@ -377,13 +385,10 @@ public class CombatManager : MonoBehaviour
 
     #region Action
 
-    // demo test case
-    string[] demoTest = { "hello", "apple", "water", "unity", "engine", "demo" };
-
-    private string createQuestion()
+    private string CreateQuestion()
     {
         int index = Random.Range(0,5);
-        string word = demoTest[index].ToUpper();
+        string word = dataManager.GetWord().ToUpper();
         RoundCorrectAnswer = word.ToLower();
         word = Utilities.Shuffle(word);
         return word;
@@ -507,6 +512,10 @@ public class CombatManager : MonoBehaviour
 
                         if (damage > 0)
                         {
+                            // achievement
+                            if (user == ThisPlayer)
+                                achievementManager.progressDealDamage(damage);
+
                             GameObject damageSprite = Instantiate(DamageSprite, target.Model.transform);
                             damageSprite.GetComponent<DamageSprite>().Setup(
                                 Mathf.RoundToInt(damage),

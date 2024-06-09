@@ -2,13 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Unity.Plastic.Newtonsoft.Json;
+using Newtonsoft.Json;
 using UnityEngine;
 
 public class DictionaryAPI : MonoBehaviour
 {
     private static readonly HttpClient client = new HttpClient();
-
     // Method to fetch data from API and store it locally
     public static async Task<int> FetchAndStoreData(string query)
     {

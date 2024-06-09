@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Presets;
 using UnityEngine;
 
 public static class Utilities
@@ -18,6 +17,17 @@ public static class Utilities
             array[n] = value;
         }
         return new string(array);
+    }
+
+    public static void ShuffleList<T>(this IList<T> list)
+    {
+        int n = list.Count;
+        while (n > 1)
+        {
+            n--;
+            int k = Random.Range(0, n - 1);
+            (list[n], list[k]) = (list[k], list[n]);
+        }
     }
 
     public static bool IsOpponent(Combatant obj1, Combatant obj2)

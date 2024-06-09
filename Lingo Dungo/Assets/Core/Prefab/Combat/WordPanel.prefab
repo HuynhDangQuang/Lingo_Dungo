@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 7140589213739801918}
   - component: {fileID: 7140589213739801916}
   - component: {fileID: 7140589213739801919}
-  - component: {fileID: 7140589213739801917}
   - component: {fileID: 7344868805533382540}
+  - component: {fileID: 5748483164714745544}
   m_Layer: 5
   m_Name: WordPanel
   m_TagString: PlayerSheetPanel
@@ -77,30 +77,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &7140589213739801917
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7140589213739801913}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Padding:
-    m_Left: 0
-    m_Right: 0
-    m_Top: 0
-    m_Bottom: 0
-  m_ChildAlignment: 4
-  m_StartCorner: 0
-  m_StartAxis: 0
-  m_CellSize: {x: 80, y: 80}
-  m_Spacing: {x: 4, y: 4}
-  m_Constraint: 0
-  m_ConstraintCount: 2
 --- !u!114 &7344868805533382540
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116,3 +92,27 @@ MonoBehaviour:
   answerSheet: {fileID: 0}
   refObject: {fileID: 0}
   TextSize: 60
+--- !u!114 &5748483164714745544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7140589213739801913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f17e6fedf1a14c1d9cc57983272aaf85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 4
+  m_StartCorner: 0
+  m_StartAxis: 0
+  m_CellSize: {x: 50, y: 50}
+  m_Spacing: {x: 0, y: 0}
+  m_Constraint: 1
+  m_ConstraintCount: 10

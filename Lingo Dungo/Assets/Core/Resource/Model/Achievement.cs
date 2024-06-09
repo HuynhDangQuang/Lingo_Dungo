@@ -43,7 +43,7 @@ namespace Assets.Core.Resource.Model
 
         public float GetProgressRate()
         {
-            return Math.Min(progressValue / goalValue, 1f);
+            return Math.Min(progressValue * 1f / goalValue, 1f);
         }
 
         public int GetProgressPercent()

@@ -124,7 +124,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 3229549132852565197}
         m_TargetAssemblyTypeName: WordButton, Assembly-CSharp
-        m_MethodName: pop
+        m_MethodName: Pop
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -147,6 +147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Index: 0
+  combatManager: {fileID: 0}
 --- !u!1 &7802394297618647508
 GameObject:
   m_ObjectHideFlags: 0

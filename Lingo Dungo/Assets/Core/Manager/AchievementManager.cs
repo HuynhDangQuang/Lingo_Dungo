@@ -11,10 +11,7 @@ public class AchievementManager
     {
         get
         {
-            if (instance == null)
-            {
-                instance = new AchievementManager();
-            }
+            instance ??= new AchievementManager();
             return instance;
         }
     }
