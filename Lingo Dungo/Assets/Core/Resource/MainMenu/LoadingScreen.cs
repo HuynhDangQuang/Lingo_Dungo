@@ -40,7 +40,6 @@ public class LoadingScreen : MonoBehaviour
 
     public IEnumerator LoadUnits()
     {
-        //PlayerPrefs.DeleteAll();
         WordManager wordManager = WordManager.Instance;
 
         string dataPath = Path.Combine(Application.dataPath, "Core/Data/Word");
@@ -55,23 +54,33 @@ public class LoadingScreen : MonoBehaviour
         description.text = "Importing local data...";
         yield return new WaitForSeconds(0.5f);
 
-        wordManager.LoadWordFromPrefs();
-        totalWordCount = wordManager.GetWordCount();
+        WordManager.Instance.LoadTopics();
+        yield return new WaitForSeconds(0.5f);
+
+        SaveManager.Instance.Initialize();
+        yield return new WaitForSeconds(0.5f);
+        SaveManager.Instance.Load();
+
+        totalWordCount = wordManager.GetTotalWordsInTopics();
         yield return new WaitForSeconds(0.5f);
 
         // VERIFYING PHASE
         description.text = "Verifying resource...";
 
-        // to create a fake loading bar
-        foreach (string word in wordManager.GetAllWords())
+        // Validate data
+
+        foreach (List<string> words in wordManager.topicData.Values)
         {
-            if (!wordManager.CheckWordIsLoaded(word))
+            foreach(string word in words)
             {
-                downloadList.Add(word);
+                if (!wordManager.CheckWordIsLoaded(word) && !downloadList.Contains(word))
+                {
+                    downloadList.Add(word);
+                }
+                yield return new WaitForSeconds(0.01f);
+                progress++;
+                fillAmount = progress * 1f / totalWordCount;
             }
-            yield return new WaitForSeconds(0.01f);
-            progress++;
-            fillAmount = progress * 1f / totalWordCount;
         }
 
         yield return new WaitForSeconds(0.5f);
@@ -84,13 +93,12 @@ public class LoadingScreen : MonoBehaviour
         {
             progress = 0;
             totalWordCount = downloadList.Count;
+            description.text = "Downloading resource... (" + progress + "/"
+                    + totalWordCount + ") Please make sure your device is connected with Internet.";
+            fillAmount = progress * 1f / totalWordCount;
 
             foreach (string word in downloadList)
             {
-                description.text = "Downloading resource... (" + progress + "/"
-                                    + totalWordCount + ") Please make sure your device is connected with Internet.";
-                fillAmount = progress * 1f / totalWordCount;
-
                 downloadingWord = word;
 
                 int timeout = 5;
@@ -127,11 +135,15 @@ public class LoadingScreen : MonoBehaviour
                         break;
                     }
                 }
-                wordManager.TryImportMissingWord(word);
+                SaveManager.Instance.Save();
                 yield return new WaitForSeconds(0.02f);
                 progress++;
                 downloadStatus = -2;
                 downloadingWord = "";
+
+                description.text = "Downloading resource... (" + progress + "/"
+                    + totalWordCount + ") Please make sure your device is connected with Internet.";
+                fillAmount = progress * 1f / totalWordCount;
             }
 
             yield return new WaitForSeconds(0.5f);
@@ -139,8 +151,6 @@ public class LoadingScreen : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
         }
         description.text = "Ready to start game...";
-        yield return new WaitForSeconds(0.5f);
-        AchievementManager.Instance.Initialize();
         yield return new WaitForSeconds(0.5f);
 
         SceneManager.LoadScene("HomeScreen");

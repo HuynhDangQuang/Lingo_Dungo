@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Combatant
 {
-    protected int playerID;
+    protected int id;
 
     protected int position;
 

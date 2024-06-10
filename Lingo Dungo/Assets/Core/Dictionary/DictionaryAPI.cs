@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Assets.Core.Manager;
 using Newtonsoft.Json;
 using UnityEngine;
 
@@ -18,50 +19,12 @@ public class DictionaryAPI : MonoBehaviour
             var response = await client.GetStringAsync(url);
             List<Word> words = JsonConvert.DeserializeObject<List<Word>>(response);
 
-            // Check if any words were found
             if (words != null && words.Count > 0)
             {
-                PlayerPrefs.SetString("WordDefinition_" + query, "");
-                foreach (var word in words)
+                foreach (Word word in words)
                 {
-                    // Store the phonetic pronunciation locally
-                    PlayerPrefs.SetString("WordPhonetic_" + query, word.phonetic);
-
-                    // Iterate over each meaning
-                    int meaningIndex = 0;
-                    foreach (var meaning in word.meanings)
-                    {
-                        //string partOfSpeech 
-
-                        // Store the part of speech
-                        string partOfSpeechKey = "WordPartOfSpeech_" + query + "_" + meaningIndex;
-                        PlayerPrefs.SetString(partOfSpeechKey, meaning.partOfSpeech);
-
-                        // Iterate over each definition
-                        int definitionIndex = 0;
-                        foreach (var definition in meaning.definitions)
-                        {
-                            // Store the definition
-                            string definitionKey = "WordDefinition_" + query + "_" + meaningIndex + "_" + definitionIndex;
-                            PlayerPrefs.SetString(definitionKey, definition.definition);
-
-                            // Check if examples exist for the definition
-                            if (definition.examples != null && definition.examples.Count > 0)
-                            {
-                                for (int i = 0; i < definition.examples.Count; i++)
-                                {
-                                    string exampleKey = "WordExample_" + query + "_" + definitionIndex + "_" + i;
-                                    PlayerPrefs.SetString(exampleKey, definition.examples[i]);
-                                }
-                            }
-
-                            definitionIndex++;
-                        }
-
-                        meaningIndex++;
-                    }
+                    WordManager.Instance.ImportWord(query, word);
                 }
-                PlayerPrefs.Save();
                 Debug.Log("Data saved locally for word: " + query);
                 return 0;
             }
@@ -70,6 +33,59 @@ public class DictionaryAPI : MonoBehaviour
                 Debug.Log("No data found for word: " + query);
                 return 1;
             }
+
+            ////// Check if any words were found
+            //if (words != null && words.Count > 0)
+            //{
+            //    PlayerPrefs.SetString("WordDefinition_" + query, "");
+            //    foreach (var word in words)
+            //    {
+            //        // Store the phonetic pronunciation locally
+            //        PlayerPrefs.SetString("WordPhonetic_" + query, word.phonetic);
+
+            //        // Iterate over each meaning
+            //        int meaningIndex = 0;
+            //        foreach (var meaning in word.meanings)
+            //        {
+            //            //string partOfSpeech 
+
+            //            // Store the part of speech
+            //            string partOfSpeechKey = "WordPartOfSpeech_" + query + "_" + meaningIndex;
+            //            PlayerPrefs.SetString(partOfSpeechKey, meaning.partOfSpeech);
+
+            //            // Iterate over each definition
+            //            int definitionIndex = 0;
+            //            foreach (var definition in meaning.definitions)
+            //            {
+            //                // Store the definition
+            //                string definitionKey = "WordDefinition_" + query + "_" + meaningIndex + "_" + definitionIndex;
+            //                PlayerPrefs.SetString(definitionKey, definition.definition);
+
+            //                // Check if examples exist for the definition
+            //                if (definition.examples != null && definition.examples.Count > 0)
+            //                {
+            //                    for (int i = 0; i < definition.examples.Count; i++)
+            //                    {
+            //                        string exampleKey = "WordExample_" + query + "_" + definitionIndex + "_" + i;
+            //                        PlayerPrefs.SetString(exampleKey, definition.examples[i]);
+            //                    }
+            //                }
+
+            //                definitionIndex++;
+            //            }
+
+            //            meaningIndex++;
+            //        }
+            //    }
+            //    PlayerPrefs.Save();
+            //    Debug.Log("Data saved locally for word: " + query);
+            //    return 0;
+            //}
+            //else
+            //{
+            //    Debug.Log("No data found for word: " + query);
+            //    return 1;
+            //}
         }
         catch (HttpRequestException e)
         {

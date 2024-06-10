@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "spine-unity-examples", "spi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "spine-unity", "spine-unity.csproj", "{4D84ED87-5468-3135-A2F5-5C50A206FBDC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly", "Assembly.csproj", "{5CF27DD7-027C-F07A-76CC-9D641292E40F}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Beardy.BeardsGridLayoutGroup.Runtime", "Beardy.BeardsGridLayoutGroup.Runtime.csproj", "{144C3DDA-E038-40D5-E9C4-8E53843BA5AA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "spine-unity-editor", "spine-unity-editor.csproj", "{BC00EC32-E6F3-9C43-43F4-E264FA8B037C}"
@@ -35,10 +33,6 @@ Global
 		{4D84ED87-5468-3135-A2F5-5C50A206FBDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4D84ED87-5468-3135-A2F5-5C50A206FBDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4D84ED87-5468-3135-A2F5-5C50A206FBDC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5CF27DD7-027C-F07A-76CC-9D641292E40F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5CF27DD7-027C-F07A-76CC-9D641292E40F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5CF27DD7-027C-F07A-76CC-9D641292E40F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5CF27DD7-027C-F07A-76CC-9D641292E40F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{144C3DDA-E038-40D5-E9C4-8E53843BA5AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{144C3DDA-E038-40D5-E9C4-8E53843BA5AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{144C3DDA-E038-40D5-E9C4-8E53843BA5AA}.Release|Any CPU.ActiveCfg = Release|Any CPU

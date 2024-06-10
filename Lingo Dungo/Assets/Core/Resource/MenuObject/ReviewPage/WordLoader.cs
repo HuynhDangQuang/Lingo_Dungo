@@ -113,10 +113,14 @@ public class WordLoader : MonoBehaviour
                     {
                         fullDefinition += $"+ {definition.definition}\n";
 
-                        foreach (string example in definition.examples)
+                        if (definition.examples != null)
                         {
-                            fullDefinition += $"<i>Ex: {example}</i>\n";
+                            foreach (string example in definition.examples)
+                            {
+                                fullDefinition += $"<i>Ex: {example}</i>\n";
+                            }
                         }
+
                         fullDefinition += "\n";
                     }
                 }

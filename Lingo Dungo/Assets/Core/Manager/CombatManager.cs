@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class CombatManager : MonoBehaviour
@@ -371,6 +372,7 @@ public class CombatManager : MonoBehaviour
                     }
                 case CombatState.end:
                     {
+                        SceneManager.LoadScene("HomeScreen");
                         StopCoroutine(DoCombatRoutine());
                         yield return new WaitForSeconds(0f);
                         break;

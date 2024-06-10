@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class AchievementManager
 {
+    // Achievement Manager should initialize after WordManager
+
     static private AchievementManager instance;
     static public AchievementManager Instance
     {
@@ -16,11 +18,11 @@ public class AchievementManager
         }
     }
 
-    public void Initialize()
-    {
-        InitializeSeenWordCountGoal();
-        InitializeTravelDungeonGoal();
-    }
+    //public void Initialize()
+    //{
+    //    InitializeSeenWordCountGoal();
+    //    //InitializeTravelDungeonGoal();
+    //}
 
     public void Recaculate()
     {
@@ -34,22 +36,25 @@ public class AchievementManager
 
     #region Seen Words
 
-    private SortedDictionary<string, int> seenWordCount = new SortedDictionary<string, int>();
+    public SortedDictionary<string, int> seenWordCount = new SortedDictionary<string, int>();
 
-    public void InitializeSeenWordCountGoal()
-    {
-        foreach(string word in WordManager.Instance.GetAllWords())
-        {
-            int count = PlayerPrefs.HasKey($"SeenWord_{word}") ? PlayerPrefs.GetInt($"SeenWord_{word}") : 0;
-            seenWordCount.Add(word, count);
-        }
-    }
+    //public void InitializeSeenWordCountGoal()
+    //{
+    //    foreach (string word in WordManager.Instance.GetAllWords())
+    //    {
+    //        seenWordCount.Add(word, 0);
+    //    }
+    //}
 
     public int GetSeenWordCount(string word)
     {
         if (seenWordCount.ContainsKey(word))
         {
             return seenWordCount[word];
+        }
+        else
+        {
+            seenWordCount.Add(word, 0);
         }
         return 0;
     }
@@ -72,8 +77,12 @@ public class AchievementManager
         if (seenWordCount.ContainsKey(word))
         {
             seenWordCount[word] += 1;
-            PlayerPrefs.SetInt($"SeenWord_{word}", seenWordCount[word]);
         }
+        else
+        {
+            seenWordCount.Add(word, 1);
+        }
+        SaveManager.Instance.Save();
     }
 
     #endregion
@@ -82,21 +91,18 @@ public class AchievementManager
 
     #region Travel Dungeon
 
-    private int travelDungeonCount = 0;
-    public int TravelDungeonCount
-    {
-        get { return travelDungeonCount; }
-    }
+    public int TravelDungeonCount = 0;
 
-    private void InitializeTravelDungeonGoal()
-    {
-        travelDungeonCount = PlayerPrefs.HasKey($"TravelDungeonGoal") ? PlayerPrefs.GetInt($"TravelDungeonGoal") : 0;
-    }
+    //private void InitializeTravelDungeonGoal()
+    //{
+    //    travelDungeonCount = PlayerPrefs.HasKey($"TravelDungeonGoal") ? PlayerPrefs.GetInt($"TravelDungeonGoal") : 0;
+    //}
 
-    public void progressTravelDungeon()
+    public void ProgressTravelDungeon()
     {
-        travelDungeonCount++;
-        PlayerPrefs.SetInt($"TravelDungeonGoal", travelDungeonCount);
+        TravelDungeonCount++;
+        SaveManager.Instance.Save();
+        //PlayerPrefs.SetInt($"TravelDungeonGoal", travelDungeonCount);
     }
 
     #endregion
@@ -105,16 +111,12 @@ public class AchievementManager
 
     #region DealDamage
 
-    private int dealDamageCount = 0;
-    public int DealDamageCount
-    {
-        get { return dealDamageCount; }
-    }
+    public int DealDamageCount = 0;
 
-    private void InitializeDealDamageGoal()
-    {
-        dealDamageCount = PlayerPrefs.HasKey($"DealDamageGoal") ? PlayerPrefs.GetInt($"DealDamageGoal") : 0;
-    }
+    //private void InitializeDealDamageGoal()
+    //{
+    //    dealDamageCount = PlayerPrefs.HasKey($"DealDamageGoal") ? PlayerPrefs.GetInt($"DealDamageGoal") : 0;
+    //}
 
     public void progressDealDamage(int damage)
     {
@@ -122,8 +124,8 @@ public class AchievementManager
         {
             return;
         }
-        dealDamageCount += damage;
-        PlayerPrefs.SetInt($"DealDamageGoal", dealDamageCount);
+        DealDamageCount += damage;
+        SaveManager.Instance.Save();
     }
 
     #endregion
