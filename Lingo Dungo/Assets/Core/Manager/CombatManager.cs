@@ -250,7 +250,7 @@ public class CombatManager : MonoBehaviour
                         // Show what is the correct answer
                         CorrectAnswerBoard correctBoard = CorrectAnswerSheet.GetComponent<CorrectAnswerBoard>();
                         correctBoard.Show(RoundCorrectAnswer);
-                        correctBoard.transform.SetSiblingIndex(4);
+                        correctBoard.transform.SetSiblingIndex(correctBoard.transform.childCount - 1);
 
                         yield return new WaitForSeconds(0.5f);
 
@@ -331,7 +331,7 @@ public class CombatManager : MonoBehaviour
                         CorrectAnswerBoard correctBoard = CorrectAnswerSheet.GetComponent<CorrectAnswerBoard>();
                         correctBoard.Hide();
                         yield return new WaitForSeconds(1f);
-                        correctBoard.transform.SetSiblingIndex(3);
+                        correctBoard.transform.SetSiblingIndex(0);
 
                         // Check if combat end
                         result = CheckCombatResult();
@@ -479,7 +479,7 @@ public class CombatManager : MonoBehaviour
                 break;
 
             case "trigger":
-                if (CurrentAction.Type == Action.SkillType.NormalAttack)
+                if (CurrentAction.Type == Action.SkillType.NormalAttack && user is Player)
                 {
                     user.MP += Mathf.RoundToInt(CurrentAction.TimeRate * 20f);
                 }

@@ -32,8 +32,9 @@ public class WordButton : MonoBehaviour
         WordPanel wordPanel = transform.parent.GetComponent<WordPanel>();
         if (wordPanel != null)
         {
+            Beardy.GridLayoutGroup gridLayoutGroup = transform.parent.GetComponent<Beardy.GridLayoutGroup>();
             Text character = transform.GetChild(0).GetComponent<Text>();
-            character.fontSize = wordPanel.transform.childCount <= 10 ? wordPanel.textSize1 : wordPanel.textSize2;
+            character.fontSize = wordPanel.transform.childCount <=  gridLayoutGroup.constraintCount ? wordPanel.textSize1 : wordPanel.textSize2;
         }
     }
 

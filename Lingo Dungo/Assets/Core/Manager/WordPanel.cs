@@ -8,33 +8,22 @@ public class WordPanel : MonoBehaviour
     string Word;
     public GameObject answerSheet;
     public GameObject refObject;
-    public readonly int textSize1 = 60;
-    public readonly int textSize2 = 40;
-    public readonly Vector2 cellSize1 = new Vector2(80, 80);
-    public readonly Vector2 cellSize2 = new Vector2(60, 60);
+    public readonly int textSize1 = 80;
+    public readonly int textSize2 = 56;
+    public readonly Vector2 cellSize1 = new Vector2(100, 100);
+    public readonly Vector2 cellSize2 = new Vector2(80, 80);
 
     // Start is called before the first frame update
     void Start()
     {
-        //NewWord("apple");
-        //GameObject template = transform.GetChild(0).gameObject;
-        //GameObject g;
 
-        //for (int i = 0; i < 5; i++)
-        //{
-        //    g = Instantiate(template, transform);
-        //    g.transform.GetChild(0).GetComponent<Text>().text = i.ToString();
-        //}
-
-        //// Delete Button template
-        //Destroy(template);
     }
 
     // Update is called once per frame
     void Update()
     {
         Beardy.GridLayoutGroup gridLayoutGroup = GetComponent<Beardy.GridLayoutGroup>();
-        gridLayoutGroup.cellSize = transform.childCount <= 10 ? cellSize1 : cellSize2;
+        gridLayoutGroup.cellSize = transform.childCount <= gridLayoutGroup.constraintCount ? cellSize1 : cellSize2;
     }
 
     public void NewWord(string word)
@@ -51,7 +40,6 @@ public class WordPanel : MonoBehaviour
             g = Instantiate(refObject, transform);
             Text textComponent = g.transform.GetChild(0).GetComponent<Text>();
             textComponent.text = word[i].ToString();
-            textComponent.fontSize = transform.childCount <= 10 ? textSize1 : textSize2;
             WordButton wordButton = g.GetComponent<WordButton>();
             wordButton.Index = i;
             wordButton.combatManager = manager.GetComponent<CombatManager>();
