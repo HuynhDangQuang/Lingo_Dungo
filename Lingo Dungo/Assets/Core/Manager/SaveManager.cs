@@ -67,6 +67,5 @@ public class SaveManager
         achievementManager.DealDamageCount = data.dealDamageCount;
         achievementManager.TravelDungeonCount = data.travelDungeonCount;
         achievementManager.seenWordCount = data.seenWordCount;
-
     }
 }

@@ -1,4 +1,5 @@
 using Assets.Core.Manager;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -42,7 +43,6 @@ public class LoadingScreen : MonoBehaviour
     {
         WordManager wordManager = WordManager.Instance;
 
-        string dataPath = Path.Combine(Application.dataPath, "Core/Data/Word");
         int progress = 0;
         int totalWordCount = 0;
         List<string> downloadList = new List<string>();
@@ -52,14 +52,64 @@ public class LoadingScreen : MonoBehaviour
         // IMPORT DATA
 
         description.text = "Importing local data...";
+        bool error = false;
+
+
+        yield return new WaitForSeconds(0.5f);
+        //description.text = SaveManager.Instance.SAVE_FILE;
+
+        //yield return new WaitForSeconds(0.5f);
+        try
+        {
+            WordManager.Instance.LoadTopics();
+        }
+        catch (Exception e)
+        {
+            description.text = "Load topics failed: " + e.Message;
+            error = true;
+        }
+
+        if (error)
+        {
+            yield return new WaitForSeconds(3f);
+            error = false;
+        }
+
+        yield return new WaitForSeconds(0.5f);
+        
+        try
+        {
+            SaveManager.Instance.Initialize();
+        }
+        catch (Exception e)
+        {
+            description.text = $"SaveManager Initialize failed: {e.Message}";
+            error = true;
+        }
+
+        if (error)
+        {
+            yield return new WaitForSeconds(3f);
+            error = false;
+        }
+
         yield return new WaitForSeconds(0.5f);
 
-        WordManager.Instance.LoadTopics();
-        yield return new WaitForSeconds(0.5f);
+        try
+        {
+            SaveManager.Instance.Load();
+        }
+        catch (Exception e)
+        {
+            description.text = $"SaveManager Load failed: {e.Message}";
+            error = true;
+        }
 
-        SaveManager.Instance.Initialize();
-        yield return new WaitForSeconds(0.5f);
-        SaveManager.Instance.Load();
+        if (error)
+        {
+            yield return new WaitForSeconds(3f);
+            error = false;
+        }
 
         totalWordCount = wordManager.GetTotalWordsInTopics();
         yield return new WaitForSeconds(0.5f);
@@ -115,12 +165,19 @@ public class LoadingScreen : MonoBehaviour
                             canExit = false;
                             continue;
                         case DictionaryAPI.TASKRESULT_DATANOTFOUND:
+                            description.text = "Data not found";
                             canExit = true;
                             break;
                         case DictionaryAPI.TASKRESULT_HTTPFAILED:
                             timeout--;
+                            description.text = $"Data HTTP Failed ({timeout})";
                             break;
                         case DictionaryAPI.TASKRESULT_JSONDESERIALIZINGFAIL:
+                            description.text = $"Json serializing fail";
+                            canExit = true;
+                            break;
+                        case DictionaryAPI.TASKRESULT_UNKNOWN_ERROR:
+                            description.text = DictionaryAPI.bugReport;
                             canExit = true;
                             break;
                     }
@@ -136,7 +193,7 @@ public class LoadingScreen : MonoBehaviour
                     }
                 }
                 SaveManager.Instance.Save();
-                yield return new WaitForSeconds(0.02f);
+                yield return new WaitForSeconds(0.5f);
                 progress++;
                 downloadStatus = -2;
                 downloadingWord = "";
@@ -156,38 +213,6 @@ public class LoadingScreen : MonoBehaviour
         SceneManager.LoadScene("HomeScreen");
         StopCoroutine(LoadUnits());
     }
-
-    //public int LoadWordsCount(string filePath)
-    //{
-    //    words = new List<string>();
-    //    int count = 0;
-
-    //    if (File.Exists(filePath))
-    //    {
-    //        string[] wordLines = File.ReadAllLines(filePath);
-
-    //        foreach (string line in wordLines)
-    //        {
-    //            if (line.Trim() != "")
-    //            {
-    //                words.Add(line.Trim());
-    //                DictionaryAPI.FetchAndStoreData(line.Trim());
-                    
-                    
-    //                count++;
-    //            }
-    //        }
-
-    //        words.Sort();
-
-    //    }
-    //    else
-    //    {
-    //        Debug.LogError("File " + filePath + " not founded!");
-    //    }
-
-    //    return count;
-    //}
 
     public async Task LoadWordAsync(string word)
     {

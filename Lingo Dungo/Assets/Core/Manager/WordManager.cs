@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using UnityEngine;
 
@@ -34,8 +35,8 @@ namespace Assets.Core.Manager
         private WordManager() { }
 
 
-        public readonly string vocabularyFolderPath = "Assets/Core/Data/Word";
-        public readonly string localDataPath = "Assets/Core/Data/WordData/"; // Path to save word data
+        public readonly string vocabularyFolderPath = "Word";
+        //public readonly string localDataPath = "Data/WordData/"; // Path to save word data
 
         public SortedDictionary<string, List<string>> topicData = new SortedDictionary<string, List<string>>();
 
@@ -46,19 +47,19 @@ namespace Assets.Core.Manager
         public void LoadTopics()
         {
             // 1. Get all vocabulary text files
-            string[] topicFiles = Directory.GetFiles(vocabularyFolderPath, "*.txt");
+            TextAsset[] topicFiles = Resources.LoadAll(vocabularyFolderPath).Cast<TextAsset>().ToArray();
+
             topicData.Clear();
             wordData.Clear();
             //missingWords.Clear();
 
-            foreach (string topicFile in topicFiles)
+            foreach (TextAsset topicFile in topicFiles)
             {
-                string topicName = Path.GetFileNameWithoutExtension(topicFile);
+                string topicName = topicFile.name;
                 topicData.Add(topicName, new List<string>());
 
                 // 2. Extract words from the current text file
-                string[] words = File.ReadAllLines(topicFile);
-
+                string[] words = topicFile.text.Split(new char[] {'\r', '\n'}, StringSplitOptions.RemoveEmptyEntries);
                 foreach (string word in words)
                 {
                     topicData[topicName].Add(word);

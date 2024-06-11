@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using Assets.Core.Manager;
 using UnityEngine.Rendering.UI;
 using TMPro;
+using System;
+using System.Linq;
 
 public class WordLoader : MonoBehaviour
 {
@@ -96,7 +98,7 @@ public class WordLoader : MonoBehaviour
             {
                 //Debug.Log("Part of speech: " + partOfSpeech);
 
-                List<Meaning> meanings = wordData.meanings.FindAll(x => x.partOfSpeech == partOfSpeech);
+                List<Meaning> meanings = Array.FindAll(wordData.meanings, x => x.partOfSpeech == partOfSpeech).ToList();
 
                 if (meanings.Count > 0)
                 {
@@ -113,12 +115,9 @@ public class WordLoader : MonoBehaviour
                     {
                         fullDefinition += $"+ {definition.definition}\n";
 
-                        if (definition.examples != null)
+                        if (definition.example != null && definition.example != "")
                         {
-                            foreach (string example in definition.examples)
-                            {
-                                fullDefinition += $"<i>Ex: {example}</i>\n";
-                            }
+                            fullDefinition += $"<i>Ex: {definition.example}</i>\n";
                         }
 
                         fullDefinition += "\n";

@@ -287,6 +287,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fill: {fileID: 1594370737}
   description: {fileID: 1202476785}
+  downloadingWord: 
+  downloadStatus: -2
 --- !u!1 &1202476783
 GameObject:
   m_ObjectHideFlags: 0
@@ -319,10 +321,10 @@ RectTransform:
   m_Father: {fileID: 2048146105}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.00039673, y: 29}
-  m_SizeDelta: {x: 875.72, y: 30}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0.00039673, y: 18}
+  m_SizeDelta: {x: 875.72, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1202476785
 MonoBehaviour:
@@ -346,7 +348,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 16
+    m_FontSize: 24
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -401,7 +403,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 72}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 200, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1497099230
 MonoBehaviour:
@@ -425,7 +427,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 20
+    m_FontSize: 36
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
@@ -554,7 +556,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000091552734, y: 0.12650013}
+  m_AnchoredPosition: {x: 0.00012207031, y: 0.12650013}
   m_SizeDelta: {x: 0.85998535, y: 0.25300026}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1594370737
@@ -623,7 +625,7 @@ Transform:
   m_GameObject: {fileID: 1785727467}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 73, z: -1}
-  m_LocalScale: {x: 20, y: 20, z: 0}
+  m_LocalScale: {x: 30, y: 30, z: 0}
   m_Children: []
   m_Father: {fileID: 2096577059}
   m_RootOrder: 1
