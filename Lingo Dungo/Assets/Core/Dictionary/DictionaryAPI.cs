@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Assets.Core.Manager;
 using Newtonsoft.Json;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Rendering.UI;
 
 public class DictionaryAPI : MonoBehaviour
 {
@@ -28,10 +30,10 @@ public class DictionaryAPI : MonoBehaviour
 
             if (wrapper != null && wrapper.words.Count > 0)
             {
-                foreach (Word word in wrapper.words)
-                {
-                    WordManager.Instance.ImportWord(query, word);
-                }
+                Word word = GetMostDetailedWord(wrapper.words);
+
+                WordManager.Instance.ImportWord(query, word);
+
                 Debug.Log("Data saved locally for word: " + query);
                 return 0;
             }
@@ -59,6 +61,85 @@ public class DictionaryAPI : MonoBehaviour
             Debug.LogError(e.Message);
             return 4;
         }   
+    }
+
+    public static Word GetMostDetailedWord(List<Word> words)
+    {
+        Word bestResult = null;
+
+        foreach(Word word in words)
+        {
+            if (bestResult == null)
+            {
+                bestResult = word;
+                continue;
+            }
+
+            if (CompareDetailedValueOfWord(bestResult, word) == -1)
+            {
+                bestResult = word;
+            }
+        }
+
+        return bestResult;
+    }
+
+    public static int CompareDetailedValueOfWord(Word a, Word b)
+    {
+        // HAS PHONETIC WILL BE THE FIRST PRIORITY
+
+        // A more detailed than B
+        if (!Utilities.StringNullOrEmpty(a.phonetic) && Utilities.StringNullOrEmpty(b.phonetic))
+        {
+            return 1;
+        }
+        // B more detailed than A
+        if (Utilities.StringNullOrEmpty(a.phonetic) && !Utilities.StringNullOrEmpty(b.phonetic))
+        {
+            return -1;
+        }
+
+        // COMPARE THE LENGTH OF MEANINGS
+
+        // A more detailed than B
+        if (a.meanings.Length > b.meanings.Length)
+        {
+            return 1;
+        }
+
+        // B more detailed than A
+        if (a.meanings.Length < b.meanings.Length)
+        {
+            return -1;
+        }
+
+        // COMPARE THE LENGTH OF DEFINITIONS
+        
+        int definitionsACount = 0;
+        int definitionsBCount = 0;
+        foreach (Meaning meaning in a.meanings)
+        {
+            definitionsACount += meaning.definitions.Length;
+        }
+
+        foreach (Meaning meaning in b.meanings)
+        {
+            definitionsBCount += meaning.definitions.Length;
+        }
+
+        // A more detailed than B
+        if (definitionsACount > definitionsBCount)
+        {
+            return 1;
+        }
+
+        // B more detailed than A
+        if (definitionsACount < definitionsBCount)
+        {
+            return -1;
+        }
+
+        return 0;
     }
 
     public const int TASKRESULT_SUCCESS = 0;

@@ -26,9 +26,12 @@ public class MainMenu : MonoBehaviour
     {
         // Temporary use 
         DungeonDataManager.Instance.SaveTopics(WordManager.Instance.GetAllTopics());
+        DungeonDataManager.Instance.Dispose();
+        DungeonDataManager.Instance.InitializeDemoParty();
+        DungeonDataManager.Instance.CreateDemoDungeon();
         //
 
-        SceneManager.LoadScene("CombatScene");
+        SceneManager.LoadScene("DungeonScene");
     }
     public void ReviewWords()
     {

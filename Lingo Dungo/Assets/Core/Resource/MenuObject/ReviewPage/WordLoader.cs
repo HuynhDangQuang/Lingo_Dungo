@@ -91,6 +91,16 @@ public class WordLoader : MonoBehaviour
         {
             Word wordData = wordManager.GetWordData(word);
             string phonetic = wordData.phonetic;
+            List<string> phonetics = new List<string>();
+
+            foreach (Phonetic element in wordData.phonetics)
+            {
+                if (!Utilities.StringNullOrEmpty(element.text) && !phonetics.Contains(element.text))
+                {
+                    phonetics.Add(element.text);
+                }
+            }
+
             string fullDefinition = "";
 
             string[] partsOfSpeech = { "noun", "verb", "adjective", "adverb" };
@@ -125,7 +135,32 @@ public class WordLoader : MonoBehaviour
                 }
             }
 
-            fullDefinition = $"<b>{word}</b>\n<i>Phonetic:</i> {phonetic}\n\n{fullDefinition}";
+            string fullPhonetic = "";
+            
+            if (phonetics.Count == 0)
+            {
+                fullPhonetic = $"<i>Phonetic:</i> {phonetic}";
+            }
+            else if (phonetics.Count == 1)
+            {
+                fullPhonetic = $"<i>Phonetic:</i> {phonetics.First()}";
+            }
+            else
+            {
+                int count = 1;
+                fullPhonetic = $"<i>Phonetics:</i>\n";
+                foreach (string element in phonetics)
+                {
+                    fullPhonetic += $"  <b>{count}.</b> {element}";
+                    if (element != phonetics.Last())
+                    {
+                        fullPhonetic += "\n";
+                    }
+                    count++;
+                }
+            }
+
+            fullDefinition = $"<b>{word}</b>\n{fullPhonetic}\n\n{fullDefinition}";
 
             wordDefinition.text = fullDefinition;
         }

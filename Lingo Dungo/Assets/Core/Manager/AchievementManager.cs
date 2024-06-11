@@ -125,7 +125,6 @@ public class AchievementManager
             return;
         }
         DealDamageCount += damage;
-        SaveManager.Instance.Save();
     }
 
     #endregion

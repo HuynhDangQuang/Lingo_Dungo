@@ -34,4 +34,9 @@ public static class Utilities
     {
         return (obj1 is Player && obj2 is Enemy) || (obj1 is Enemy && obj2 is Player);
     }
+
+    public static bool StringNullOrEmpty(string str)
+    {
+        return str == null || str.Length == 0;
+    }
 }

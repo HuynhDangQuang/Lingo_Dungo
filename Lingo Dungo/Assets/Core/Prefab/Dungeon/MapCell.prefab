@@ -1,0 +1,112 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1737246407493217274
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4581398125998564373}
+  - component: {fileID: 5014658008717081744}
+  - component: {fileID: 4865133084500672746}
+  - component: {fileID: 2400616541985923263}
+  m_Layer: 5
+  m_Name: MapCell
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &4581398125998564373
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1737246407493217274}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &5014658008717081744
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1737246407493217274}
+  m_CullTransparentMesh: 1
+--- !u!114 &4865133084500672746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1737246407493217274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 992f801dfb35c404293411bf63bd8b02, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2400616541985923263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1737246407493217274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e2933fae780a0b469411de600f54b6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cellUp: {fileID: 21300000, guid: 9266d70ac4ad4d248915cea4c4f0541f, type: 3}
+  cellDown: {fileID: 21300000, guid: 974800e3f02008340897779f558b4c52, type: 3}
+  cellLeft: {fileID: 21300000, guid: fa1b7207cc9311d41a4be1cbaf487ea1, type: 3}
+  cellRight: {fileID: 21300000, guid: af4fc1d2d04257646a2dd89c1ba3c424, type: 3}
+  cellUpLeft: {fileID: 21300000, guid: c6eb63c35a2865740bb0f62e7355975d, type: 3}
+  cellUpRight: {fileID: 21300000, guid: 42972be601761b64ab225588f791de25, type: 3}
+  cellDownLeft: {fileID: 21300000, guid: 440d18f17f72b85408d83f48417dfdaa, type: 3}
+  cellDownRight: {fileID: 21300000, guid: 233c2b0dae1c43540971da3bb5839767, type: 3}
+  cellUpT: {fileID: 21300000, guid: e6389e58879e3434fa09a78467026673, type: 3}
+  cellDownT: {fileID: 21300000, guid: f1a95fa14b8ebc54ea3ca5cfde4f6424, type: 3}
+  cellLeftT: {fileID: 21300000, guid: 0eddf5058d08b1248bd5833f3fe6942a, type: 3}
+  cellRightT: {fileID: 21300000, guid: 8e5fc4d217cdb62458cc558317530c10, type: 3}
+  cellUpDown: {fileID: 21300000, guid: ed0d6f149723602428f8bca3e6cc9331, type: 3}
+  cellLeftRight: {fileID: 21300000, guid: 5f08ea92aff0ca7408862c3174521ff0, type: 3}
+  cellAll: {fileID: 21300000, guid: 25ea4b2cab53c10498c67973a29e3667, type: 3}
+  cellEmpty: {fileID: 21300000, guid: 992f801dfb35c404293411bf63bd8b02, type: 3}
+  cellUnknown: {fileID: 21300000, guid: fab298e6a6c92564eb281ce5caeeb7fd, type: 3}
+  up: 0
+  down: 0
+  left: 0
+  right: 0
+  unknown: 1

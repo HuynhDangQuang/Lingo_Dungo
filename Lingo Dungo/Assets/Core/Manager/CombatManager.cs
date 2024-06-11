@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security;
 using UnityEngine;
+using UnityEngine.Rendering.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -63,12 +64,20 @@ public class CombatManager : MonoBehaviour
     public bool HasActionPerformed = false;
     public string RoundCorrectAnswer;
 
+    #region Params
+    [Header("Combat Params")]
+    public float bonusRateOnWordLength = 0.02f;
+    #endregion
+
     public CombatState state = CombatState.init;
     public CombatResult result = CombatResult.unfinished;
+
+    private bool needToSave = false;
 
     #region Static Manager
     private AchievementManager achievementManager = AchievementManager.Instance;
     private DungeonDataManager dataManager = DungeonDataManager.Instance;
+    PresetModelManager presetModelManager = PresetModelManager.Instance;
     #endregion
 
     private void Awake()
@@ -84,50 +93,85 @@ public class CombatManager : MonoBehaviour
 
         DisableSkillButtons();
 
-        // This is demo. First puppet will be treat as current player
-        ThisPlayer = new Player(PlayerClasses.Knight);
+        //// This is demo. First puppet will be treat as current player
+        //ThisPlayer = new Player(PlayerClasses.Knight);
 
-        Allies[0] = ThisPlayer;
+        //Allies[0] = ThisPlayer;
 
-        Enemies[0] = new Enemy(EnemyTypes.MonsterA);
+        //Enemies[0] = new Enemy(EnemyTypes.MonsterA);
 
-        Allies[0].AttachModel(AlliesModel[0]);
-        Enemies[0].AttachModel(EnemiesModel[0]);
-
-        PresetModelManager presetModelManager = GetComponent<PresetModelManager>();
-
-        // Hide puppets that don't have owner
-        foreach (GameObject ally in AlliesModel)
+        ThisPlayer = dataManager.thisPlayer;
+        for (int i = 0; i < 4; i++)
         {
-            Model model = ally.GetComponent<Model>();
-            if (model.owner == null)
+            Allies[i] = dataManager.party[i];
+            Enemies[i] = dataManager.GetCurrentRoom().enemies[i];
+        }
+
+        dataManager.GetCurrentRoom().ReleaseEnemies();
+
+        //Allies[0].AttachModel(AlliesModel[0]);
+        //Enemies[0].AttachModel(EnemiesModel[0]);
+
+        //// Hide puppets that don't have owner
+        //foreach (GameObject ally in AlliesModel)
+        //{
+        //    Model model = ally.GetComponent<Model>();
+        //    if (model.owner == null)
+        //    {
+        //        ally.SetActive(false);
+        //    }
+        //    else
+        //    {
+        //        Combatant tmp = model.owner;
+        //        presetModelManager.ImportPreset(ally, model.owner.modelId);
+        //        model.RefreshModel();
+        //        model.owner = tmp;
+        //    }
+        //}
+
+        for (int i = 0; i < Allies.Length; i++)
+        {
+            if (Allies[i] != null)
             {
-                ally.SetActive(false);
+                presetModelManager.ImportPreset(AlliesModel[i], Allies[i].modelId);
+                Allies[i].AttachModel(AlliesModel[i]);
+                AlliesModel[i].GetComponent<Model>().RefreshModel();
             }
             else
             {
-                Combatant tmp = model.owner;
-                presetModelManager.ImportPreset(ally, model.owner.modelId);
-                model.RefreshModel();
-                model.owner = tmp;
+                AlliesModel[i].SetActive(false);
             }
         }
 
-        foreach (GameObject enemy in EnemiesModel)
+        for (int i = 0; i < Enemies.Length; i++)
         {
-            Model model = enemy.GetComponent<Model>();
-            if (model.owner == null)
+            if (Enemies[i] != null)
             {
-                enemy.SetActive(false);
+                presetModelManager.ImportPreset(EnemiesModel[i], Enemies[i].modelId);
+                Enemies[i].AttachModel(EnemiesModel[i]);
+                EnemiesModel[i].GetComponent<Model>().RefreshModel();
             }
             else
             {
-                Combatant tmp = model.owner;
-                presetModelManager.ImportPreset(enemy, model.owner.modelId);
-                model.RefreshModel();
-                model.owner = tmp;
+                EnemiesModel[i].SetActive(false);
             }
         }
+
+        //foreach (GameObject enemy in EnemiesModel)
+        //{
+        //    Model model = enemy.GetComponent<Model>();
+        //    if (model.owner == null)
+        //    {
+        //        enemy.SetActive(false);
+        //    }
+        //    else
+        //    {
+        //        Combatant tmp = model.owner;
+        //        presetModelManager.ImportPreset(enemy, model.owner.modelId);
+        //        model.RefreshModel();
+        //        model.owner = tmp;
+        //    }
+        //}
 
         StartCoroutine(DoCombatRoutine());
     }
@@ -332,6 +376,12 @@ public class CombatManager : MonoBehaviour
                         correctBoard.Hide();
                         yield return new WaitForSeconds(1f);
                         correctBoard.transform.SetSiblingIndex(0);
+                        
+                        if (needToSave)
+                        {
+                            needToSave = false;
+                            SaveManager.Instance.Save();
+                        }
 
                         // Check if combat end
                         result = CheckCombatResult();
@@ -341,7 +391,9 @@ public class CombatManager : MonoBehaviour
                                 {
                                     // Play victory animation
                                     Instantiate(combatWonAnimation, null);
-                                    yield return new WaitForSeconds(2f);
+                                    yield return new WaitForSeconds(5f);
+                                    
+                                    SceneManager.LoadScene("DungeonScreen");
 
                                     // Handle other thing
                                     state = CombatState.end;
@@ -352,7 +404,9 @@ public class CombatManager : MonoBehaviour
                                 {
                                     // Play gameover animation
                                     Instantiate(combatLoseAnimation, null);
-                                    yield return new WaitForSeconds(2f);
+                                    yield return new WaitForSeconds(5f);
+
+                                    SceneManager.LoadScene("HomeScreen");
 
                                     // Handle other thing
                                     state = CombatState.end;
@@ -372,7 +426,6 @@ public class CombatManager : MonoBehaviour
                     }
                 case CombatState.end:
                     {
-                        SceneManager.LoadScene("HomeScreen");
                         StopCoroutine(DoCombatRoutine());
                         yield return new WaitForSeconds(0f);
                         break;
@@ -481,7 +534,8 @@ public class CombatManager : MonoBehaviour
             case "trigger":
                 if (CurrentAction.Type == Action.SkillType.NormalAttack && user is Player)
                 {
-                    user.MP += Mathf.RoundToInt(CurrentAction.TimeRate * 20f);
+                    float bonus = CurrentAction.TimeRate + GetBonusRateOnWordLength(user);
+                    user.MP += Mathf.RoundToInt(bonus * 20f);
                 }
                 CurrentAction.Skill.ApplySelfEffect(user, CurrentAction.TimeRate);
 
@@ -490,7 +544,8 @@ public class CombatManager : MonoBehaviour
                     foreach (Combatant target in ActionTargets)
                     {
                         // Append Damage
-                        int damage = CaculateDamage(user, target, CurrentAction.TimeRate);
+                        float bonus = CurrentAction.TimeRate + GetBonusRateOnWordLength(user);
+                        int damage = CaculateDamage(user, target, bonus);
 
                         // Barrier Block
                         int blockAmount = 0;
@@ -517,7 +572,10 @@ public class CombatManager : MonoBehaviour
                         {
                             // achievement
                             if (user == ThisPlayer)
+                            {
                                 achievementManager.progressDealDamage(damage);
+                                needToSave = true;
+                            }
 
                             GameObject damageSprite = Instantiate(DamageSprite, target.Model.transform);
                             damageSprite.GetComponent<DamageSprite>().Setup(
@@ -592,6 +650,15 @@ public class CombatManager : MonoBehaviour
             else 
                 combatant.JustGainBarrier = false;
         }
+    }
+
+    public float GetBonusRateOnWordLength(Combatant user)
+    {
+        if (user is Enemy)
+        {
+            return 0f;
+        }
+        return bonusRateOnWordLength * RoundCorrectAnswer.Length;
     }
 
     void RegisterEnemiesAction()
@@ -702,11 +769,12 @@ public class CombatManager : MonoBehaviour
         getNewQuestion,
         end
     }
+}
 
-    public enum CombatResult
-    {
-        win,
-        lose,
-        unfinished
-    }
+public enum CombatResult
+{
+    win,
+    lose,
+    unfinished,
+    notFighting
 }

@@ -16,6 +16,8 @@ public class PresetModelManager : MonoBehaviour
         public RuntimePresets.Preset animationPreset;
     }
 
+    public static PresetModelManager Instance;
+
     public List<NamedPreset> ModelPresets = new List<NamedPreset>();
 
     public bool ImportPreset(GameObject target, string presetId)
@@ -51,6 +53,19 @@ public class PresetModelManager : MonoBehaviour
         {
             Console.Error.WriteLine("Preset is not found");
             return false;
+        }
+    }
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
         }
     }
 

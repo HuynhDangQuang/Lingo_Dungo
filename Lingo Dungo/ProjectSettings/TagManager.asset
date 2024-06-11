@@ -57,6 +57,15 @@ TagManager:
   - name: Map
     uniqueID: 3347282963
     locked: 0
+  - name: MapObject
+    uniqueID: 557469523
+    locked: 0
+  - name: Actor
+    uniqueID: 2184152885
+    locked: 0
+  - name: FrontMapObject
+    uniqueID: 986554641
+    locked: 0
   - name: UI
     uniqueID: 2142027175
     locked: 0

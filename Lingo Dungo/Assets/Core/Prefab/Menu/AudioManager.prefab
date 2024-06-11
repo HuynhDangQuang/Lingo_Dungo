@@ -310,6 +310,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: e21ad2435c772324bb931ca10742cda5, type: 3}
   - name: DungeonLost
     clip: {fileID: 8300000, guid: 219accdd75f0ab04b901fffe733c56e1, type: 3}
+  - name: DungeonTheme
+    clip: {fileID: 8300000, guid: 660ed755d890dca439534f9bfd2d584c, type: 3}
   sfxSounds:
   - name: AnswerCorrect
     clip: {fileID: 8300000, guid: 21d0ff784300ca941a3e532994fcf0af, type: 3}
@@ -327,5 +329,9 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 31c8f43fcb7e60c428395ea873a0031a, type: 3}
   - name: SkillPressed
     clip: {fileID: 8300000, guid: b23ed43421330794c804a5df5e533266, type: 3}
+  - name: CombatStart
+    clip: {fileID: 8300000, guid: 2429c35aa81484a41ba08a3fb9827cde, type: 3}
+  - name: Surprise
+    clip: {fileID: 8300000, guid: c503d8dd93643f04db87dd690413b41a, type: 3}
   musicSource: {fileID: 4759728645314403762}
   sfxSource: {fileID: 4759728645784473486}
