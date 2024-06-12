@@ -1,10 +1,21 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static PresetModelManager;
 
 public class MapCell : MonoBehaviour
 {
+    [Serializable]
+    public struct RoomIcon
+    {
+        public string id;
+        public Sprite icon;
+    }
+
+    #region Sprites
+    [Header("Sprites")]
     public Sprite cellUp;
     public Sprite cellDown;
     public Sprite cellLeft;
@@ -22,6 +33,11 @@ public class MapCell : MonoBehaviour
     public Sprite cellAll;
     public Sprite cellEmpty;
     public Sprite cellUnknown;
+    #endregion
+
+    [Header("Room Icon")]
+    public Image icon;
+    public List<RoomIcon> roomIcons;
 
     public bool up = false;
     public bool down = false;
@@ -41,6 +57,19 @@ public class MapCell : MonoBehaviour
         
     }
 
+    public void SetIcon(string id)
+    {
+        RoomIcon? src = roomIcons.Find(x => x.id == id);
+        if (src.Value.id != null)
+        {
+            icon.sprite = src.Value.icon;
+        }
+        else
+        {
+            icon.sprite = roomIcons[0].icon;
+        }
+    }
+
     public void Setup(bool up, bool down, bool left, bool right, bool unknown = false)
     {
         this.up = up;
@@ -48,6 +77,7 @@ public class MapCell : MonoBehaviour
         this.left = left;
         this.right = right;
         this.unknown = unknown;
+        SetIcon("empty");
 
         Image image = GetComponent<Image>();
         if (unknown)

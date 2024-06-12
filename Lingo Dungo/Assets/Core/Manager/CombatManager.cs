@@ -21,7 +21,7 @@ public class CombatManager : MonoBehaviour
     public GameObject ButtonSkill1;
     public GameObject ButtonSkill2;
     public GameObject ButtonSettings;
-    public GameObject SettingsDialog;
+    public Text AnswerHint;
     #endregion
 
     #region Animations
@@ -93,13 +93,6 @@ public class CombatManager : MonoBehaviour
 
         DisableSkillButtons();
 
-        //// This is demo. First puppet will be treat as current player
-        //ThisPlayer = new Player(PlayerClasses.Knight);
-
-        //Allies[0] = ThisPlayer;
-
-        //Enemies[0] = new Enemy(EnemyTypes.MonsterA);
-
         ThisPlayer = dataManager.thisPlayer;
         for (int i = 0; i < 4; i++)
         {
@@ -108,26 +101,6 @@ public class CombatManager : MonoBehaviour
         }
 
         dataManager.GetCurrentRoom().ReleaseEnemies();
-
-        //Allies[0].AttachModel(AlliesModel[0]);
-        //Enemies[0].AttachModel(EnemiesModel[0]);
-
-        //// Hide puppets that don't have owner
-        //foreach (GameObject ally in AlliesModel)
-        //{
-        //    Model model = ally.GetComponent<Model>();
-        //    if (model.owner == null)
-        //    {
-        //        ally.SetActive(false);
-        //    }
-        //    else
-        //    {
-        //        Combatant tmp = model.owner;
-        //        presetModelManager.ImportPreset(ally, model.owner.modelId);
-        //        model.RefreshModel();
-        //        model.owner = tmp;
-        //    }
-        //}
 
         for (int i = 0; i < Allies.Length; i++)
         {
@@ -157,21 +130,7 @@ public class CombatManager : MonoBehaviour
             }
         }
 
-        //foreach (GameObject enemy in EnemiesModel)
-        //{
-        //    Model model = enemy.GetComponent<Model>();
-        //    if (model.owner == null)
-        //    {
-        //        enemy.SetActive(false);
-        //    }
-        //    else
-        //    {
-        //        Combatant tmp = model.owner;
-        //        presetModelManager.ImportPreset(enemy, model.owner.modelId);
-        //        model.RefreshModel();
-        //        model.owner = tmp;
-        //    }
-        //}
+        AnswerHint.text = "";
 
         StartCoroutine(DoCombatRoutine());
     }
@@ -231,6 +190,7 @@ public class CombatManager : MonoBehaviour
                 case CombatState.getNewQuestion:
                     {
                         WordSheet.GetComponent<WordPanel>().NewWord(CreateQuestion());
+                        AnswerHint.text = $"Hint: {WordManager.Instance.GetRandomDefinition(RoundCorrectAnswer)}";
 
                         TimerGauge timer = CombatTimer.GetComponent<TimerGauge>();
                         timer.maxValue = 250 + RoundCorrectAnswer.Length * 80;
@@ -371,6 +331,7 @@ public class CombatManager : MonoBehaviour
                         WordSheet.GetComponent<WordPanel>().ClearWord();
                         AnswerSheet.GetComponent<AnswerPanel>().ClearWord();
                         CombatTimer.GetComponent<TimerGauge>().CurrentValue = 0;
+                        AnswerHint.text = "";
 
                         CorrectAnswerBoard correctBoard = CorrectAnswerSheet.GetComponent<CorrectAnswerBoard>();
                         correctBoard.Hide();
@@ -391,9 +352,7 @@ public class CombatManager : MonoBehaviour
                                 {
                                     // Play victory animation
                                     Instantiate(combatWonAnimation, null);
-                                    yield return new WaitForSeconds(5f);
-                                    
-                                    SceneManager.LoadScene("DungeonScreen");
+                                    yield return new WaitForSeconds(4f);
 
                                     // Handle other thing
                                     state = CombatState.end;
@@ -404,9 +363,7 @@ public class CombatManager : MonoBehaviour
                                 {
                                     // Play gameover animation
                                     Instantiate(combatLoseAnimation, null);
-                                    yield return new WaitForSeconds(5f);
-
-                                    SceneManager.LoadScene("HomeScreen");
+                                    yield return new WaitForSeconds(4f);
 
                                     // Handle other thing
                                     state = CombatState.end;
@@ -426,6 +383,30 @@ public class CombatManager : MonoBehaviour
                     }
                 case CombatState.end:
                     {
+                        // Clear combat
+                        List<Combatant> all = new List<Combatant>();
+                        all.AddRange(Allies);
+                        all.AddRange(Enemies);
+                        foreach (Combatant combatant in all)
+                        {
+                            if (combatant != null)
+                                combatant.Barrier = 0;
+                        }
+
+                        switch (result)
+                        {
+                            case CombatResult.win:
+                                {
+                                    SceneManager.LoadScene("DungeonScene");
+                                    break;
+                                }
+                            case CombatResult.lose:
+                                {
+                                    dataManager.combatResult = CombatResult.lose;
+                                    SceneManager.LoadScene("ConclusionScene");
+                                    break;
+                                }
+                        }
                         StopCoroutine(DoCombatRoutine());
                         yield return new WaitForSeconds(0f);
                         break;
@@ -573,7 +554,7 @@ public class CombatManager : MonoBehaviour
                             // achievement
                             if (user == ThisPlayer)
                             {
-                                achievementManager.progressDealDamage(damage);
+                                achievementManager.ProgressDealDamage(damage);
                                 needToSave = true;
                             }
 

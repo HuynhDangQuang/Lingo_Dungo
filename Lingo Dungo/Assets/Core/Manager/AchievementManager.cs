@@ -26,7 +26,7 @@ public class AchievementManager
 
     public void Recaculate()
     {
-        caculateClearTopicCount();
+        CaculateClearTopicCount();
 
     }
 
@@ -118,7 +118,7 @@ public class AchievementManager
     //    dealDamageCount = PlayerPrefs.HasKey($"DealDamageGoal") ? PlayerPrefs.GetInt($"DealDamageGoal") : 0;
     //}
 
-    public void progressDealDamage(int damage)
+    public void ProgressDealDamage(int damage)
     {
         if (damage < 0)
         {
@@ -149,7 +149,7 @@ public class AchievementManager
         return true;
     }
 
-    public void caculateClearTopicCount()
+    public void CaculateClearTopicCount()
     {
         int result = 0;
         foreach (string topic in WordManager.Instance.GetAllTopics())

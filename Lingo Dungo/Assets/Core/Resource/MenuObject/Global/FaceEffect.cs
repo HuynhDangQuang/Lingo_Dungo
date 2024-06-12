@@ -47,6 +47,16 @@ public class FaceEffect : MonoBehaviour
         description = "";
     }
 
+    public void SendToBack()
+    {
+        gameObject.transform.SetSiblingIndex(0);
+    }
+
+    public void BringToFront()
+    {
+        gameObject.transform.SetSiblingIndex(transform.parent.transform.childCount - 1);
+    }
+
     public void CombatStartFade()
     {
         if (canStartCoroutine)

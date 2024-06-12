@@ -23,6 +23,10 @@ PrefabInstance:
       propertyPath: m_Constraint
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5748483164714745544, guid: a83dc107fcd0c924f953f414e3bc749e, type: 3}
+      propertyPath: m_Padding.m_Top
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7140589213136718580, guid: a83dc107fcd0c924f953f414e3bc749e, type: 3}
       propertyPath: m_FontData.m_FontSize
       value: 40

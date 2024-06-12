@@ -104,7 +104,7 @@ public class Enemy : Combatant
                 break;
 
             case EnemyTypes.MonsterB:
-                ownerClass = new Class(350, 100, 100, 10)
+                ownerClass = new Class(350, 250, 80, 10)
                 {
                     normalAttack = new EnemyDefault_NormalAttack()
                 };
@@ -116,7 +116,7 @@ public class Enemy : Combatant
                 break;
 
             case EnemyTypes.MonsterC:
-                ownerClass = new Class(300, 50, 60, 10)
+                ownerClass = new Class(300, 200, 60, 10)
                 {
                     normalAttack = new EnemyDefault_NormalAttack()
                 };
@@ -140,7 +140,7 @@ public class Enemy : Combatant
                 break;
 
             case EnemyTypes.MonsterO:
-                ownerClass = new Class(250, 20, 100, 10)
+                ownerClass = new Class(250, 20, 50, 10)
                 {
                     normalAttack = new EnemyDefault_NormalAttack()
                 };

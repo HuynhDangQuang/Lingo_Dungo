@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using Unity.Mathematics;
 using UnityEngine;
 
 namespace Assets.Core.Manager
@@ -98,6 +99,33 @@ namespace Assets.Core.Manager
             }
             Debug.Log("Word <" + word + "> isn't loaded or doesn't exist in game data");
             return null;
+        }
+
+        public string GetRandomDefinition(string word)
+        {
+            string result = "";
+            if (wordData.ContainsKey(word))
+            {
+                // Won't random word at this time
+
+                //Word data = wordData[word];
+                //List<Definition> definitions = new List<Definition>();
+                //foreach (Meaning meaning in data.meanings)
+                //{
+                //    definitions.AddRange(meaning.definitions);
+                //}
+                //result = definitions[UnityEngine.Random.Range(0, definitions.Count - 1)].definition;
+
+                // Pick the first definition of meaning
+                Word data = wordData[word];
+                List<Definition> definitions = new List<Definition>();
+                foreach (Meaning meaning in data.meanings)
+                {
+                    definitions.Add(meaning.definitions.First());
+                }
+                result = definitions[UnityEngine.Random.Range(0, definitions.Count - 1)].definition;
+            }
+            return result;
         }
 
         public List<string> GetWordsInTopic(string topic)

@@ -1,0 +1,13 @@
+
+AnimationExclamation.png
+size: 242,390
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+react_exclamation
+  rotate: false
+  xy: 3, 3
+  size: 236, 384
+  orig: 384, 384
+  offset: 63, 0
+  index: -1

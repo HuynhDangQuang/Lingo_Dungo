@@ -69,10 +69,10 @@ PlayerSettings:
   androidUseSwappy: 1
   androidBlitType: 2
   androidResizableWindow: 0
-  androidDefaultWindowWidth: 1920
-  androidDefaultWindowHeight: 1080
-  androidMinimumWindowWidth: 400
-  androidMinimumWindowHeight: 300
+  androidDefaultWindowWidth: 1480
+  androidDefaultWindowHeight: 720
+  androidMinimumWindowWidth: 1480
+  androidMinimumWindowHeight: 720
   androidFullscreenMode: 1
   defaultIsNativeResolution: 1
   macRetinaSupport: 1

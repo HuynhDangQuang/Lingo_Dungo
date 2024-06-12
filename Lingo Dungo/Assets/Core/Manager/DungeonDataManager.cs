@@ -28,11 +28,13 @@ namespace Assets.Core.Manager
         #endregion
 
         #region Control
+
         public bool isStarted = false;
 
         public void Dispose()
         {
             isStarted = false;
+            combatResult = CombatResult.notFighting;
         }
 
         #endregion
@@ -151,7 +153,7 @@ namespace Assets.Core.Manager
                 up = true,
                 down = true,
                 left = false,
-                right = false,
+                right = false
             };
             dungeonRooms[0, 5].enemies[0] = new Enemy(EnemyTypes.MonsterA);
 

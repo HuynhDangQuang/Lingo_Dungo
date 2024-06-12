@@ -33,7 +33,7 @@ namespace Assets.Core.Resource.Skills.Player
         public Knight_Block()
         {
             type = DamageType.None;
-            cost = 40;
+            cost = 30;
             TargetsAnimation = "Buff";
             TargetsHitSFX = "Up1";
         }
@@ -58,7 +58,7 @@ namespace Assets.Core.Resource.Skills.Player
         public Knight_Cleave()
         {
             type = DamageType.Damage;
-            cost = 50;
+            cost = 40;
             TargetsAnimation = "Hit";
             TargetsHitSFX = "Slash1";
         }

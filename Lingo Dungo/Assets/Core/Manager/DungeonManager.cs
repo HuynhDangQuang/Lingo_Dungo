@@ -25,8 +25,11 @@ public class DungeonManager : MonoBehaviour
     public Button buttonDown;
     public Button buttonLeft;
     public Button buttonRight;
+    public Button buttonInteract;
 
     public FaceEffect faceEffect;
+    public DungeonEvent dungeonEvent;
+    public PartyReaction partyReaction;
     #endregion
 
     #region OnMap Actor
@@ -45,6 +48,7 @@ public class DungeonManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        dungeonDataManager.combatResult = CombatResult.notFighting;
         AudioManager.Instance.PlayMusic("DungeonTheme");
         DisableAllMoveButtons();
         ThisPlayer = dungeonDataManager.thisPlayer;
@@ -74,6 +78,17 @@ public class DungeonManager : MonoBehaviour
         buttonRight.interactable = room.right;
     }
 
+    private void BringFadeEffectToBackward()
+    {
+        faceEffect.SendToBack();
+    }
+
+    private void BringFadeEffectToFrontward()
+    {
+        faceEffect.BringToFront();
+    }
+
+    #region Change Room Update
     public void UpdateMap()
     {
         int baseX = dungeonDataManager.playerX;
@@ -124,6 +139,15 @@ public class DungeonManager : MonoBehaviour
                     }        
 
                 mapCell.Setup(room.up, room.down, room.left, room.right, unknown);
+
+                if (!unknown & room.revealed)
+                {
+                    if (room.isExit)
+                    {
+                        mapCell.SetIcon("exit");
+                    }
+                }
+                
                 index++;
             }
         }
@@ -163,7 +187,34 @@ public class DungeonManager : MonoBehaviour
         }
     }
 
-    #region Move Button
+    public void SetupEvent()
+    {
+        DungeonRoom room = dungeonDataManager.GetCurrentRoom();
+
+        if (room.isExit)
+        {
+            dungeonEvent.SetupEvent("exit");
+            buttonInteract.gameObject.SetActive(!room.CanStartCombat());
+            return;
+        }
+
+        dungeonEvent.SetupEvent("empty");
+        buttonInteract.gameObject.SetActive(false);
+    }
+
+    public void DoFindNewRoomEffect()
+    {
+        foreach (Combatant combatant in dungeonDataManager.party)
+        {
+            if (combatant != null)
+            {
+                combatant.GainHp(combatant.MaxHP / 2);
+            }
+        }
+    }
+    #endregion
+
+    #region Buttons
 
     public void MoveUpPressed()
     {
@@ -193,16 +244,15 @@ public class DungeonManager : MonoBehaviour
         StartCoroutine(ChangeRoomCoroutine("You are moving to the East..."));
     }
 
-    private void BringFadeEffectToBackward()
+    public void InteractPressed()
     {
-        faceEffect.gameObject.transform.SetSiblingIndex(0);
-    }
+        DungeonRoom room = dungeonDataManager.GetCurrentRoom();
 
-    private void BringFadeEffectToFrontward()
-    {
-        faceEffect.gameObject.transform.SetSiblingIndex(faceEffect.transform.parent.transform.childCount - 1);
+        if (room.isExit)
+        {
+            SceneManager.LoadScene("ConclusionScene");
+        }
     }
-
     #endregion
 
     #region Coroutine
@@ -216,8 +266,17 @@ public class DungeonManager : MonoBehaviour
         // Update model on screen
         SetupModels();
 
+        // Find new room Effect
+        if (!dungeonDataManager.GetCurrentRoom().revealed)
+        {
+            DoFindNewRoomEffect();
+        }   
+        
         // Load room data
         UpdateMap();
+
+        // Update Event on screen
+        SetupEvent();
 
         if (!dungeonDataManager.isStarted)
         {
@@ -249,6 +308,9 @@ public class DungeonManager : MonoBehaviour
         // Load room data
         UpdateMap();
 
+        // Update Event on screen
+        SetupEvent();
+
         yield return new WaitForSeconds(0.5f);
 
         faceEffect.FadeIn(1.5f, description);
@@ -270,7 +332,8 @@ public class DungeonManager : MonoBehaviour
     {
         // Show Exclamination animation
         AudioManager.Instance.PlaySFX("Surprise");
-        yield return new WaitForSeconds(2f);
+        partyReaction.PlayExclamation();
+        yield return new WaitForSeconds(1f);
 
         AudioManager.Instance.PlaySFX("CombatStart");
         faceEffect.CombatStartFade();
