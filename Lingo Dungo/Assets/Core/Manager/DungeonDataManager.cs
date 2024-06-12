@@ -135,7 +135,7 @@ namespace Assets.Core.Manager
         public void CreateDemoDungeon()
         {
             dungeonHeight = 7;
-            dungeonWidth = 1;
+            dungeonWidth = 3;
             dungeonRooms = new DungeonRoom[dungeonWidth,dungeonHeight];
 
             // Create rooms
@@ -144,7 +144,7 @@ namespace Assets.Core.Manager
                 up = true,
                 down = false,
                 left = false,
-                right = false,
+                right = true,
                 revealed = true
             };
 
@@ -162,7 +162,7 @@ namespace Assets.Core.Manager
                 up = true,
                 down = true,
                 left = false,
-                right = false,
+                right = true,
             };
             dungeonRooms[0, 4].enemies[0] = new Enemy(EnemyTypes.MonsterB);
 
@@ -199,9 +199,42 @@ namespace Assets.Core.Manager
                 up = false,
                 down = true,
                 left = false,
+                right = false
+            };
+
+            dungeonRooms[1, 6] = new DungeonRoom()
+            {
+                up = true,
+                down = false,
+                left = true,
+                right = true
+            };
+
+            dungeonRooms[1, 5] = new DungeonRoom()
+            {
+                up = true,
+                down = true,
+                left = false,
+                right = false
+            };
+
+            dungeonRooms[1, 4] = new DungeonRoom()
+            {
+                up = false,
+                down = true,
+                left = true,
+                right = false
+            };
+
+            dungeonRooms[2, 6] = new DungeonRoom()
+            {
+                up = false,
+                down = false,
+                left = true,
                 right = false,
                 isExit = true
             };
+
 
             // start position of player
             playerX = 0;

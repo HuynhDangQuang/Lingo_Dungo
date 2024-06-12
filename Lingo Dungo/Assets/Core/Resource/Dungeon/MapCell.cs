@@ -104,7 +104,7 @@ public class MapCell : MonoBehaviour
         {
             image.sprite = cellUpLeft;
         }
-        else if (!up & !down && !left && right)
+        else if (up & !down && !left && right)
         {
             image.sprite = cellUpRight;
         }
@@ -116,7 +116,7 @@ public class MapCell : MonoBehaviour
         {
             image.sprite = cellDownRight;
         }
-        else if (!up & !down && left && right)
+        else if (up & !down && left && right)
         {
             image.sprite = cellUpT;
         }
