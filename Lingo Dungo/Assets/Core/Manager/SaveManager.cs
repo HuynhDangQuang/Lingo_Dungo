@@ -68,4 +68,15 @@ public class SaveManager
         achievementManager.TravelDungeonCount = data.travelDungeonCount;
         achievementManager.seenWordCount = data.seenWordCount;
     }
+
+    public SaveData ImportPresetSaveData()
+    {
+        TextAsset textAsset = Resources.Load<TextAsset>("DownloadedData/savefile");
+        string json = textAsset.text;
+        data = JsonConvert.DeserializeObject<SaveData>(json);
+
+        data ??= new SaveData();
+        
+        return data;
+    }
 }

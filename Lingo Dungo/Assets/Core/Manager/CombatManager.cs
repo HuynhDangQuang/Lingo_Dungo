@@ -21,6 +21,7 @@ public class CombatManager : MonoBehaviour
     public GameObject ButtonSkill1;
     public GameObject ButtonSkill2;
     public GameObject ButtonSettings;
+    public GameObject ButtonRemoveAll;
     public Text AnswerHint;
     #endregion
 
@@ -155,6 +156,16 @@ public class CombatManager : MonoBehaviour
         {
             DisableSkillButtons();
         }
+
+        if (state == CombatState.answering && AnswerSheet.transform.childCount > 0)
+        {
+            ButtonRemoveAll.GetComponent<Button>().interactable = true;
+        }
+        else
+        {
+            ButtonRemoveAll.GetComponent<Button>().interactable = false;
+        }
+
 
         // Update skill cost
         Text primarySkillCost = GameObject.FindGameObjectWithTag("PrimarySkillCost").GetComponent<Text>();

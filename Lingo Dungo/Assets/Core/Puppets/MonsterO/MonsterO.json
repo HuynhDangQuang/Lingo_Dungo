@@ -1,6 +1,6 @@
 {
 "skeleton": {
-	"hash": "tU9soE6Hu4HzmdWA1mqwm1O4NXA",
+	"hash": "MsJ/hUsz6fEsH4Ae17PeDSJNT4o",
 	"spine": "3.8",
 	"x": -159.21,
 	"y": 62.88,
@@ -71,19 +71,27 @@
 		"slots": {
 			"Monster_Eye": {
 				"color": [
-					{ "color": "00000000" }
+					{ "color": "ffffff00" }
 				]
 			},
 			"Monster_O_body": {
 				"color": [
-					{ "color": "00000000" }
+					{ "color": "ffffff00" }
 				]
 			}
 		},
 		"bones": {
 			"Base": {
+				"translate": [
+					{ "x": -121.21, "y": -104.76 }
+				],
 				"scale": [
 					{ "x": -1 }
+				]
+			},
+			"angle": {
+				"rotate": [
+					{ "angle": 180 }
 				]
 			}
 		}

@@ -34,7 +34,7 @@ public class AnswerPanel : MonoBehaviour
         string answer = "";
         foreach (Transform child in transform)
         {
-            answer = answer + child.GetChild(0).GetComponent<Text>().text;
+            answer += child.GetChild(0).GetComponent<Text>().text;
         }
         answer = answer.ToLower();
         return answer;
@@ -43,5 +43,13 @@ public class AnswerPanel : MonoBehaviour
     public void SendCharToWordSheet(GameObject g)
     {
         wordSheet.GetComponent<WordPanel>().AddCharFromAnswerSheet(g);
+    }
+
+    public void SendAllCharToWordSheet()
+    {
+        for (int i = transform.childCount - 1; i >= 0; i--)
+        {
+            wordSheet.GetComponent<WordPanel>().AddCharFromAnswerSheet(transform.GetChild(i).gameObject);
+        }
     }
 }

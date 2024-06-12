@@ -262,7 +262,7 @@ public class DungeonManager : MonoBehaviour
         BringFadeEffectToFrontward();
         faceEffect.InstanceFadeOut();
         yield return new WaitForSeconds(0.05f);
-        
+       
         // Update model on screen
         SetupModels();
 
@@ -281,14 +281,19 @@ public class DungeonManager : MonoBehaviour
         if (!dungeonDataManager.isStarted)
         {
             faceEffect.FadeIn(3f, "Adventure begin!");
-            yield return new WaitForSeconds(3.2f);
+            yield return new WaitForSeconds(3.5f);
             dungeonDataManager.isStarted = true;
         }
         else
         {
             faceEffect.FadeIn(1f);
-            yield return new WaitForSeconds(1.2f);
+            yield return new WaitForSeconds(1.5f);
         }    
+
+        while (!faceEffect.canStartCoroutine)
+        {
+            yield return new WaitForSeconds(0.01f);
+        }
 
         ActiveMoveButtons();
         BringFadeEffectToBackward();
@@ -299,8 +304,14 @@ public class DungeonManager : MonoBehaviour
     {
         BringFadeEffectToFrontward();
         yield return new WaitForSeconds(0.05f);
+
         faceEffect.FadeOut(1.5f, description);
-        yield return new WaitForSeconds(1.8f);
+
+        yield return new WaitForSeconds(0.05f);
+        while (!faceEffect.canStartCoroutine)
+        {
+            yield return new WaitForSeconds(0.01f);
+        }
 
         // Update model on screen
         SetupModels();
@@ -314,7 +325,12 @@ public class DungeonManager : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         faceEffect.FadeIn(1.5f, description);
-        yield return new WaitForSeconds(1.8f);
+
+        yield return new WaitForSeconds(0.05f);
+        while (!faceEffect.canStartCoroutine)
+        {
+            yield return new WaitForSeconds(0.01f);
+        }
 
         if (dungeonDataManager.GetCurrentRoom().CanStartCombat())
         {
@@ -337,7 +353,13 @@ public class DungeonManager : MonoBehaviour
 
         AudioManager.Instance.PlaySFX("CombatStart");
         faceEffect.CombatStartFade();
-        yield return new WaitForSeconds(3f);
+
+        yield return new WaitForSeconds(0.05f);
+        while (!faceEffect.canStartCoroutine)
+        {
+            yield return new WaitForSeconds(0.01f);
+        }
+
         SceneManager.LoadScene("CombatScene");
 
         yield return null;

@@ -1,6 +1,6 @@
 {
 "skeleton": {
-	"hash": "/dExzFQegtR/tvumkDaU+NYGB7I",
+	"hash": "ThM4RXHL8XW0dRSM9/DPfh7p6og",
 	"spine": "3.8",
 	"x": -353,
 	"y": -26.56,
@@ -110,12 +110,12 @@
 "animations": {
 	"damage": {
 		"slots": {
-			"Monster_Eye": {
+			"Monster_Eye2": {
 				"attachment": [
 					{ "name": "Monster_Damage" }
 				]
 			},
-			"Monster_Eye2": {
+			"Monster_Eye": {
 				"attachment": [
 					{ "name": "Monster_Damage" }
 				]
@@ -190,42 +190,7 @@
 	},
 	"die": {
 		"slots": {
-			"Monster_B_arm2": {
-				"color": [
-					{ "color": "00000000" }
-				]
-			},
-			"Monster_Eye": {
-				"color": [
-					{ "color": "00000000" }
-				]
-			},
-			"Monster_B_arm4": {
-				"color": [
-					{ "color": "00000000" }
-				]
-			},
-			"Monster_B_hand2": {
-				"color": [
-					{ "color": "00000000" }
-				]
-			},
-			"Monster_Eye2": {
-				"color": [
-					{ "color": "00000000" }
-				]
-			},
-			"Monster_B_weapon": {
-				"color": [
-					{ "color": "00000000" }
-				]
-			},
-			"Monster_B_body": {
-				"color": [
-					{ "color": "00000000" }
-				]
-			},
-			"Monster_B_arm1": {
+			"Monster_B_arm3": {
 				"color": [
 					{ "color": "00000000" }
 				]
@@ -235,44 +200,82 @@
 					{ "color": "00000000" }
 				]
 			},
-			"Monster_B_arm3": {
+			"Monster_Eye2": {
+				"color": [
+					{ "color": "00000000" }
+				]
+			},
+			"Monster_B_arm4": {
+				"color": [
+					{ "color": "00000000" }
+				]
+			},
+			"Monster_B_arm1": {
+				"color": [
+					{ "color": "00000000" }
+				]
+			},
+			"Monster_B_weapon": {
+				"color": [
+					{ "color": "00000000" }
+				]
+			},
+			"Monster_B_arm2": {
+				"color": [
+					{ "color": "00000000" }
+				]
+			},
+			"Monster_B_body": {
+				"color": [
+					{ "color": "00000000" }
+				]
+			},
+			"Monster_B_hand2": {
+				"color": [
+					{ "color": "00000000" }
+				]
+			},
+			"Monster_Eye": {
 				"color": [
 					{ "color": "00000000" }
 				]
 			}
 		},
 		"bones": {
+			"Body": {
+				"rotate": [
+					{ "angle": -93.59 }
+				],
+				"translate": [
+					{ "x": 282.23, "y": -208.61 }
+				]
+			},
 			"Base": {
 				"scale": [
 					{ "x": -1 }
+				]
+			},
+			"uparm2": {
+				"rotate": [
+					{ "angle": 91.57 }
+				]
+			},
+			"uparm1": {
+				"rotate": [
+					{ "angle": -23.83 }
 				]
 			}
 		}
 	},
 	"dying": {
 		"slots": {
-			"Monster_B_arm2": {
+			"Monster_B_arm3": {
 				"color": [
 					{ "time": 0.6667, "color": "ffffffff" },
 					{ "time": 1.6667, "color": "00000000" }
 				]
 			},
-			"Monster_Eye": {
-				"color": [
-					{ "time": 0.6667, "color": "ffffffff" },
-					{ "time": 1.6667, "color": "00000000" }
-				],
-				"attachment": [
-					{ "name": "Monster_Damage" }
-				]
-			},
-			"Monster_B_arm4": {
-				"color": [
-					{ "time": 0.6667, "color": "ffffffff" },
-					{ "time": 1.6667, "color": "00000000" }
-				]
-			},
-			"Monster_B_hand2": {
+			"Monster_B_hand": {
 				"color": [
 					{ "time": 0.6667, "color": "ffffffff" },
 					{ "time": 1.6667, "color": "00000000" }
@@ -287,13 +290,7 @@
 					{ "name": "Monster_Damage" }
 				]
 			},
-			"Monster_B_weapon": {
-				"color": [
-					{ "time": 0.6667, "color": "ffffffff" },
-					{ "time": 1.6667, "color": "00000000" }
-				]
-			},
-			"Monster_B_body": {
+			"Monster_B_arm4": {
 				"color": [
 					{ "time": 0.6667, "color": "ffffffff" },
 					{ "time": 1.6667, "color": "00000000" }
@@ -305,16 +302,37 @@
 					{ "time": 1.6667, "color": "00000000" }
 				]
 			},
-			"Monster_B_hand": {
+			"Monster_B_weapon": {
 				"color": [
 					{ "time": 0.6667, "color": "ffffffff" },
 					{ "time": 1.6667, "color": "00000000" }
 				]
 			},
-			"Monster_B_arm3": {
+			"Monster_B_arm2": {
 				"color": [
 					{ "time": 0.6667, "color": "ffffffff" },
 					{ "time": 1.6667, "color": "00000000" }
+				]
+			},
+			"Monster_B_body": {
+				"color": [
+					{ "time": 0.6667, "color": "ffffffff" },
+					{ "time": 1.6667, "color": "00000000" }
+				]
+			},
+			"Monster_B_hand2": {
+				"color": [
+					{ "time": 0.6667, "color": "ffffffff" },
+					{ "time": 1.6667, "color": "00000000" }
+				]
+			},
+			"Monster_Eye": {
+				"color": [
+					{ "time": 0.6667, "color": "ffffffff" },
+					{ "time": 1.6667, "color": "00000000" }
+				],
+				"attachment": [
+					{ "name": "Monster_Damage" }
 				]
 			}
 		},

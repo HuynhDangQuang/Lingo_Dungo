@@ -936,7 +936,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 285.67, y: -58.847}
+  m_AnchoredPosition: {x: 285.67, y: -58.846985}
   m_SizeDelta: {x: 449.29, y: 78.305}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1474423292
@@ -1090,11 +1090,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3513538304261550907, guid: ca25758f8358265459e5f5cfad1d013b, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -120.71
+      value: -120.71002
       objectReference: {fileID: 0}
     - target: {fileID: 3513538304261550907, guid: ca25758f8358265459e5f5cfad1d013b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -58.847
+      value: -58.846985
       objectReference: {fileID: 0}
     - target: {fileID: 3513538304261550907, guid: ca25758f8358265459e5f5cfad1d013b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1329,20 +1329,20 @@ MonoBehaviour:
     flag: 2
     goalValue: 100
   - name: Heavy Hitter
-    description: Dealt total 500 damage
-    icon: {fileID: 21300000, guid: 8777a51c5ce16574fbefcecc7e6f9ad2, type: 3}
-    flag: 2
-    goalValue: 500
-  - name: Powerhouse
     description: Dealt total 1000 damage
     icon: {fileID: 21300000, guid: 8777a51c5ce16574fbefcecc7e6f9ad2, type: 3}
     flag: 2
     goalValue: 1000
-  - name: Destruction Dynamo
+  - name: Powerhouse
     description: Dealt total 10000 damage
     icon: {fileID: 21300000, guid: 8777a51c5ce16574fbefcecc7e6f9ad2, type: 3}
     flag: 2
     goalValue: 10000
+  - name: Destruction Dynamo
+    description: Dealt total 100000 damage
+    icon: {fileID: 21300000, guid: 8777a51c5ce16574fbefcecc7e6f9ad2, type: 3}
+    flag: 2
+    goalValue: 100000
 --- !u!1 &1932657320
 GameObject:
   m_ObjectHideFlags: 0
@@ -1377,7 +1377,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -258.4, y: -39.695}
+  m_AnchoredPosition: {x: -258.4, y: -39.695007}
   m_SizeDelta: {x: 185.27, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1932657322

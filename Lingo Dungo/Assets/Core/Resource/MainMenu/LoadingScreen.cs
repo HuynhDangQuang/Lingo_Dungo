@@ -138,74 +138,92 @@ public class LoadingScreen : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         // DOWNLOADING PHASE
-
         if (downloadList.Count > 0)
         {
-            progress = 0;
-            totalWordCount = downloadList.Count;
-            description.text = "Downloading resource... (" + progress + "/"
-                    + totalWordCount + ") Please make sure your device is connected with Internet.";
-            fillAmount = progress * 1f / totalWordCount;
+            // TRY IMPORT FROM PRESET RESOURCE FIRST
+            SaveData presetSave = SaveManager.Instance.ImportPresetSaveData();
+            bool needToDownload = false;
 
+            List<string> removeWord = new List<string>();
             foreach (string word in downloadList)
             {
-                downloadingWord = word;
-
-                int timeout = 5;
-                while (downloadStatus != DictionaryAPI.TASKRESULT_SUCCESS)
+                if (presetSave.wordData.ContainsKey(word) && presetSave.wordData[word] != null)
                 {
-                    bool canExit = true;
-                    yield return new WaitForSeconds(0.05f);
-                    switch (downloadStatus)
-                    {
-                        case -2:
-                            canExit = false;
-                            continue;
-                        case -1:
-                            canExit = false;
-                            continue;
-                        case DictionaryAPI.TASKRESULT_DATANOTFOUND:
-                            description.text = "Data not found";
-                            canExit = true;
-                            break;
-                        case DictionaryAPI.TASKRESULT_HTTPFAILED:
-                            timeout--;
-                            description.text = $"Data HTTP Failed ({timeout})";
-                            break;
-                        case DictionaryAPI.TASKRESULT_JSONDESERIALIZINGFAIL:
-                            description.text = $"Json serializing fail";
-                            canExit = true;
-                            break;
-                        case DictionaryAPI.TASKRESULT_UNKNOWN_ERROR:
-                            description.text = DictionaryAPI.bugReport;
-                            canExit = true;
-                            break;
-                    }
-                    if (timeout == 0)
-                    {
-                        // Push warning and exit game
-                        StopCoroutine(LoadUnits());
-                        break;
-                    }
-                    if (canExit)
-                    {
-                        break;
-                    }
+                    wordManager.wordData[word] = presetSave.wordData[word];
+                    removeWord.Add(word);
                 }
-                SaveManager.Instance.Save();
-                yield return new WaitForSeconds(0.5f);
-                progress++;
-                downloadStatus = -2;
-                downloadingWord = "";
-
-                description.text = "Downloading resource... (" + progress + "/"
-                    + totalWordCount + ") Please make sure your device is connected with Internet.";
-                fillAmount = progress * 1f / totalWordCount;
             }
+            downloadList.RemoveAll(word => removeWord.Contains(word));
+            needToDownload = downloadList.Count > 0;
 
-            yield return new WaitForSeconds(0.5f);
-            description.text = "Download resource done!";
-            yield return new WaitForSeconds(0.5f);
+            if (needToDownload)
+            {
+                progress = 0;
+                totalWordCount = downloadList.Count;
+                description.text = "Downloading resource... (" + progress + "/"
+                        + totalWordCount + ") Please make sure your device is connected with Internet.";
+                fillAmount = progress * 1f / totalWordCount;
+
+                foreach (string word in downloadList)
+                {
+                    downloadingWord = word;
+
+                    int timeout = 5;
+                    while (downloadStatus != DictionaryAPI.TASKRESULT_SUCCESS)
+                    {
+                        bool canExit = true;
+                        yield return new WaitForSeconds(0.05f);
+                        switch (downloadStatus)
+                        {
+                            case -2:
+                                canExit = false;
+                                continue;
+                            case -1:
+                                canExit = false;
+                                continue;
+                            case DictionaryAPI.TASKRESULT_DATANOTFOUND:
+                                description.text = "Data not found";
+                                canExit = true;
+                                break;
+                            case DictionaryAPI.TASKRESULT_HTTPFAILED:
+                                timeout--;
+                                description.text = $"Data HTTP Failed ({timeout})";
+                                break;
+                            case DictionaryAPI.TASKRESULT_JSONDESERIALIZINGFAIL:
+                                description.text = $"Json serializing fail";
+                                canExit = true;
+                                break;
+                            case DictionaryAPI.TASKRESULT_UNKNOWN_ERROR:
+                                description.text = DictionaryAPI.bugReport;
+                                canExit = true;
+                                break;
+                        }
+                        if (timeout == 0)
+                        {
+                            // Push warning and exit game
+                            StopCoroutine(LoadUnits());
+                            break;
+                        }
+                        if (canExit)
+                        {
+                            break;
+                        }
+                    }
+                    SaveManager.Instance.Save();
+                    yield return new WaitForSeconds(0.5f);
+                    progress++;
+                    downloadStatus = -2;
+                    downloadingWord = "";
+
+                    description.text = "Downloading resource... (" + progress + "/"
+                        + totalWordCount + ") Please make sure your device is connected with Internet.";
+                    fillAmount = progress * 1f / totalWordCount;
+                }
+
+                yield return new WaitForSeconds(0.5f);
+                description.text = "Download resource done!";
+                yield return new WaitForSeconds(0.5f);
+            }
         }
         description.text = "Ready to start game...";
         yield return new WaitForSeconds(0.5f);
